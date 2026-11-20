@@ -1,0 +1,34 @@
+MAV Grid (mav-grid)
+Copyright 2026 markurtz
+
+This product includes software, specifications and designs developed by
+markurtz (https://github.com/markurtz/mav-grid).
+
+Licensing
+=========================================================================
+
+- Software (the Python package under src/, scripts, tests, examples, tooling
+  and the documentation site under docs/) is licensed under the Apache
+  License, Version 2.0. See LICENSE.
+- The specification and samples (spec/ and samples/), hardware designs, CAD
+  files and generated geometry are licensed under the Solderpad Hardware
+  Licence, Version 2.0. See LICENSE-hardware.
+
+Disclaimer and Non-Endorsement
+=========================================================================
+
+Derivatives or manufactured versions of MAV Grid created by third parties are
+not endorsed, sanctioned, or warrantied by the original designer. The grid
+system and any implementations or derivatives are used at your own risk. The
+original designer assumes no liability for damages, failures, or injury
+resulting from material choices, 3D printing parameters, CNC tolerances, or any
+other manufacturing processes outside their control.
+
+Names of other systems (for example Gridfinity, openGrid, Multiboard, MFT/3 or
+System 32) are used only to describe compatibility. MAV Grid is not affiliated
+with or endorsed by their owners, and no geometry is copied from their files.
+
+Third-Party Attributions
+=========================================================================
+
+[ Add third-party attributions, licenses, and notices here ]

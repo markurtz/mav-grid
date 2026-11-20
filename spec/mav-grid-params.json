@@ -1,0 +1,50 @@
+{
+  "spec_version": "0.10.0-draft",
+  "date": "2026-11-20",
+  "units": "mm",
+  "decided": {
+    "pitch": 32.0,
+    "wall_angle_deg": 14.0,
+    "opening": 8.0,
+    "plate_top_one_cell": 24.0,
+    "lattice": 8.0,
+    "small": {"depth": 6.0, "bottom_nominal": 11.0, "bottom_exact": 10.992, "plate_land_one_cell": 21.008, "wall_bearing_per_side": 1.496, "min_stock": 12.7},
+    "large": {"depth": 9.5, "bottom_nominal": 12.7, "bottom_exact": 12.737, "plate_land_one_cell": 19.263, "wall_bearing_per_side": 2.369, "min_stock": 15.875},
+    "cell_hole": 5.0,
+    "house_thread": "M6",
+    "thread_variants": ["M5", "1/4-20"],
+    "height_step": 8.0,
+    "edge": {
+      "default": "on a grid line with a half groove",
+      "half_opening": 4.0,
+      "margin": "any edge may carry a declared plain margin of any width; it then forms no groove when butted",
+      "system32_margin_example": 21.0
+    },
+    "corner": {
+      "rule": "solid by default; no groove, half groove or dovetail wall required at a fold; nothing may target the corner; parts crossing a fold hold in the grooves on each face",
+      "fold_line": "a grid line of both faces; first grid line on each face is 32 from it",
+      "min_angle": null,
+      "maker_may": ["cut a groove", "mitre the plates", "run plates up to the corner as they are"]
+    },
+    "plate_fixing": {"reference": "one M6 screw through the cell hole; two or more on plates wider than one cell", "also_allowed": ["press-in studs", "bonded"]},
+    "locating_pins": null,
+    "plate_clearance": {"rule": "by Locate gauge", "starting_value_per_side": 0.15},
+    "small_routing": "two passes, 3/8 in 14 deg bit at 6.0 deep, second pass shifted 1.47",
+    "large_routing": "one pass, 1/2 in 14 deg bit at 9.5 deep (opening comes out 7.96)",
+    "core_holes": "every cell centre on swap bases (SHOULD); other build modes drill what they need",
+    "preferred_spans": [1, 2, 4, 8, 16, 3, 6, 12],
+    "square_edged_plates": "conform only once bevelled to 14 deg",
+    "claim_line_example": "MAV Grid 0.10 · Large · 2 × 2 · Gridfinity plate · Screw fix",
+    "gates_for_1_0": [1, 2, 3, 4, 5]
+  },
+  "proposed_not_decided": {
+    "multiboard_plate": {
+      "rule": "model from scratch from measured or published dimensions; no geometry from Multiboard files; name used only to say what it fits, no logo, state no affiliation or endorsement",
+      "basis": "Multiboard licence read 2026-11-20 (text last updated 2025-12-19): remixes of their files stay under their terms, personal use unless Multi Partner subscriber, grant-back, originals not redistributable; silent on independently designed compatible parts",
+      "open": "ask Multiboard or a lawyer to confirm; re-read the terms before 1.0 (spec section 15, open item 15)"
+    }
+  },
+  "decision_dates": {"dimensions": "2026-11-19", "fifteen_questions": "2026-11-19"},
+  "cad_observations_deg": {"faces_run_into_each_other_below_fold_angle": 24, "fold_acts_as_double_sided_panel_above": 338},
+  "status": "All fifteen open questions answered by Mark on 2026-11-19. Nothing built or measured; fits are Unproven. Spec: https://claude.ai/artifact/57RiGvYWSbfxvJbpSdoNgQ"
+}

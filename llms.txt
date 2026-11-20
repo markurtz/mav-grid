@@ -1,0 +1,43 @@
+# MAV Grid
+
+> An open, parametric dovetail-groove grid and face-plate standard.
+
+MAV Grid defines a 32 mm grid of swappable face plates separated by 14 degree dovetail grooves (8.0 mm opening; Small 6.0 mm deep, Large 9.5 mm deep). This repository holds the specification, its schema, and a Python toolkit of parameterized CAD generators, plates, adapters and exporters.
+
+## Primary Documentation Links
+- [Documentation Home](https://markurtz.github.io/mav-grid/): Main site home page
+- [Specification](https://markurtz.github.io/mav-grid/specification/): Status, decided values and conventions
+- [Getting Started](https://markurtz.github.io/mav-grid/getting-started/): Installation and first commands
+- [Guides](https://markurtz.github.io/mav-grid/guides/): Repository layout and CI/CD
+- [API Reference](https://markurtz.github.io/mav-grid/reference/): CLI and Python API reference
+
+## Architectural Topography
+
+### Configuration & Entrypoints
+- [pyproject.toml](pyproject.toml): Project settings, Hatch environments and scripts.
+- [AGENTS.md](AGENTS.md): Agent development guidelines, build commands and boundaries.
+- [CLAUDE.md](CLAUDE.md): Pointer to `AGENTS.md`.
+- [src/mav_grid/__main__.py](src/mav_grid/__main__.py): `mav-grid` CLI entrypoint.
+
+### Specification
+- [spec/README.md](spec/README.md): Specification status, layout and conventions.
+- [spec/mav-grid-params.json](spec/mav-grid-params.json): Decided values of the current draft.
+- [spec/CHANGELOG.md](spec/CHANGELOG.md): Specification changes by version.
+- [spec/schema/](spec/schema/): Generated JSON Schema (planned).
+
+### Core Python Modules
+- [src/mav_grid/__init__.py](src/mav_grid/__init__.py): Package initialization and public API.
+- [src/mav_grid/spec.py](src/mav_grid/spec.py): Targeted specification version.
+- [src/mav_grid/settings.py](src/mav_grid/settings.py): Pydantic settings.
+- [src/mav_grid/logging.py](src/mav_grid/logging.py): Loguru logging setup.
+- [src/mav_grid/schema/](src/mav_grid/schema/): Parameter schema models (planned).
+- [src/mav_grid/generators/](src/mav_grid/generators/): Parameterized geometry generators (planned).
+- [src/mav_grid/plates/](src/mav_grid/plates/): Face plate catalogue (planned).
+- [src/mav_grid/adapters/](src/mav_grid/adapters/): Cross-compatibility adapters (planned).
+- [src/mav_grid/export/](src/mav_grid/export/): STEP/STL/3MF/GLB exporters (planned).
+
+### Testing Suite Tiers
+- [tests/python/unit/](tests/python/unit/): Python unit tests.
+- [tests/python/integration/](tests/python/integration/): Python integration tests, including spec value consistency.
+- [tests/e2e/](tests/e2e/): End-to-end tests against the installed package.
+- [examples/](examples/): Runnable examples, each with its own test.

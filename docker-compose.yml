@@ -1,0 +1,18 @@
+---
+name: mav-grid
+services:
+  app:
+    build:
+      context: .
+      target: builder
+    volumes:
+      - ./src:/app/src
+    environment:
+      - APP_ENV=${APP_ENV:-development}
+      - APP_DEBUG=${APP_DEBUG:-true}
+    # Standard Python development command
+    command:
+      - "python"
+      - "-m"
+      - "mav_grid"
+      - "--help"

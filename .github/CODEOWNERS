@@ -1,0 +1,65 @@
+# Copyright 2026 markurtz
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+*                               @markurtz
+
+# -----------------------------------------------------------------------------
+# CI/CD & Infrastructure
+# Requires review from a platform/infrastructure team for any workflow changes.
+# -----------------------------------------------------------------------------
+.github/                        @markurtz
+.github/workflows/              @markurtz
+
+# -----------------------------------------------------------------------------
+# Documentation
+# Route docs changes to the team responsible for content quality.
+# -----------------------------------------------------------------------------
+docs/                           @markurtz
+*.md                            @markurtz
+zensical.toml                   @markurtz
+
+# -----------------------------------------------------------------------------
+# Security-Sensitive Files
+# Any change to security policy, secrets config, or dependencies must be
+# reviewed by the security team.
+# -----------------------------------------------------------------------------
+SECURITY.md                     @markurtz
+.github/dependabot.yml          @markurtz
+.pre-commit-config.yaml         @markurtz
+
+# -----------------------------------------------------------------------------
+# Specification & Samples
+# Normative rules and decided values; changes affect every conforming part.
+# -----------------------------------------------------------------------------
+spec/                           @markurtz
+samples/                        @markurtz
+LICENSE-hardware                @markurtz
+
+# -----------------------------------------------------------------------------
+# Core Source Code
+# Replace with the path to your primary package directory.
+# -----------------------------------------------------------------------------
+src/                            @markurtz
+
+# -----------------------------------------------------------------------------
+# Tests
+# Requires review from someone responsible for test quality and coverage.
+# -----------------------------------------------------------------------------
+tests/                          @markurtz
+
+# -----------------------------------------------------------------------------
+# Container & Deployment
+# -----------------------------------------------------------------------------
+Dockerfile                      @markurtz
+docker-compose.yml              @markurtz
