@@ -93,7 +93,7 @@ def main(
                     "--file-types",
                     ".md",
                     "--exclude-patterns",
-                    "localhost,127.0.0.1,actions/workflows,github.com/markurtz/mav-grid,markurtz.github.io/mav-grid,claude.ai,contributor-covenant.org/faq,img.shields.io,pypi.org/project/mav-grid",
+                    "localhost,127.0.0.1,actions/workflows,github.com/markurtz/mav-grid,raw.githubusercontent.com/markurtz/mav-grid,markurtz.github.io/mav-grid,claude.ai,contributor-covenant.org/faq,img.shields.io,pypi.org/project/mav-grid",
                 ]
                 + extra_options,
                 check=True,
