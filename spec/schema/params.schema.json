@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/params.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0",
+  "title": "MAV Grid parameter file",
+  "description": "The normative constants, limits and reference parts of one spec version. Derived values are never stored here: tools compute them, and data/vectors.json holds the expected results.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string", "format": "uri" },
+    "spec_version": { "$ref": "common.schema.json#/$defs/specVersion" },
+    "date": { "type": "string", "format": "date" },
+    "units": {
+      "type": "object",
+      "properties": {
+        "length": { "const": "mm" },
+        "angle": { "const": "deg" },
+        "force": { "const": "N" }
+      },
+      "required": ["length", "angle", "force"],
+      "additionalProperties": false
+    },
+    "licence": {
+      "type": "object",
+      "properties": {
+        "hardware": { "$ref": "common.schema.json#/$defs/licence" },
+        "software": { "$ref": "common.schema.json#/$defs/licence" },
+        "note": { "type": "string" }
+      },
+      "required": ["hardware", "software"],
+      "additionalProperties": false
+    },
+    "constants": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+      "additionalProperties": { "$ref": "common.schema.json#/$defs/quantity" },
+      "required": [
+        "pitch", "wall_angle", "opening", "depth_small", "depth_large", "lattice",
+        "core_hole", "height_step", "plate_hole", "countersink_diameter", "countersink_angle",
+        "fixing_cell_step", "slide_key_min_length", "floor_min"
+      ],
+      "properties": {
+        "pitch": { "$ref": "#/$defs/positiveLength" },
+        "wall_angle": {
+          "$ref": "common.schema.json#/$defs/quantity",
+          "properties": { "value": { "exclusiveMinimum": 0, "exclusiveMaximum": 45 }, "unit": { "const": "deg" } }
+        },
+        "opening": { "$ref": "#/$defs/positiveLength" },
+        "depth_small": { "$ref": "#/$defs/positiveLength" },
+        "depth_large": { "$ref": "#/$defs/positiveLength" },
+        "lattice": { "$ref": "#/$defs/positiveLength" },
+        "core_hole": { "$ref": "#/$defs/positiveLength" },
+        "height_step": { "$ref": "#/$defs/positiveLength" },
+        "plate_hole": { "$ref": "#/$defs/positiveLength" },
+        "fixing_cell_step": {
+          "$ref": "common.schema.json#/$defs/quantity",
+          "properties": { "value": { "type": "integer", "minimum": 1 }, "unit": { "const": "cells" } }
+        }
+      }
+    },
+    "preferred_spans": {
+      "type": "object",
+      "allOf": [ { "$ref": "common.schema.json#/$defs/trace" } ],
+      "properties": {
+        "doubling": { "$ref": "#/$defs/cellCounts" },
+        "family_96": { "$ref": "#/$defs/cellCounts" }
+      },
+      "required": ["doubling", "family_96"],
+      "unevaluatedProperties": false
+    },
+    "threads": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/threadSpec" },
+      "minItems": 1,
+      "contains": { "properties": { "role": { "const": "house" } }, "required": ["role"] },
+      "minContains": 1,
+      "maxContains": 1
+    },
+    "limits": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" },
+      "additionalProperties": { "$ref": "common.schema.json#/$defs/limit" },
+      "required": ["opening", "depth_small", "depth_large", "wall_angle", "pitch_step", "key_neck"]
+    },
+    "build_modes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/buildMode" },
+          "rule": { "$ref": "common.schema.json#/$defs/ruleId" },
+          "name": { "type": "string" },
+          "plates": { "enum": ["integral", "loose", "mixed"] },
+          "swap": { "type": "string" }
+        },
+        "required": ["id", "rule", "name", "plates", "swap"],
+        "additionalProperties": false
+      },
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "support_levels": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "$ref": "common.schema.json#/$defs/supportLevel" },
+          "name": { "type": "string" }
+        },
+        "required": ["id", "name"],
+        "additionalProperties": false
+      },
+      "minItems": 6,
+      "maxItems": 6
+    },
+    "fixings": { "type": "array", "items": { "$ref": "#/$defs/fixing" }, "minItems": 1 },
+    "reference_keys": { "type": "array", "items": { "$ref": "#/$defs/referenceKey" }, "minItems": 1 },
+    "gauges": { "type": "array", "items": { "$ref": "#/$defs/gauge" }, "minItems": 1 },
+    "process": {
+      "type": "object",
+      "properties": {
+        "routing": { "type": "array", "items": { "$ref": "#/$defs/routingRecipe" } },
+        "jig_pin_diameter": { "type": "number", "exclusiveMinimum": 0 },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      },
+      "required": ["routing"],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "spec_version", "date", "units", "licence", "constants", "preferred_spans", "threads", "limits",
+    "build_modes", "support_levels", "fixings", "reference_keys", "gauges", "process"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "positiveLength": {
+      "$ref": "common.schema.json#/$defs/quantity",
+      "properties": { "value": { "exclusiveMinimum": 0 }, "unit": { "const": "mm" } }
+    },
+    "cellCounts": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "threadSpec": {
+      "type": "object",
+      "allOf": [ { "$ref": "common.schema.json#/$defs/trace" } ],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/thread" },
+        "role": { "enum": ["house", "variant"] },
+        "designation": { "type": "string" },
+        "standard": { "type": "string" },
+        "tolerance_standard": { "type": "string" },
+        "tolerance_internal": { "type": "string" },
+        "tolerance_external": { "type": "string" },
+        "major_diameter": { "type": "number", "exclusiveMinimum": 0 },
+        "tap_drill": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "required": ["id", "role", "designation", "standard", "tolerance_standard", "tolerance_internal", "tolerance_external", "major_diameter"],
+      "unevaluatedProperties": false
+    },
+    "fixing": {
+      "description": "One row of the fixing table (rule P-5).",
+      "type": "object",
+      "allOf": [ { "$ref": "common.schema.json#/$defs/trace" } ],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/slug" },
+        "core": { "enum": ["metal", "wood-sheet", "printed", "surface"] },
+        "core_hole": {
+          "type": "object",
+          "properties": {
+            "min": { "type": "number", "exclusiveMinimum": 0 },
+            "max": { "type": "number", "exclusiveMinimum": 0 }
+          },
+          "required": ["min", "max"],
+          "additionalProperties": false
+        },
+        "thread_in_core": { "enum": ["tapped", "cut-in-wood", "insert", "formed", "none"] },
+        "screw": { "type": "string" },
+        "engagement_min": { "type": "number", "exclusiveMinimum": 0 },
+        "duty": { "enum": ["light", "general"] }
+      },
+      "required": ["id", "core", "thread_in_core", "screw", "engagement_min", "duty"],
+      "unevaluatedProperties": false
+    },
+    "referenceKey": {
+      "description": "A fully dimensioned reference key (rule H-6).",
+      "type": "object",
+      "allOf": [ { "$ref": "common.schema.json#/$defs/trace" } ],
+      "properties": {
+        "id": { "$ref": "common.schema.json#/$defs/slug" },
+        "name": { "type": "string" },
+        "entry": { "$ref": "common.schema.json#/$defs/keyEntry" },
+        "size": { "$ref": "common.schema.json#/$defs/size" },
+        "fits": { "$ref": "common.schema.json#/$defs/sizes" },
+        "thread": { "$ref": "common.schema.json#/$defs/thread" },
+        "material": { "enum": ["metal", "printed", "wood"] },
+        "neck": { "type": "number", "exclusiveMinimum": 0 },
+        "height": { "type": "number", "exclusiveMinimum": 0 },
+        "foot": { "type": "number", "exclusiveMinimum": 0 },
+        "length": { "type": "number", "exclusiveMinimum": 0 },
+        "min_length": { "type": "number", "exclusiveMinimum": 0 },
+        "chamfer": { "type": "number", "minimum": 0 },
+        "thread_form": { "enum": ["tapped through", "captive nut", "insert", "none"] },
+        "captive_nut": {
+          "type": "object",
+          "properties": {
+            "type": { "type": "string" },
+            "across_flats": { "type": "number", "exclusiveMinimum": 0 },
+            "thickness": { "type": "number", "exclusiveMinimum": 0 }
+          },
+          "required": ["type", "across_flats", "thickness"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["id", "name", "entry", "size", "fits", "material", "neck", "height", "foot", "length", "chamfer", "thread_form"],
+      "if": { "properties": { "thread_form": { "const": "captive nut" } }, "required": ["thread_form"] },
+      "then": { "required": ["captive_nut", "thread"] },
+      "unevaluatedProperties": false
+    },
+    "gauge": {
+      "description": "A gauge and its limit dimensions (rules F-2 and F-6).",
+      "type": "object",
+      "allOf": [ { "$ref": "common.schema.json#/$defs/trace" } ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^G-[1-9][0-9]*$" },
+        "name": { "type": "string" },
+        "designed": { "type": "boolean" },
+        "fit_class": { "$ref": "common.schema.json#/$defs/fitClass" },
+        "checks": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+          "uniqueItems": true
+        },
+        "go": { "type": "string" },
+        "no_go": { "type": "string" },
+        "dims": {
+          "type": "object",
+          "additionalProperties": { "type": "number" },
+          "propertyNames": { "pattern": "^[a-z][a-z0-9_]*$" }
+        }
+      },
+      "required": ["id", "name", "designed", "go"],
+      "unevaluatedProperties": false
+    },
+    "routingRecipe": {
+      "description": "A router recipe as numbers. Offsets are measured from the grid line.",
+      "type": "object",
+      "allOf": [ { "$ref": "common.schema.json#/$defs/trace" } ],
+      "properties": {
+        "size": { "$ref": "common.schema.json#/$defs/size" },
+        "bit_diameter": { "type": "number", "exclusiveMinimum": 0 },
+        "bit_angle": { "type": "number", "exclusiveMinimum": 0 },
+        "depth": { "type": "number", "exclusiveMinimum": 0 },
+        "pass_offsets": { "type": "array", "items": { "type": "number" }, "minItems": 1 },
+        "result_opening": { "type": "number", "exclusiveMinimum": 0 },
+        "result_bottom": { "type": "number", "exclusiveMinimum": 0 }
+      },
+      "required": ["size", "bit_diameter", "bit_angle", "depth", "pass_offsets", "result_opening", "result_bottom"],
+      "unevaluatedProperties": false
+    }
+  }
+}

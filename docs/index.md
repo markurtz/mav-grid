@@ -37,13 +37,13 @@ MAV Grid is a grid standard for things that hold other things: walls, benches, c
 This project publishes three things together:
 
 - **The specification:** numbered rules, decided values and the tests that prove them.
-- **The schema:** a machine-readable description of every parameter, published as JSON Schema.
+- **The schema:** JSON Schema for every claim record and data file, with the constants, the plate kinds and the support register as data.
 - **The toolkit:** a Python package with parameterized generators, a face plate catalogue, adapters to other grid systems, and exporters for STEP, STL, 3MF and GLB.
 
 > [!WARNING]
-> MAV Grid is pre-release. The specification is a 0.10 draft, nothing has been cut, printed or measured yet, and the schema and generators are still being built.
+> MAV Grid is pre-release. The specification is a 0.11 draft that is not accepted yet, and nothing has been cut, printed or measured. The toolkit is experimental.
 
-## Core values (spec 0.10 draft)
+## Core values (spec 0.11 draft)
 
 | Quantity (mm)                   | Small | Large |
 | :------------------------------ | :---- | :---- |
@@ -52,7 +52,7 @@ This project publishes three things together:
 | Groove opening                  | 8.0   | 8.0   |
 | Face plate top, one cell        | 24.0  | 24.0  |
 | Groove depth = plate thickness  | 6.0   | 9.5   |
-| Groove bottom width             | 11.0  | 12.7  |
+| Groove bottom width (derived)   | 10.99 | 12.74 |
 
 See the [Specification](specification/index.md) section for the full list and how the values are maintained.
 

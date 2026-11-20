@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/decisions.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0",
+  "title": "MAV Grid decision record",
+  "description": "The owner's decisions and the choices this draft made that wait for confirmation (section 15).",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "spec_version": {
+      "$ref": "common.schema.json#/$defs/specVersion"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/decision"
+      }
+    }
+  },
+  "required": [
+    "spec_version",
+    "date",
+    "decisions"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "decision": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/decisionId"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "answer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "by": {
+          "description": "owner = decided by the project owner. draft = chosen in this draft, waits for confirmation.",
+          "enum": [
+            "owner",
+            "draft"
+          ]
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/ruleId"
+          },
+          "uniqueItems": true
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/findingId"
+          },
+          "uniqueItems": true
+        },
+        "differs_from_review": {
+          "description": "True when the choice departs from what the review suggested.",
+          "type": "boolean"
+        },
+        "touches": {
+          "description": "Owner decisions this choice reads, extends or has a consequence for. A choice that touches one needs the owner's confirmation.",
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/decisionId"
+          },
+          "uniqueItems": true
+        },
+        "alternative": {
+          "description": "The other option, where one was weighed.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "answer",
+        "by",
+        "date",
+        "rules"
+      ],
+      "if": {
+        "properties": {
+          "id": {
+            "pattern": "^D-"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "by": {
+            "const": "draft"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "by": {
+            "const": "owner"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/common.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0",
+  "title": "MAV Grid common definitions",
+  "description": "Shared types for every MAV Grid schema. All lengths are millimetres, all angles are degrees, all forces are newtons.",
+  "$defs": {
+    "specVersion": {
+      "description": "The one version string used everywhere (rule V-1). Semantic Versioning 2.0.0.",
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+    },
+    "ruleId": {
+      "description": "A permanent rule ID (rule V-5). Never reused or renumbered.",
+      "type": "string",
+      "pattern": "^(C|P|M|S|H|F|A|K|L|V)-[1-9][0-9]*$"
+    },
+    "decisionId": {
+      "description": "B2 = the dimension decision. MR-n = one of the nine design rules. Q-n = one of the fifteen answers of 2026-11-19. D-n = a choice made in this draft that waits for confirmation.",
+      "type": "string",
+      "pattern": "^(B2|MR-[1-9]|Q-[1-9][0-9]*|D-[1-9][0-9]*)$"
+    },
+    "testId": {
+      "type": "string",
+      "pattern": "^T-[1-9][0-9]*$"
+    },
+    "findingId": {
+      "type": "string",
+      "pattern": "^R-[1-9][0-9]*$"
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "maxLength": 80
+    },
+    "size": {
+      "description": "Groove size (rule C-5).",
+      "enum": [
+        "small",
+        "large"
+      ]
+    },
+    "sizes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/size"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "buildMode": {
+      "description": "M-1 routed-integral, M-2 swap-base, M-3 cut-down-sites, M-4 surface-plates.",
+      "enum": [
+        "routed-integral",
+        "swap-base",
+        "cut-down-sites",
+        "surface-plates"
+      ]
+    },
+    "keyEntry": {
+      "description": "How a key enters a groove (rules H-1 to H-3).",
+      "enum": [
+        "slide",
+        "turn",
+        "snap"
+      ]
+    },
+    "fitClass": {
+      "enum": [
+        "slide",
+        "locate",
+        "press"
+      ]
+    },
+    "thread": {
+      "description": "House thread and its named variants (rule C-11).",
+      "enum": [
+        "M6",
+        "M5",
+        "1/4-20"
+      ]
+    },
+    "supportLevel": {
+      "description": "The six support levels of section 10, plus the two states a system can be in when it has none.",
+      "enum": [
+        "native",
+        "native-with-nut",
+        "face-plate",
+        "face-plate-adapter",
+        "adapter",
+        "add-on",
+        "not-determined",
+        "not-supported"
+      ]
+    },
+    "tag": {
+      "description": "decided = set by the owner. proposed = set by this draft, waits for the owner's confirmation. unproven = not yet made or measured.",
+      "enum": [
+        "decided",
+        "proposed",
+        "unproven"
+      ]
+    },
+    "tags": {
+      "description": "Tags of a rule or a registry entry. A rule can be decided and proposed at once: the owner's decision stands and what this draft added to it waits for confirmation.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tag"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "valueTags": {
+      "description": "Tags of one value. A single value is either decided or proposed, never both.",
+      "allOf": [
+        {
+          "$ref": "#/$defs/tags"
+        }
+      ],
+      "not": {
+        "allOf": [
+          {
+            "contains": {
+              "const": "decided"
+            }
+          },
+          {
+            "contains": {
+              "const": "proposed"
+            }
+          }
+        ]
+      }
+    },
+    "unit": {
+      "enum": [
+        "mm",
+        "deg",
+        "N",
+        "N.m",
+        "cells",
+        "count",
+        "percent"
+      ]
+    },
+    "trace": {
+      "description": "Where a value comes from, so the spec text, the decision table and this file cannot drift apart.",
+      "type": "object",
+      "properties": {
+        "tags": {
+          "$ref": "#/$defs/valueTags"
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ruleId"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "decision": {
+          "$ref": "#/$defs/decisionId"
+        },
+        "finding": {
+          "$ref": "#/$defs/findingId"
+        },
+        "source": {
+          "description": "A standard or a page that was opened and read.",
+          "type": "string",
+          "minLength": 1
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "tags",
+        "rules"
+      ]
+    },
+    "quantity": {
+      "description": "One traced number.",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/trace"
+        }
+      ],
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "unevaluatedProperties": false
+    },
+    "limit": {
+      "description": "A pair of limit dimensions. Gauges are the physical form of these (rule F-2).",
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/$defs/trace"
+        }
+      ],
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        },
+        "nominal": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        }
+      },
+      "required": [
+        "unit"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "min"
+          ]
+        },
+        {
+          "required": [
+            "max"
+          ]
+        }
+      ],
+      "unevaluatedProperties": false
+    },
+    "span": {
+      "description": "Plate span in cells, [columns, rows] (rule P-1).",
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "integer",
+          "minimum": 1
+        }
+      ],
+      "items": false,
+      "minItems": 2
+    },
+    "cell": {
+      "description": "A cell address [i, j], counted from 0 at the face origin (rule C-14).",
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "integer",
+          "minimum": 0
+        }
+      ],
+      "items": false,
+      "minItems": 2
+    },
+    "licence": {
+      "description": "An SPDX licence expression, or a plain name where SPDX has none.",
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

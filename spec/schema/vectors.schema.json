@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/vectors.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0",
+  "title": "MAV Grid test vectors",
+  "description": "Expected results of the formulas in Annex A. Every generator and every later edit is checked against these numbers.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "spec_version": {
+      "$ref": "common.schema.json#/$defs/specVersion"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "tolerance": {
+      "description": "Largest difference allowed between a computed value and its vector.",
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "groove": {
+      "type": "object",
+      "propertyNames": {
+        "$ref": "common.schema.json#/$defs/size"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "number"
+        },
+        "minProperties": 1
+      },
+      "minProperties": 2
+    },
+    "plates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "$ref": "common.schema.json#/$defs/size"
+          },
+          "span": {
+            "$ref": "common.schema.json#/$defs/span"
+          },
+          "top": {
+            "$ref": "#/$defs/pair"
+          },
+          "land": {
+            "$ref": "#/$defs/pair"
+          },
+          "thickness": {
+            "type": "number"
+          },
+          "lattice_positions": {
+            "$ref": "#/$defs/ipair"
+          },
+          "fixing_cells": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/cell"
+            }
+          },
+          "plate_holes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/pair"
+            }
+          }
+        },
+        "required": [
+          "size",
+          "span",
+          "top",
+          "land",
+          "thickness",
+          "lattice_positions",
+          "fixing_cells",
+          "plate_holes"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "faces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "cols": {
+            "type": "integer"
+          },
+          "rows": {
+            "type": "integer"
+          },
+          "plates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "at": {
+                  "$ref": "common.schema.json#/$defs/cell"
+                },
+                "span": {
+                  "$ref": "common.schema.json#/$defs/span"
+                }
+              },
+              "required": [
+                "at",
+                "span"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "groove_segments": {
+            "description": "Groove centreline segments [x0, y0, x1, y1] in the face frame, merged and sorted.",
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 4,
+              "maxItems": 4
+            }
+          },
+          "groove_length": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "cols",
+          "rows",
+          "plates",
+          "groove_segments",
+          "groove_length"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "folds": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "routing": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "size": {
+            "$ref": "common.schema.json#/$defs/size"
+          },
+          "opening": {
+            "type": "number"
+          },
+          "bottom": {
+            "type": "number"
+          },
+          "centre_offset": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "size",
+          "opening",
+          "bottom",
+          "centre_offset"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "forces": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "claim_lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "example": {
+            "type": "string"
+          },
+          "line": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "example",
+          "line"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "spec_version",
+    "date",
+    "tolerance",
+    "groove",
+    "plates",
+    "faces",
+    "folds",
+    "routing",
+    "forces",
+    "claim_lines"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "pair": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "ipair": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 2,
+      "maxItems": 2
+    }
+  }
+}

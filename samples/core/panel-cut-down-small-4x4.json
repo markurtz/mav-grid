@@ -1,0 +1,199 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "grid",
+  "id": "panel-cut-down-small-4x4",
+  "name": "Cut-down sites, Small, 4 x 4",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small · 4 × 4 face · Cut-down sites",
+  "faces": [
+    {
+      "id": "front",
+      "size": "small",
+      "build_mode": "cut-down-sites",
+      "cols": 4,
+      "rows": 4,
+      "plates": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            3,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            0,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            3,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            0,
+            2
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            2
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            2
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            3,
+            2
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            0,
+            3
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            3
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            3
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            3,
+            3
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        }
+      ],
+      "stock": {
+        "thickness": 11.5
+      }
+    }
+  ]
+}

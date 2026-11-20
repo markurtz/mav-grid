@@ -16,11 +16,20 @@ the License.
 
 # MAV Grid JSON Schema
 
-This directory will hold the JSON Schema (draft 2020-12) documents for MAV Grid parameter files, generated from the Pydantic models in `mav_grid.schema`. Do not edit generated files by hand.
+JSON Schema (draft 2020-12) for every machine-readable file of the specification. The schemas are written by hand and are normative. The Pydantic models in `mav_grid.schema` mirror them for typed access in Python, and the test suite checks that every example record survives a round trip through the models unchanged.
 
-Planned contents:
+| Schema                  | Describes                                                                    |
+| :---------------------- | :--------------------------------------------------------------------------- |
+| `common.schema.json`    | Shared definitions: sizes, cells, spans, key entries, targets, file entries. |
+| `part.schema.json`      | A claim record of any of the five classes: grid, plate, key, adapter, gauge. |
+| `params.schema.json`    | `data/params.json`.                                                          |
+| `kinds.schema.json`     | `data/kinds.json`.                                                           |
+| `support.schema.json`   | `data/support.json`.                                                         |
+| `rules.schema.json`     | `data/rules.json`.                                                           |
+| `decisions.schema.json` | `data/decisions.json`.                                                       |
+| `tests.schema.json`     | `data/tests.json`.                                                           |
+| `vectors.schema.json`   | `data/vectors.json`.                                                         |
 
-- `mav-grid.schema.json`: the root schema for a parameter file.
-- One schema per top-level object (core grid, face plate, structure, adapter, claim) referenced from the root by `$ref`.
+Each schema carries a versioned `$id` of the form `<base>/<spec version>/<file name>`. The base is `https://markurtz.github.io/mav-grid/schema`, an assumption that waits for the owner's confirmation (D-23). Nothing is published at that address yet, so tools resolve the schemas from this folder. `scripts/set_spec_identity.py` changes the base in every file at once.
 
-Each schema will carry a versioned `$id` under the documentation site so that sample files can point at the exact spec version they target.
+A JSON Schema cannot express every rule. Rules that need arithmetic or a look at several fields together (a face fully covered by its plates, a fold past its limit, a kind under its minimum span) are checked by `mav_grid.schema.check_part`, which `mav-grid validate` runs after the schema.

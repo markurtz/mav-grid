@@ -1,0 +1,39 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "plate",
+  "id": "gridfinity-2x2-large",
+  "name": "Gridfinity plate, 2 x 2, Large",
+  "maker": "MAV Grid project",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "size": "large",
+  "span": [
+    2,
+    2
+  ],
+  "kind": "gridfinity",
+  "process": "printed",
+  "material": "PETG",
+  "edges_bevelled": true,
+  "fixing": "screw",
+  "fixing_cells": "standard",
+  "files": [
+    {
+      "path": "gridfinity-2x2-large.py",
+      "role": "source"
+    },
+    {
+      "path": "gridfinity-2x2-large.step",
+      "role": "step"
+    },
+    {
+      "path": "gridfinity-2x2-large.3mf",
+      "role": "mesh"
+    },
+    {
+      "path": "README.md",
+      "role": "readme"
+    }
+  ],
+  "notes": "Invalid on purpose. A plate of a kind that carries another system does not state its target."
+}

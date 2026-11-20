@@ -1,0 +1,195 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "grid",
+  "id": "corner-outside-225-routed",
+  "name": "Routed outside corner, 225 degrees",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Large · 2 faces (3 × 2, 3 × 2) · Routed integral",
+  "faces": [
+    {
+      "id": "side-a",
+      "size": "large",
+      "build_mode": "routed-integral",
+      "cols": 3,
+      "rows": 2,
+      "plates": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            0,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        }
+      ],
+      "edges": {
+        "x_max": {
+          "type": "fold",
+          "fold": "corner"
+        }
+      },
+      "stock": {
+        "thickness": 15.0
+      }
+    },
+    {
+      "id": "side-b",
+      "size": "large",
+      "build_mode": "routed-integral",
+      "cols": 3,
+      "rows": 2,
+      "plates": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            0
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            0,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            1,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            1
+          ],
+          "span": [
+            1,
+            1
+          ],
+          "state": "integral"
+        }
+      ],
+      "edges": {
+        "x_min": {
+          "type": "fold",
+          "fold": "corner"
+        }
+      },
+      "stock": {
+        "thickness": 15.0
+      }
+    }
+  ],
+  "folds": [
+    {
+      "id": "corner",
+      "a": {
+        "face": "side-a",
+        "edge": "x_max"
+      },
+      "b": {
+        "face": "side-b",
+        "edge": "x_min"
+      },
+      "angle": 225.0,
+      "corner": "solid",
+      "fold_rows": "standard"
+    }
+  ]
+}

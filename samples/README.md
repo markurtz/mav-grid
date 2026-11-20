@@ -16,17 +16,22 @@ the License.
 
 # Samples
 
-Sample parameter files for MAV Grid parts and assemblies. Each sample is a small, reviewable input that the generators turn into geometry, and each one is validated against the JSON Schema in [`spec/schema/`](../spec/schema/README.md) in CI.
+Sample claim records for MAV Grid parts and assemblies. Each one is a small JSON file that follows [`spec/schema/part.schema.json`](../spec/schema/README.md), and the generators turn it into geometry:
 
-## Planned layout
-
-```text
-samples/
-  <category>/
-    <name>.json        # parameter file, validated against the schema
-    README.md          # what the sample shows and which rules it exercises
+```bash
+mav-grid validate samples/core/panel-swap-small-4x2.json
+mav-grid build samples/core/panel-swap-small-4x2.json -o build/mav-grid
 ```
 
-Categories will follow the specification: `core/` (panels and swap bases), `plates/`, `structures/` (folds, boxes, columns) and `adapters/`.
+| Folder                       | What it holds                                                      |
+| :--------------------------- | :----------------------------------------------------------------- |
+| [`core/`](core/)             | Flat panels in each of the four build modes, in both groove sizes. |
+| [`structures/`](structures/) | Corners at three fold angles, a hexagonal column and a box.        |
+| [`plates/`](plates/)         | One loose plate per modelled kind, at the kind's minimum span.     |
+| [`keys/`](keys/)             | The five reference keys of the spec.                               |
+| [`gauges/`](gauges/)         | Gauges G-1 to G-4.                                                 |
+| [`adapters/`](adapters/)     | Four rail sections that mount on slide keys.                       |
 
-Generated geometry (STEP, STL, 3MF, GLB) is not committed here. It is written to `build/mav-grid/` locally and published as release assets.
+The records are written by `python scripts/make_samples.py` from the parameter file and the registries. Do not edit them by hand: change the script or the spec data and run it again. CI fails when the folder and the script disagree, and it validates, plans and builds the samples.
+
+All samples follow the 0.11 draft of the spec, which is not accepted yet, and none has been made or measured. Generated geometry (STEP, STL, 3MF, GLB) is not committed here. It is written to `build/mav-grid/` locally and published as release assets.

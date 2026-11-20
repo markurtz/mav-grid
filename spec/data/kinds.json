@@ -1,0 +1,565 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/kinds.schema.json",
+  "spec_version": "0.11.0-draft.1",
+  "date": "2026-11-20",
+  "note": "Spans are paper values from the survey. plain, hole-5 and stud-8 carry the grid's own features, so they name no target system. A new kind is added here before a plate may state it.",
+  "kinds": [
+    {
+      "id": "plain",
+      "name": "Plain",
+      "what": "A flat top.",
+      "min_span": {
+        "small": [
+          1,
+          1
+        ],
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "model": "modelled",
+      "workbench_key": "plain"
+    },
+    {
+      "id": "hole-5",
+      "name": "5 mm hole",
+      "what": "A 5.0 hole at each cell centre: the System 32 hole and the M6 tap drill.",
+      "min_span": {
+        "small": [
+          1,
+          1
+        ],
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "model": "modelled",
+      "workbench_key": "hole"
+    },
+    {
+      "id": "stud-8",
+      "name": "8 mm stud",
+      "what": "4.8 studs on the 8 mm lattice.",
+      "min_span": {
+        "small": [
+          1,
+          1
+        ],
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "model": "modelled",
+      "workbench_key": "lego",
+      "note": "Stud size is Unproven (test T-10). A screwed one-cell plate carries 8 studs: the centre position is the plate hole."
+    },
+    {
+      "id": "gridfinity",
+      "name": "Gridfinity",
+      "what": "42 mm baseplate pockets.",
+      "min_span": {
+        "small": [
+          2,
+          2
+        ],
+        "large": [
+          2,
+          2
+        ]
+      },
+      "repeat_cells": 21,
+      "drifts": true,
+      "carries": [
+        "gridfinity"
+      ],
+      "model": "modelled",
+      "workbench_key": "gridfinity",
+      "note": "One bin in 2 x 2, four in 3 x 3."
+    },
+    {
+      "id": "opengrid",
+      "name": "openGrid",
+      "what": "28 mm snap cells.",
+      "min_span": {
+        "small": [
+          2,
+          2
+        ],
+        "large": [
+          2,
+          2
+        ]
+      },
+      "repeat_cells": 7,
+      "drifts": true,
+      "carries": [
+        "opengrid-full",
+        "opengrid-lite"
+      ],
+      "model": "placeholder",
+      "workbench_key": "opengrid",
+      "note": "openGrid Full is Large only. The model shows a generic cell: snap dimensions are not yet sourced (T-14)."
+    },
+    {
+      "id": "multiboard",
+      "name": "Multiboard",
+      "what": "A 25 mm grid of holes.",
+      "min_span": {
+        "small": [
+          2,
+          2
+        ],
+        "large": [
+          2,
+          2
+        ]
+      },
+      "repeat_cells": 25,
+      "drifts": true,
+      "carries": [
+        "multiboard"
+      ],
+      "model": "placeholder",
+      "workbench_key": "multiboard",
+      "note": "Generic holes only. Model it from scratch, never from Multiboard files (section 15, T-15)."
+    },
+    {
+      "id": "pegboard-1in",
+      "name": "Pegboard 1 in",
+      "what": "7.1 holes on 25.4 mm, relieved behind for the hooks.",
+      "min_span": {
+        "small": [
+          2,
+          2
+        ],
+        "large": [
+          2,
+          2
+        ]
+      },
+      "repeat_cells": 127,
+      "drifts": true,
+      "carries": [
+        "pegboard-us-quarter-inch",
+        "pegboard-us-eighth-inch"
+      ],
+      "model": "modelled",
+      "workbench_key": "pegboard",
+      "note": "Lines up only every 4064 mm, so in practice never. Hooks need about 12 mm clear behind."
+    },
+    {
+      "id": "skadis",
+      "name": "Skådis",
+      "what": "5 x 15 slots on 40 mm plus the offset grid.",
+      "min_span": {
+        "small": [
+          3,
+          3
+        ],
+        "large": [
+          3,
+          3
+        ]
+      },
+      "repeat_cells": 5,
+      "drifts": true,
+      "carries": [
+        "ikea-skadis"
+      ],
+      "model": "modelled",
+      "workbench_key": "skadis",
+      "note": "The Workbench draws it on 2 x 3."
+    },
+    {
+      "id": "slatwall-3in",
+      "name": "Slatwall 3 in",
+      "what": "A 9.5 slot with a lip pocket, rows at 76.2 mm.",
+      "min_span": {
+        "small": null,
+        "large": [
+          1,
+          4
+        ]
+      },
+      "repeat_cells": 381,
+      "drifts": true,
+      "carries": [
+        "slatwall-3in"
+      ],
+      "model": "modelled",
+      "workbench_key": "slatwall",
+      "note": "Two slots at true 76.2 mm need 4 rows. The Workbench draws one slot on 1 x 2. Lines up only every 12192 mm."
+    },
+    {
+      "id": "french-cleat",
+      "name": "French cleat",
+      "what": "A 45 degree cleat strip.",
+      "min_span": {
+        "small": [
+          1,
+          1
+        ],
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "french-cleat"
+      ],
+      "model": "modelled",
+      "workbench_key": "cleat",
+      "note": "A one-row strip, any number of columns. The Workbench draws it on 1 x 2."
+    },
+    {
+      "id": "dog-20",
+      "name": "20 mm dog hole",
+      "what": "A 20 mm bore at the plate centre.",
+      "min_span": {
+        "small": [
+          3,
+          3
+        ],
+        "large": [
+          3,
+          3
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "mft-96"
+      ],
+      "model": "modelled",
+      "workbench_key": "dog20",
+      "note": "96 mm is exactly 3 cells: one bore per 3 x 3 plate keeps the pitch across plates."
+    },
+    {
+      "id": "fixture-16",
+      "name": "Fixture 16 on 50",
+      "what": "16 mm bores on 50 mm.",
+      "min_span": {
+        "small": [
+          3,
+          3
+        ],
+        "large": [
+          3,
+          3
+        ]
+      },
+      "repeat_cells": 25,
+      "drifts": true,
+      "carries": [
+        "welding-table-d16"
+      ],
+      "model": "modelled",
+      "workbench_key": "fixture"
+    },
+    {
+      "id": "optical-m6-25",
+      "name": "Optical M6 on 25",
+      "what": "M6 holes on 25 mm.",
+      "min_span": {
+        "small": [
+          2,
+          2
+        ],
+        "large": [
+          2,
+          2
+        ]
+      },
+      "repeat_cells": 25,
+      "drifts": true,
+      "carries": [
+        "optical-breadboard-metric"
+      ],
+      "model": "modelled",
+      "workbench_key": "optical"
+    },
+    {
+      "id": "vesa",
+      "name": "VESA 75 / 100",
+      "what": "M4 holes at 75 and 100 mm.",
+      "min_span": {
+        "small": [
+          3,
+          3
+        ],
+        "large": [
+          3,
+          3
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "vesa-75",
+        "vesa-100"
+      ],
+      "model": "modelled",
+      "workbench_key": "vesa",
+      "note": "75 fits 3 x 3. 100 needs 4 x 4 and 200 needs 7 x 7. The Workbench draws 75 and 100 together on 4 x 4."
+    },
+    {
+      "id": "m-lok",
+      "name": "M-LOK",
+      "what": "32 x 7 slots on 40 mm.",
+      "min_span": {
+        "small": [
+          3,
+          3
+        ],
+        "large": [
+          3,
+          3
+        ]
+      },
+      "repeat_cells": 5,
+      "drifts": true,
+      "carries": [
+        "m-lok"
+      ],
+      "model": "modelled",
+      "workbench_key": "mlok",
+      "note": "The Workbench draws one row of slots on 3 x 1."
+    },
+    {
+      "id": "hinge-cup-45",
+      "name": "Hinge cup 45 / 9.5",
+      "what": "A 35 mm cup bore and two 8 mm holes.",
+      "min_span": {
+        "small": [
+          3,
+          2
+        ],
+        "large": [
+          3,
+          2
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "hinge-cup-45-9-5"
+      ],
+      "deep": true,
+      "model": "modelled",
+      "workbench_key": "hinge",
+      "note": "The 13 mm cup is deeper than either plate (rule P-4)."
+    },
+    {
+      "id": "t-track",
+      "name": "T-track",
+      "what": "A 19.05 x 9.5 aluminium track let in flush.",
+      "min_span": {
+        "small": null,
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "t-track"
+      ],
+      "model": "modelled",
+      "workbench_key": "ttrack",
+      "note": "A one-row strip, any number of columns."
+    },
+    {
+      "id": "miter-slot",
+      "name": "Miter slot",
+      "what": "A 19.05 x 9.5 slot.",
+      "min_span": {
+        "small": null,
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "miter-slot"
+      ],
+      "model": "modelled",
+      "workbench_key": "miter",
+      "note": "A one-row strip, any number of columns."
+    },
+    {
+      "id": "din-rail-35",
+      "name": "DIN rail TS35",
+      "what": "A TS35 x 7.5 rail.",
+      "min_span": {
+        "small": [
+          1,
+          2
+        ],
+        "large": [
+          1,
+          2
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "din-rail-ts35-7-5",
+        "din-rail-ts35-15"
+      ],
+      "model": "modelled",
+      "workbench_key": "dinrail",
+      "note": "The rail runs along the columns and takes 2 rows."
+    },
+    {
+      "id": "rack-rail",
+      "name": "Rack rail (EIA)",
+      "what": "9.5 mm square holes, 3 per 44.45 mm.",
+      "min_span": {
+        "small": [
+          2,
+          2
+        ],
+        "large": [
+          2,
+          2
+        ]
+      },
+      "repeat_cells": 25,
+      "drifts": true,
+      "carries": [
+        "rack-19in",
+        "rack-10in"
+      ],
+      "model": "modelled",
+      "workbench_key": "rackrail",
+      "note": "The repeat is approximate: 18U is 800.1 mm, 0.1 mm over 25 rows."
+    },
+    {
+      "id": "twin-slot-32",
+      "name": "Twin-slot 32",
+      "what": "A slot pair per cell at 32 mm.",
+      "min_span": {
+        "small": [
+          1,
+          1
+        ],
+        "large": [
+          1,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "twin-slot-metric",
+        "closet-hang-standard"
+      ],
+      "model": "modelled",
+      "workbench_key": "elfa",
+      "note": "Slot size is approximate."
+    },
+    {
+      "id": "handle-3in",
+      "name": "Inch handle 3 in",
+      "what": "Two 4.5 holes at 76.2 mm.",
+      "min_span": {
+        "small": [
+          3,
+          1
+        ],
+        "large": [
+          3,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "handle-centres-inch"
+      ],
+      "model": "modelled",
+      "workbench_key": "handle",
+      "note": "101.6 mm centres need one more column."
+    },
+    {
+      "id": "strut",
+      "name": "Strut channel",
+      "what": "A 41.3 mm channel on a 2-column plate.",
+      "min_span": {
+        "small": [
+          2,
+          1
+        ],
+        "large": [
+          2,
+          1
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "strut-standard"
+      ],
+      "model": "modelled",
+      "workbench_key": "strut"
+    },
+    {
+      "id": "breadboard",
+      "name": "Solderless breadboard",
+      "what": "A 165 x 55 board in a shallow pocket.",
+      "min_span": {
+        "small": [
+          6,
+          2
+        ],
+        "large": [
+          6,
+          2
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "solderless-breadboard"
+      ],
+      "model": "modelled",
+      "workbench_key": "bread"
+    },
+    {
+      "id": "case-footprint",
+      "name": "Tool case footprint",
+      "what": "A flat plate sized to the case (Systainer³ M, 396 x 296).",
+      "min_span": {
+        "small": [
+          13,
+          10
+        ],
+        "large": [
+          13,
+          10
+        ]
+      },
+      "repeat_cells": null,
+      "drifts": false,
+      "carries": [
+        "systainer3"
+      ],
+      "model": "modelled",
+      "workbench_key": "case"
+    }
+  ]
+}

@@ -26,8 +26,15 @@ from mav_grid import spec
 
 @pytest.mark.smoke
 def test_spec_version_is_semver() -> None:
-    """The targeted spec version is a plain MAJOR.MINOR.PATCH string."""
-    assert re.fullmatch(r"\d+\.\d+\.\d+", spec.SPEC_VERSION)
+    """The targeted spec version is a SemVer string, with an optional pre-release."""
+    assert re.fullmatch(r"\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?", spec.SPEC_VERSION)
+
+
+@pytest.mark.smoke
+def test_schema_id_carries_base_and_version() -> None:
+    """A schema address is the base, the version and the file name."""
+    address = spec.schema_id("part.schema.json")
+    assert address == f"{spec.SCHEMA_ID_BASE}/{spec.SPEC_VERSION}/part.schema.json"
 
 
 @pytest.mark.smoke

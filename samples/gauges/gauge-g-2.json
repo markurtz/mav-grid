@@ -1,0 +1,11 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "gauge",
+  "id": "gauge-g-2",
+  "name": "Gauge G-2, printed",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Gauge G-2 Depth step · Printed",
+  "gauge": "G-2",
+  "process": "printed"
+}

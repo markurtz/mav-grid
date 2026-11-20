@@ -17,14 +17,18 @@
 This package is the reference toolkit for the MAV Grid specification. It is
 organised around the pieces the specification defines:
 
-- :mod:`mav_grid.schema`: Pydantic models and JSON Schema for every parameter.
-- :mod:`mav_grid.generators`: parameterized geometry built from schema objects.
+- :mod:`mav_grid.schema`: the spec files, the typed parameters and claim
+  records, the formulas and the rule checker.
+- :mod:`mav_grid.geometry`: kernel-free shapes and plans, and the optional
+  CAD kernel that turns a plan into solids.
+- :mod:`mav_grid.generators`: parameterized plans built from claim records.
 - :mod:`mav_grid.plates`: the catalogue of face plate kinds.
-- :mod:`mav_grid.adapters`: cross-compatibility with other grid systems.
-- :mod:`mav_grid.export`: STEP, STL, 3MF and GLB writers with JSON sidecars.
+- :mod:`mav_grid.adapters`: cross-compatibility with other systems.
+- :mod:`mav_grid.export`: STEP, STL, 3MF, GLB, SVG and DXF writers and the
+  release folder with its claim record.
 
-The subpackages are placeholders in this release; see the documentation for
-the roadmap.
+The toolkit follows a draft of the specification, and no part has been made
+or measured: treat every fit as a calculation.
 """
 
 from __future__ import annotations

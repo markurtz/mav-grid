@@ -12,13 +12,30 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""File exporters for MAV Grid geometry (placeholder).
+"""Exporters: release files for every generated part (rule K-6).
 
-This subpackage will write generated geometry to STEP, STL, 3MF and glTF
-(GLB) files, together with a JSON sidecar that records the parameters, the
-spec version and the claim line for each part.
+- ``drawing``: flat cut maps as SVG and DXF. No CAD kernel needed.
+- ``solids``: STEP, STL, 3MF, GLB and a line-drawing preview. Needs ``cad``.
+- ``package``: :func:`write_release`, which writes a release folder with the
+  geometry, the claim record (rule K-5), a build report and a README that
+  carries the claim line (rule K-2).
+
+Generated geometry is not committed to the repository. By default it goes to
+``build/mav-grid/``.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from mav_grid.export.drawing import CutMap, cut_map, write_dxf, write_svg
+from mav_grid.export.package import FORMATS, SOLID_FORMATS, Release, write_release
+
+__all__ = [
+    "FORMATS",
+    "SOLID_FORMATS",
+    "CutMap",
+    "Release",
+    "cut_map",
+    "write_dxf",
+    "write_release",
+    "write_svg",
+]

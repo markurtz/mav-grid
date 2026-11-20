@@ -1,0 +1,662 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/decisions.schema.json",
+  "spec_version": "0.11.0-draft.1",
+  "date": "2026-11-20",
+  "decisions": [
+    {
+      "id": "B2",
+      "title": "Groove dimensions",
+      "answer": "8.0 opening, 24.0 single-cell plate top, Small 6.0 deep, Large 9.5 deep, 32 pitch, 14 degree wall.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "C-4",
+        "C-5",
+        "C-6",
+        "C-9"
+      ]
+    },
+    {
+      "id": "MR-1",
+      "title": "Design rule 1: groove spacing",
+      "answer": "Minimum 32 mm spacing for 14 degree dovetail grooves.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "C-1",
+        "C-3"
+      ]
+    },
+    {
+      "id": "MR-2",
+      "title": "Design rule 2: face plates",
+      "answer": "Between the dovetails are swappable face plates. Any grid system is built in by a face plate that names how many rows and columns it takes.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "C-2",
+        "P-1",
+        "P-2"
+      ]
+    },
+    {
+      "id": "MR-3",
+      "title": "Design rule 3: spans",
+      "answer": "Spacing in multiples of 32, ideally doubling. Any mix of spacings on one layout.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "C-2",
+        "C-3",
+        "C-13"
+      ]
+    },
+    {
+      "id": "MR-4",
+      "title": "Design rule 4: two sizes",
+      "answer": "A Large and a Small version, from DIY to machine shop.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "C-5"
+      ]
+    },
+    {
+      "id": "MR-5",
+      "title": "Design rule 5: corners keep one dovetail wall",
+      "answer": "Superseded by Q-3 on 2026-11-19: corners are solid and nothing targets them.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": []
+    },
+    {
+      "id": "MR-6",
+      "title": "Design rule 6: any angle",
+      "answer": "Any angle, wrapping a corner and the inverse. Folds from 0 to 360 degrees.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "S-1"
+      ]
+    },
+    {
+      "id": "MR-7",
+      "title": "Design rule 7: structures",
+      "answer": "Boxes and columns for large structures such as shelving.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "S-5",
+        "S-6",
+        "S-7"
+      ]
+    },
+    {
+      "id": "MR-8",
+      "title": "Design rule 8: other systems",
+      "answer": "Natively support the core systems where possible. Each system has an intended route: native, groove, face plate or adapter.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "A-1"
+      ]
+    },
+    {
+      "id": "MR-9",
+      "title": "Design rule 9: ways to build",
+      "answer": "Any way of building: routed with flat plate tops, routed with sites for made inserts, or plates added onto an existing surface.",
+      "by": "owner",
+      "date": "2026-11-20",
+      "rules": [
+        "M-1",
+        "M-2",
+        "M-3",
+        "M-4"
+      ]
+    },
+    {
+      "id": "Q-1",
+      "title": "Core hole and house thread",
+      "answer": "5 mm hole, M6, with M5 and 1/4-20 nuts as named variants.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "C-10",
+        "C-11",
+        "H-4"
+      ]
+    },
+    {
+      "id": "Q-2",
+      "title": "System 32 front edge",
+      "answer": "Any edge may carry a declared plain margin of any width. A 21 mm margin gives the System 32 setback. The default edge stays a half groove on a grid line.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "C-7",
+        "C-8"
+      ]
+    },
+    {
+      "id": "Q-3",
+      "title": "Corner rule and minimum angle",
+      "answer": "Corners are solid. The spec expects nothing of a corner and nothing targets it. Parts use the grooves on each side. No mitre rule, no bead and no minimum angle.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "S-2",
+        "S-3",
+        "S-4"
+      ]
+    },
+    {
+      "id": "Q-4",
+      "title": "Plate fixing",
+      "answer": "One screw through the cell hole as the reference. Press-in and bonding stay allowed.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "P-5",
+        "P-7",
+        "P-8"
+      ]
+    },
+    {
+      "id": "Q-5",
+      "title": "Locating pins on one-cell plates",
+      "answer": "None. The spec defines no pins and no pin holes.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "P-6"
+      ]
+    },
+    {
+      "id": "Q-6",
+      "title": "Loose-plate clearance",
+      "answer": "Judged by gauge, with 0.15 mm per side as a starting value.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "F-5"
+      ]
+    },
+    {
+      "id": "Q-7",
+      "title": "Height step",
+      "answer": "8 mm.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "C-12"
+      ]
+    },
+    {
+      "id": "Q-8",
+      "title": "How to rout Small",
+      "answer": "Two passes of a 3/8 in 14 degree bit.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "C-4"
+      ]
+    },
+    {
+      "id": "Q-9",
+      "title": "Holes in the core",
+      "answer": "Every cell centre on swap bases, as a recommendation.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "P-9"
+      ]
+    },
+    {
+      "id": "Q-10",
+      "title": "Preferred plate spans",
+      "answer": "1, 2, 4, 8, 16 and 3, 6, 12 cells.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "C-13"
+      ]
+    },
+    {
+      "id": "Q-11",
+      "title": "Racks, optical dovetail, Weaver, NATO",
+      "answer": "Where the study put them: racks as plate plus adapter, the rails as adapters.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "A-1"
+      ]
+    },
+    {
+      "id": "Q-12",
+      "title": "What gates 1.0",
+      "answer": "Open items 1 to 5 (tests T-1 to T-5).",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "V-2"
+      ]
+    },
+    {
+      "id": "Q-13",
+      "title": "Multiboard licence",
+      "answer": "Claude read the licence on 2026-11-20. A from-scratch plate is proposed and still unconfirmed (test T-15).",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "A-3",
+        "A-4"
+      ]
+    },
+    {
+      "id": "Q-14",
+      "title": "Claim line format",
+      "answer": "The readable line of rule K-2.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "K-2"
+      ]
+    },
+    {
+      "id": "Q-15",
+      "title": "Square-edged sheet plates",
+      "answer": "They conform only once bevelled to 14 degrees.",
+      "by": "owner",
+      "date": "2026-11-19",
+      "rules": [
+        "P-11",
+        "C-6"
+      ]
+    },
+    {
+      "id": "D-1",
+      "title": "Fold line, corner zone and fold rows",
+      "answer": "The fold line is where the two plate-top planes meet. The corner zone is the 4.0 mm strip on each side of it, and it is the maker's. Fold-row plates keep the standard top, so they still swap. Standard loose plates on both faces of an outside fold clear each other up to 265 degrees in Small and 247 degrees in Large. Beyond that the fold row is relieved or integral.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "S-1",
+        "S-2",
+        "S-4",
+        "S-6",
+        "S-8"
+      ],
+      "findings": [
+        "R-1"
+      ],
+      "touches": [
+        "Q-3"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-2",
+      "title": "Margin fields and defaults",
+      "answer": "A margin states its width, what happens on the last grid line and whether cross grooves run out. Defaults: a full groove on the last grid line and cross grooves that run out to the edge. A margin under 12 mm is made solid with the outer plate row. A face with no open groove end declares that it takes no slide keys.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "C-8"
+      ],
+      "findings": [
+        "R-2"
+      ],
+      "touches": [
+        "Q-2"
+      ],
+      "differs_from_review": true,
+      "alternative": "The review's default: no groove on the last grid line, so the margin is one piece with the outer plate row. That makes every outer-row plate a special size."
+    },
+    {
+      "id": "D-3",
+      "title": "Loose plates are made to nominal",
+      "answer": "A loose plate is made to 32c - 8 with no clearance taken off, within +0 / -0.10. The space between loose plates is a groove and is judged by the groove gauges. The 0.15 mm start value has no use and is dropped. Build mode M-3 is renamed Cut-down sites: a site is a pad at floor level with no walls, fixed like M-2.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "F-5",
+        "M-3",
+        "P-6"
+      ],
+      "findings": [
+        "R-3"
+      ],
+      "touches": [
+        "Q-6",
+        "MR-9"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-4",
+      "title": "Setting bar",
+      "answer": "A loose plate is centred by its countersunk screw and squared by an 8.0 mm setting bar laid in the grooves while the screw is tightened, then lifted out. The bar is a tool in the gauge set, not a pin.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "P-14"
+      ],
+      "findings": [
+        "R-4"
+      ],
+      "touches": [
+        "Q-5"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-5",
+      "title": "Groove limits",
+      "answer": "Opening, depth and wall angle are the normative numbers and the bottom width is derived. Proposed limits: opening 7.90 to 8.15, depth nominal to nominal + 0.3, wall 14 +/- 0.5 degrees, pitch +/- 0.1 between neighbours and +/- 0.2 over any length, key neck 7.60 to 7.80, go-key lift 0.8 at most.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "C-4",
+        "C-15",
+        "H-5"
+      ],
+      "findings": [
+        "R-5",
+        "R-20"
+      ],
+      "differs_from_review": true,
+      "alternative": "The review's 7.95 lower limit and 7.85 key neck. They leave 0.013 mm between the one-pass Large cut (7.963) and the limit, so a bit 0.02 under size would fail."
+    },
+    {
+      "id": "D-6",
+      "title": "Conformance classes",
+      "answer": "Five classes: Grid face, Plate, Key, Adapter and Gauge. Each rule names the classes it binds, and a part meets the rules of its class.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "K-1"
+      ],
+      "findings": [
+        "R-6"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-7",
+      "title": "Core hole, plate hole and fixing table",
+      "answer": "The 5.0 hole is the core hole. A loose plate carries a plate hole: 6.6 through with a 90 degree countersink to 13.5. The reference screw is an M6 countersunk screw in every core. In wood it goes into an M6 thread cut in the 5.0 hole for light duty, or into a screw-in insert in a declared 10 to 10.5 hole for general duty.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "C-10",
+        "P-5",
+        "P-10",
+        "P-12"
+      ],
+      "findings": [
+        "R-7"
+      ],
+      "touches": [
+        "Q-1",
+        "Q-4"
+      ],
+      "differs_from_review": true,
+      "alternative": "The review's Euro screw as the wood reference with a 12.5 countersink. The Euro screws found have a 7.4 mm head, which cannot hold a plate through a 6.6 hole, and none is longer than 14 mm. A 12.5 countersink is under the 13.44 maximum head of an M6 countersunk screw."
+    },
+    {
+      "id": "D-8",
+      "title": "Coordinate frame",
+      "answer": "Origin at a grid crossing on the plate-top plane. X runs along columns, Y along rows, Z out of the face. Cell (i, j) has its centre at (32i + 16, 32j + 16). Lattice points are (8m, 8n). A plate is its origin cell plus its span. Heights step from the plate-top plane.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "C-12",
+        "C-14"
+      ],
+      "findings": [
+        "R-8"
+      ],
+      "touches": [
+        "Q-7"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-9",
+      "title": "Reference keys and the Small nut",
+      "answer": "Five reference keys with full dimensions. A slide key is at least 16 long. Small M6 nuts are metal. The printed Small nut is the M5 variant with a captive M5 thin square nut (DIN 562, 8 across flats, 2.7 thick).",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "H-1",
+        "H-4",
+        "H-5",
+        "H-6"
+      ],
+      "findings": [
+        "R-9"
+      ],
+      "touches": [
+        "Q-1"
+      ],
+      "differs_from_review": true,
+      "alternative": "The review's captive M5 hex nut. It is 4.7 thick in a key 5.7 high, which leaves 1.0 mm under it. The thin square nut leaves 3.0 mm."
+    },
+    {
+      "id": "D-10",
+      "title": "Clamp loads on loose plates",
+      "answer": "Grooves between loose plates are not offered for clamp loads until test T-20 passes. Load ratings state build mode and plate fixing. On routed faces, grooves meant for clamps run between plates at least 2 cells long.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "P-15",
+        "L-1"
+      ],
+      "findings": [
+        "R-10",
+        "R-12"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-11",
+      "title": "Turn key use and test loads",
+      "answer": "Turn keys are for positioning and light loads in both sizes. Clamp loads use slide keys. Proposed working pull for test T-3: 50 N in Small and 100 N in Large, passed when the lowest of five samples holds three times that.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "H-2"
+      ],
+      "findings": [
+        "R-11"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-12",
+      "title": "Movement",
+      "answer": "Routed faces use sheet goods. A printed plate longer than 8 cells uses one fixed screw and slotted plate holes.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "P-16"
+      ],
+      "findings": [
+        "R-13"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-13",
+      "title": "Fixing cells",
+      "answer": "Along each side of a plate the fixing cells are 0, 4, 8 and so on, plus the last cell. The plate holes sit at every combination of the two sides: one for 1 x 1, two for a one-row plate up to 4 long, four for 2 x 2 to 4 x 4, nine for 8 x 8.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "P-13"
+      ],
+      "findings": [
+        "R-14"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-14",
+      "title": "Minimum floor",
+      "answer": "One rule replaces the stock list: at least 5.5 mm is left under a routed groove. 12 mm sheet then passes for Small and 15 mm for Large.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "C-17"
+      ],
+      "findings": [
+        "R-16"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-15",
+      "title": "Structures and the rack row",
+      "answer": "S-5 to S-7 are shape rules only, and no panel joint is defined (test T-24). A 10 in rack fits a box 8 cells wide with 12.7 mm walls and needs 9 cells with Large stock.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "S-5",
+        "S-6",
+        "S-7"
+      ],
+      "findings": [
+        "R-17"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-16",
+      "title": "Native, and two systems moved",
+      "answer": "Native means the system works with the grid's own features (the groove, the core hole and the 8 mm lattice on plain, hole or stud plates) and no part made for that system. Each entry records what it needs. DIN rail TS15 (M4 screws) and miniature T-slot (M3 screws) move from native with a MAV nut to face plate, because neither thread is a named nut. Counts are now 8, 12, 59, 22, 5 and 2, with 6 not determined.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "A-1"
+      ],
+      "findings": [
+        "R-18",
+        "R-19"
+      ],
+      "touches": [
+        "Q-1",
+        "MR-8"
+      ],
+      "differs_from_review": true,
+      "alternative": "Name M4 and M3 as further nut variants. Both pass the opening, and both systems would then stay at native with a MAV nut. The review raised TS15 only: the miniature T-slot is this draft's own finding."
+    },
+    {
+      "id": "D-17",
+      "title": "Pass criteria for the tests",
+      "answer": "Every test states its method, its pass criterion and its sample count before it is run. Six items are added: interchange, loose plates under clamp load, island shear, movement, fixing pull-out and the panel joint. Pass loads are proposed start values.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "V-2"
+      ],
+      "findings": [
+        "R-21"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-18",
+      "title": "Edge breaks and fillets",
+      "answer": "A top edge break of 0.3 at most and a floor fillet of 0.5 at most. The opening is measured at the theoretical sharp edge. Keys carry a chamfer of at least 0.5 on their bottom edges.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "C-16",
+        "H-5"
+      ],
+      "findings": [
+        "R-26"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-19",
+      "title": "The gate for 1.0 is left as decided",
+      "answer": "Tests T-1 to T-5 stay the gate, as answered in Q-12. This draft recommends adding T-6 (one screw), T-8 (edge lip and floor) and T-19 (interchange), and does not apply it.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "V-2"
+      ],
+      "findings": [
+        "R-31"
+      ],
+      "touches": [
+        "Q-12"
+      ],
+      "differs_from_review": false,
+      "alternative": "Add T-6, T-8 and T-19 to the gate."
+    },
+    {
+      "id": "D-20",
+      "title": "Claim record, one version string, permanent IDs",
+      "answer": "The readable claim line is derived from a structured claim record. One version string is used everywhere, following Semantic Versioning: this draft is 0.11.0-draft.1. Rule IDs are permanent.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "K-2",
+        "K-5",
+        "V-1",
+        "V-5"
+      ],
+      "findings": [
+        "R-27"
+      ],
+      "touches": [
+        "Q-14"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-21",
+      "title": "Kind registry",
+      "answer": "Twenty-five plate kinds with stable ids, minimum spans and repeat distances live in data/kinds.json. A plate states a kind from the registry.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "P-1"
+      ],
+      "findings": [
+        "R-28"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-22",
+      "title": "Gauge limits and gauge check",
+      "answer": "Each gauge publishes its limit dimensions, and a gauge is measured before use: within 0.05 mm of its stated limits, or checked against a bought master such as an 8 mm dowel pin.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "F-6",
+        "F-7"
+      ],
+      "findings": [
+        "R-22"
+      ],
+      "differs_from_review": false
+    },
+    {
+      "id": "D-23",
+      "title": "Schema identifiers and licence expression",
+      "answer": "Schemas are JSON Schema draft 2020-12 with the $id base https://markurtz.github.io/mav-grid/schema/<version>/ , which assumes the repository's GitHub Pages address. Hardware and documentation files carry the SPDX expression Apache-2.0 WITH SHL-2.0 and software files Apache-2.0.",
+      "by": "draft",
+      "date": "2026-11-20",
+      "rules": [
+        "V-1"
+      ],
+      "findings": [],
+      "differs_from_review": false
+    }
+  ]
+}
