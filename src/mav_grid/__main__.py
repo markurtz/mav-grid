@@ -176,9 +176,13 @@ def info() -> None:
     console.print(f"Schema id base: {SCHEMA_ID_BASE}")
     console.print(f"Hardware licence: {HARDWARE_LICENCE}")
     console.print(f"Output directory: {settings.output_dir}")
-    kernel = "installed" if kernel_available() else "missing (pip install mav-grid[cad])"
+    kernel = (
+        "installed" if kernel_available() else "missing (pip install mav-grid[cad])"
+    )
     console.print(f"CAD kernel: {kernel}")
-    _table("Components", ["Component", "Module", "Status"], [list(c) for c in COMPONENTS])
+    _table(
+        "Components", ["Component", "Module", "Status"], [list(c) for c in COMPONENTS]
+    )
 
 
 def _vectors() -> dict[str, Any]:
@@ -207,13 +211,17 @@ def spec_check() -> None:
     problems = [*schema.check_schemas(), *schema.check_data()]
     for name, doc in schema.load_examples("valid").items():
         problems += [f"{name}: {i}" for i in check_record(doc) if i.severity == "error"]
-    expected = schema.load_json(schema.spec_dir() / "examples" / "invalid" / "expected.json")
+    expected = schema.load_json(
+        schema.spec_dir() / "examples" / "invalid" / "expected.json"
+    )
     for name, doc in schema.load_examples("invalid").items():
         found = {i.rule for i in check_record(doc) if i.severity == "error"}
         entry = expected.get(name, {})
         wanted = set(entry.get("rules", [])) if entry.get("schema_valid") else set()
         if not found or not wanted <= found:
-            problems.append(f"{name}: expected errors {sorted(wanted)}, got {sorted(found)}")
+            problems.append(
+                f"{name}: expected errors {sorted(wanted)}, got {sorted(found)}"
+            )
     problems += _vector_differences()
     for line in problems:
         typer.echo(line, err=True)
@@ -229,13 +237,17 @@ def spec_derive(values: SetOption = None, params_file: ParamsOption = None) -> N
 
     derived = derive(_params(params_file, values).raw)
     names = list(derived["small"])
-    rows = [[n, f"{derived['small'][n]:.4f}", f"{derived['large'][n]:.4f}"] for n in names]
+    rows = [
+        [n, f"{derived['small'][n]:.4f}", f"{derived['large'][n]:.4f}"] for n in names
+    ]
     _table("Derived values, mm and degrees", ["Value", "Small", "Large"], rows)
 
 
 @spec_app.command("vectors")
 def spec_vectors(
-    write: Annotated[bool, typer.Option(help="Rewrite spec/data/vectors.json.")] = False,
+    write: Annotated[
+        bool, typer.Option(help="Rewrite spec/data/vectors.json.")
+    ] = False,
 ) -> None:
     """Recompute the test vectors of Annex A and compare or rewrite the file."""
     from mav_grid import schema  # noqa: PLC0415
@@ -261,7 +273,13 @@ def spec_kinds() -> None:
     from mav_grid.plates import kind_table  # noqa: PLC0415
 
     rows = [
-        [k["id"], k["name"], k["min_span"]["small"], k["min_span"]["large"], k["status"]]
+        [
+            k["id"],
+            k["name"],
+            k["min_span"]["small"],
+            k["min_span"]["large"],
+            k["status"],
+        ]
         for k in kind_table()
     ]
     _table("Plate kinds", ["Id", "Name", "Min span S", "Min span L", "Generator"], rows)
@@ -284,7 +302,9 @@ def spec_adapters(
 
 @spec_app.command("decisions")
 def spec_decisions(
-    proposed: Annotated[bool, typer.Option(help="Only the open draft choices.")] = False,
+    proposed: Annotated[
+        bool, typer.Option(help="Only the open draft choices.")
+    ] = False,
 ) -> None:
     """List the decisions behind the spec and the choices still proposed."""
     from mav_grid.schema import load_data  # noqa: PLC0415
@@ -302,7 +322,8 @@ def spec_decisions(
 @app.command()
 def validate(
     files: Annotated[
-        list[Path], typer.Argument(exists=True, dir_okay=False, help="Claim record files.")
+        list[Path],
+        typer.Argument(exists=True, dir_okay=False, help="Claim record files."),
     ],
     values: SetOption = None,
     params_file: ParamsOption = None,
@@ -325,7 +346,11 @@ def validate(
 
 
 @app.command()
-def claim(file: Annotated[Path, typer.Argument(exists=True, dir_okay=False, help="A claim record file.")]) -> None:
+def claim(
+    file: Annotated[
+        Path, typer.Argument(exists=True, dir_okay=False, help="A claim record file.")
+    ],
+) -> None:
     """Print the claim line a record derives (rule K-2)."""
     from mav_grid.schema import claim_line, load_json  # noqa: PLC0415
 
@@ -335,7 +360,8 @@ def claim(file: Annotated[Path, typer.Argument(exists=True, dir_okay=False, help
 @app.command()
 def build(
     files: Annotated[
-        list[Path], typer.Argument(exists=True, dir_okay=False, help="Claim record files.")
+        list[Path],
+        typer.Argument(exists=True, dir_okay=False, help="Claim record files."),
     ],
     out: Annotated[
         Path | None,
@@ -395,7 +421,7 @@ ModeOption = Annotated[
     str,
     typer.Option(
         "--mode",
-        help="routed-integral, printed-integral, swap-base or bolt-on.",
+        help="routed-integral, swap-base, cut-down-sites or surface-plates.",
     ),
 ]
 SpanOption = Annotated[str, typer.Option(help="Plate span, COLSxROWS.")]
@@ -403,7 +429,7 @@ KindOption = Annotated[str, typer.Option(help="Plate kind id (see spec kinds).")
 
 
 @new_app.command("panel")
-def new_panel(
+def new_panel(  # noqa: PLR0917
     cells: Annotated[str, typer.Argument(help="Face size, COLSxROWS.")],
     size: SizeOption = "small",
     mode: ModeOption = "swap-base",
@@ -415,11 +441,13 @@ def new_panel(
     from mav_grid.generators import panel  # noqa: PLC0415
 
     cols, rows = _pair(cells, "cells")
-    _emit(_made(lambda: panel(cols, rows, **_face_options(size, mode, span, kind))), out)
+    _emit(
+        _made(lambda: panel(cols, rows, **_face_options(size, mode, span, kind))), out
+    )
 
 
 @new_app.command("corner")
-def new_corner(
+def new_corner(  # noqa: PLR0917
     cells: Annotated[str, typer.Argument(help="Size of each face, COLSxROWS.")],
     angle: Annotated[float, typer.Option(help="Fold angle on the grid side.")] = 270.0,
     size: SizeOption = "small",
@@ -438,7 +466,7 @@ def new_corner(
 
 
 @new_app.command("column")
-def new_column(
+def new_column(  # noqa: PLR0917
     cells: Annotated[str, typer.Argument(help="Size of each side, COLSxROWS.")],
     sides: Annotated[int, typer.Option(help="Number of sides.")] = 6,
     size: SizeOption = "small",
@@ -451,11 +479,16 @@ def new_column(
     from mav_grid.generators import column  # noqa: PLC0415
 
     cols, rows = _pair(cells, "cells")
-    _emit(_made(lambda: column(sides, cols, rows, **_face_options(size, mode, span, kind))), out)
+    _emit(
+        _made(
+            lambda: column(sides, cols, rows, **_face_options(size, mode, span, kind))
+        ),
+        out,
+    )
 
 
 @new_app.command("box")
-def new_box(
+def new_box(  # noqa: PLR0917
     cells: Annotated[str, typer.Argument(help="Outside size, COLSxROWSxLAYERS.")],
     size: SizeOption = "small",
     mode: ModeOption = "swap-base",
@@ -470,7 +503,10 @@ def new_box(
         cols, rows, layers = (int(part) for part in cells.lower().split("x"))
     except ValueError:
         raise typer.BadParameter(f"'{cells}' is not COLSxROWSxLAYERS") from None
-    _emit(_made(lambda: box(cols, rows, layers, **_face_options(size, mode, span, kind))), out)
+    _emit(
+        _made(lambda: box(cols, rows, layers, **_face_options(size, mode, span, kind))),
+        out,
+    )
 
 
 @new_app.command("plate")

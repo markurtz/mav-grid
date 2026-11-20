@@ -117,7 +117,11 @@ ADAPTERS: dict[str, AdapterInfo] = {
 
 
 def adapter_record(
-    system: str, *, fits: list[str] | None = None, name: str | None = None, **fields: Any
+    system: str,
+    *,
+    fits: list[str] | None = None,
+    name: str | None = None,
+    **fields: Any,
 ) -> AdapterRecord:
     """Build the claim record of an adapter.
 
@@ -190,8 +194,14 @@ def plan_adapter(
             f"(drawn: {', '.join(RAILS)})"
         )
     # A printed M5 nut fits both sizes; Large-only adapters take the M6 nut.
-    nut = "slide-nut-small-m5" if "small" in record.interface.fits else "slide-nut-large-m6"
-    parts, notes = rail_parts(system, cells=cells, nut=nut, params=params, options=options)
+    nut = (
+        "slide-nut-small-m5"
+        if "small" in record.interface.fits
+        else "slide-nut-large-m6"
+    )
+    parts, notes = rail_parts(
+        system, cells=cells, nut=nut, params=params, options=options
+    )
     return AssemblyPlan(
         name=record.id or system, parts=parts, notes=notes, record=record.to_dict()
     )

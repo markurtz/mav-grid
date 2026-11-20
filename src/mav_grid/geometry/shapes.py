@@ -83,7 +83,9 @@ class Frame:
 
     def direction(self, v: Vec) -> Vec:
         """Map a local direction into the parent."""
-        return _add(_add(_scale(self.x, v[0]), _scale(self.y, v[1])), _scale(self.z, v[2]))
+        return _add(
+            _add(_scale(self.x, v[0]), _scale(self.y, v[1])), _scale(self.z, v[2])
+        )
 
     def point(self, p: Vec) -> Vec:
         """Map a local point into the parent."""

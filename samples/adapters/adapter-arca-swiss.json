@@ -1,0 +1,27 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "adapter",
+  "id": "adapter-arca-swiss",
+  "name": "Arca-Swiss style dovetail section on slide keys",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small and Large · Adapter on a slide key · for Arca-Swiss style dovetail 38 mm dovetail",
+  "notes": "Not made, endorsed or warrantied by the owners of the target system. Names are used only to say what the part fits.",
+  "interface": {
+    "type": "key",
+    "fits": [
+      "small",
+      "large"
+    ],
+    "entry": "slide"
+  },
+  "target": {
+    "system": "Arca-Swiss style dovetail",
+    "version": "38 mm dovetail",
+    "level": "adapter",
+    "licence": "Not applicable: a common rail profile",
+    "attribution": "None required",
+    "support_id": "arca-swiss",
+    "from_scratch": true
+  }
+}

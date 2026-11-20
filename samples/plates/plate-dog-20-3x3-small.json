@@ -1,0 +1,31 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "plate",
+  "id": "plate-dog-20-3x3-small",
+  "name": "dog-20 plate, 3 x 3, small",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small · 3 × 3 · 20 mm dog hole plate · Screw fix",
+  "size": "small",
+  "span": [
+    3,
+    3
+  ],
+  "kind": "dog-20",
+  "process": "printed",
+  "fixing": "screw",
+  "fixing_cells": "standard",
+  "target": {
+    "system": "MFT / Parf 96",
+    "version": "A 20 mm bore at the plate centre.",
+    "level": "face-plate",
+    "licence": "Not checked: read the target's terms before publishing (rule A-3)",
+    "attribution": "Names belong to their owners",
+    "support_id": "mft-96",
+    "min_span": [
+      3,
+      3
+    ],
+    "from_scratch": true
+  }
+}

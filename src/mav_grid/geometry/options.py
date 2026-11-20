@@ -77,6 +77,5 @@ class Options(BaseModel):
     )
     reference_parts: bool = Field(
         default=True,
-        description="Include bought hardware and existing surfaces as "
-        "reference parts.",
+        description="Include bought hardware and existing surfaces as reference parts.",
     )

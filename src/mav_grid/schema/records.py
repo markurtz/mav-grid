@@ -83,7 +83,11 @@ class Target(_Model):
     system: str
     version: str
     level: Literal[
-        "native", "native-with-nut", "face-plate", "face-plate-adapter", "adapter",
+        "native",
+        "native-with-nut",
+        "face-plate",
+        "face-plate-adapter",
+        "adapter",
         "add-on",
     ]
     licence: str

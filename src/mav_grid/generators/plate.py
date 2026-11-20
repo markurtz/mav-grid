@@ -34,7 +34,7 @@ from mav_grid.geometry.shapes import (
     add,
     cut,
 )
-from mav_grid.plates import FeatureContext, draw_feature
+from mav_grid.plates import FeatureContext, draw_feature, kind_target
 from mav_grid.schema.params import Groove, Params
 from mav_grid.schema.records import Cell, PlateRecord
 
@@ -119,7 +119,9 @@ def _screw_holes(
             through = Slot(x, y, sx, sy, -groove.depth - over, over, bore / 2 - 1e-3)
             ops.append(cut(through, "plate-slot"))
         else:
-            ops.append(cut(Cylinder(x, y, -groove.depth - over, over, bore), "plate-hole"))
+            ops.append(
+                cut(Cylinder(x, y, -groove.depth - over, over, bore), "plate-hole")
+            )
         ops.append(cut(Cone(x, y, -sink_depth, over, bore, top), "countersink"))
     return ops
 
@@ -159,7 +161,11 @@ def plate_geometry(
     geometry = PlateGeometry()
     cells: list[Cell] = []
     if loose and fixing in ("screw", "press-in"):
-        chosen = params.fixing_cells(span) if fixing_cells in (None, "standard") else fixing_cells
+        chosen = (
+            params.fixing_cells(span)
+            if fixing_cells in (None, "standard")
+            else fixing_cells
+        )
         cells = [(int(cell[0]), int(cell[1])) for cell in chosen or []]
     geometry.holes = [params.cell_centre(cell) for cell in cells]
     if loose:
@@ -179,7 +185,9 @@ def plate_geometry(
     feature = draw_feature(kind, ctx)
     frame = _feature_frame(groove, span, rotation)
     geometry.ops += [Op(op.mode, op.shape, frame, op.tag) for op in feature.ops]
-    geometry.core_ops = [Op(op.mode, op.shape, frame, op.tag) for op in feature.core_ops]
+    geometry.core_ops = [
+        Op(op.mode, op.shape, frame, op.tag) for op in feature.core_ops
+    ]
     for extra in feature.extras:
         for section in extra.sections:
             section.frame = frame.then(section.frame)
@@ -239,6 +247,9 @@ def plate_record(
         data["fixing_cells"] = "standard"
     if process == "sheet-cut":
         data["edges_bevelled"] = True
+    target = kind_target(kind, size)
+    if target:
+        data["target"] = target
     data.update(fields)
     return PlateRecord.model_validate(data)
 

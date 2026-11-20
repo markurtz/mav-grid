@@ -1,0 +1,77 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "grid",
+  "id": "panel-swap-large-6x2-wide-plates",
+  "name": "Swap base, Large, 6 x 2 with 3 x 1 plates",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Large · 6 × 2 face · Swap base",
+  "faces": [
+    {
+      "id": "front",
+      "size": "large",
+      "build_mode": "swap-base",
+      "cols": 6,
+      "rows": 2,
+      "plates": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "span": [
+            3,
+            1
+          ],
+          "state": "loose",
+          "fixing": "screw",
+          "fixing_cells": "standard"
+        },
+        {
+          "at": [
+            3,
+            0
+          ],
+          "span": [
+            3,
+            1
+          ],
+          "state": "loose",
+          "fixing": "screw",
+          "fixing_cells": "standard"
+        },
+        {
+          "at": [
+            0,
+            1
+          ],
+          "span": [
+            3,
+            1
+          ],
+          "state": "loose",
+          "fixing": "screw",
+          "fixing_cells": "standard"
+        },
+        {
+          "at": [
+            3,
+            1
+          ],
+          "span": [
+            3,
+            1
+          ],
+          "state": "loose",
+          "fixing": "screw",
+          "fixing_cells": "standard"
+        }
+      ],
+      "core": {
+        "material": "wood-sheet",
+        "holes": "all-cells",
+        "thickness": 12.0
+      }
+    }
+  ]
+}

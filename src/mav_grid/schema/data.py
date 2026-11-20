@@ -165,12 +165,8 @@ def build_vectors(
         },
         "routing": routing,
         "forces": {
-            "wall_force_per_pull_frictionless": round(
-                wall_force_ratio(params, 0.0), 3
-            ),
-            "wall_force_per_pull_friction_0_3": round(
-                wall_force_ratio(params, 0.3), 3
-            ),
+            "wall_force_per_pull_frictionless": round(wall_force_ratio(params, 0.0), 3),
+            "wall_force_per_pull_friction_0_3": round(wall_force_ratio(params, 0.3), 3),
         },
         "claim_lines": lines,
     }
@@ -219,7 +215,9 @@ def _unique(items: list[str], what: str) -> list[str]:
     return [] if len(items) == len(set(items)) else [f"{what} is used twice"]
 
 
-def _check_traces(data: dict[str, Doc], rule_ids: list[str], ids: list[str]) -> list[str]:
+def _check_traces(
+    data: dict[str, Doc], rule_ids: list[str], ids: list[str]
+) -> list[str]:
     lines: list[str] = []
 
     def traced(where: str, node: Any) -> None:
@@ -307,6 +305,16 @@ def _check_params(params: Doc) -> list[str]:
         low, high = entry.get("min", -math.inf), entry.get("max", math.inf)
         if "nominal" in entry and not low <= entry["nominal"] <= high:
             lines.append(f"params.json limits/{name}: nominal lies outside its limits")
+    lines += _check_reference_keys(params)
+    lines += _check_routing(params)
+    if depth(params, "small") >= depth(params, "large"):
+        lines.append("params.json: Small must be shallower than Large")
+    return lines
+
+
+def _check_reference_keys(params: Doc) -> list[str]:
+    lines = []
+    limits = params["limits"]
     for key in params["reference_keys"]:
         spot = f"params.json reference key {key['id']}"
         expected_foot = key["neck"] + 2 * key["height"] * tan_wall(params)
@@ -322,6 +330,12 @@ def _check_params(params: Doc) -> list[str]:
         too_short = key["length"] < constant(params, "slide_key_min_length")
         if key["entry"] == "slide" and too_short:
             lines.append(f"{spot}: shorter than the minimum slide key")
+    return lines
+
+
+def _check_routing(params: Doc) -> list[str]:
+    lines = []
+    limits = params["limits"]
     low, high = limits["opening"]["min"], limits["opening"]["max"]
     for recipe in params["process"]["routing"]:
         spot = f"params.json routing {recipe['size']}"
@@ -336,8 +350,6 @@ def _check_params(params: Doc) -> list[str]:
             )
         if abs(result["centre_offset"]) > CENTRE_TOLERANCE:
             lines.append(f"{spot}: the passes are not centred on the grid line")
-    if depth(params, "small") >= depth(params, "large"):
-        lines.append("params.json: Small must be shallower than Large")
     return lines
 
 

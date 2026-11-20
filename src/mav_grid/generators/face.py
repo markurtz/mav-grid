@@ -355,7 +355,9 @@ class _FacePlanner:
         ops = []
         for cell in cells:
             x, y = self.params.cell_centre(cell)
-            hole = Cylinder(x, y, -self.thickness - over, -self.groove.depth + over, diameter)
+            hole = Cylinder(
+                x, y, -self.thickness - over, -self.groove.depth + over, diameter
+            )
             ops.append(cut(hole, "core-hole"))
         return ops
 
@@ -409,7 +411,9 @@ class _FacePlanner:
             )
             local = Frame.translate(g.pitch * plate.at[0], g.pitch * plate.at[1])
             placed = frame.then(local)
-            self.notes += [f"Face '{face.id}', plate {index}: {n}" for n in geometry.notes]
+            self.notes += [
+                f"Face '{face.id}', plate {index}: {n}" for n in geometry.notes
+            ]
             body_ops = geometry.core_ops if is_loose else geometry.ops
             ops += [
                 Op(op.mode, op.shape, local.then(op.frame or Frame()), op.tag)

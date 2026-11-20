@@ -30,7 +30,9 @@ VIEW_DIRECTION = (-1.0, -1.6, 1.1)
 """Where the preview camera sits, as a direction from the part's centre."""
 
 
-def write_step(assembly: BuiltAssembly, path: Path | str, *, reference: bool = True) -> Path:
+def write_step(
+    assembly: BuiltAssembly, path: Path | str, *, reference: bool = True
+) -> Path:
     """Write every part of an assembly to one STEP file, each part labelled."""
     target = Path(path)
     kernel().export_step(assembly.compound(reference=reference), str(target))
@@ -54,10 +56,14 @@ def write_3mf(part: BuiltPart, path: Path | str) -> Path:
     return target
 
 
-def write_glb(assembly: BuiltAssembly, path: Path | str, *, reference: bool = True) -> Path:
+def write_glb(
+    assembly: BuiltAssembly, path: Path | str, *, reference: bool = True
+) -> Path:
     """Write an assembly as binary glTF, for viewers."""
     target = Path(path)
-    kernel().export_gltf(assembly.compound(reference=reference), str(target), binary=True)
+    kernel().export_gltf(
+        assembly.compound(reference=reference), str(target), binary=True
+    )
     return target
 
 
@@ -67,7 +73,11 @@ def _span(shape: Any) -> tuple[Any, float]:
 
 
 def write_preview(
-    assembly: BuiltAssembly, path: Path | str, *, reference: bool = True, width: float = 160.0
+    assembly: BuiltAssembly,
+    path: Path | str,
+    *,
+    reference: bool = True,
+    width: float = 160.0,
 ) -> Path:
     """Write a hidden-line view of an assembly as SVG.
 
@@ -85,8 +95,8 @@ def write_preview(
         tuple(camera), viewport_up=(0, 0, 1), look_at=tuple(centre)
     )
     exporter = bd.ExportSVG(scale=width / max(size, 1.0) / 1.6, margin=4)
-    exporter.add_layer("hidden", line_color=(170, 170, 170), line_weight=0.15)
-    exporter.add_layer("visible", line_color=(20, 20, 20), line_weight=0.3)
+    exporter.add_layer("hidden", line_color="darkgray", line_weight=0.15)
+    exporter.add_layer("visible", line_color="black", line_weight=0.3)
     if hidden:
         exporter.add_shape(hidden, layer="hidden")
     exporter.add_shape(visible, layer="visible")

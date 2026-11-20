@@ -1,0 +1,31 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "plate",
+  "id": "plate-french-cleat-1x1-small",
+  "name": "french-cleat plate, 1 x 1, small",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small · 1 × 1 · French cleat plate · Screw fix",
+  "size": "small",
+  "span": [
+    1,
+    1
+  ],
+  "kind": "french-cleat",
+  "process": "printed",
+  "fixing": "screw",
+  "fixing_cells": "standard",
+  "target": {
+    "system": "French cleat",
+    "version": "A 45 degree cleat strip.",
+    "level": "face-plate",
+    "licence": "Not checked: read the target's terms before publishing (rule A-3)",
+    "attribution": "Names belong to their owners",
+    "support_id": "french-cleat",
+    "min_span": [
+      1,
+      1
+    ],
+    "from_scratch": true
+  }
+}

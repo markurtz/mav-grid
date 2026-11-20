@@ -133,8 +133,9 @@ def panel(
 
             from mav_grid.generators import panel
 
-            record = panel(6, 4, size="large", build_mode="routed-integral", span=(2, 2))
-            assert record.to_dict()["claim_line"].endswith("6 × 4 face · Routed integral")
+            record = panel(6, 4, size="large", build_mode="routed-integral")
+            line = record.to_dict()["claim_line"]
+            assert line.endswith("6 × 4 face · Routed integral")
 
     :param cols: Columns of the face.
     :param rows: Rows of the face.
@@ -144,7 +145,10 @@ def panel(
     :returns: The grid record.
     """
     fields = face_fields(face.pop("face_id", "front"), cols, rows, **face)
-    data: dict[str, Any] = {"name": name or f"Panel, {cols} x {rows}", "faces": [fields]}
+    data: dict[str, Any] = {
+        "name": name or f"Panel, {cols} x {rows}",
+        "faces": [fields],
+    }
     if record_id:
         data["id"] = record_id
     return _record(data, face.get("params"))
@@ -184,12 +188,20 @@ def corner(
     params = params or Params.load()
     fold_id = "corner"
     side_a = face_fields(
-        "side-a", cols_a, rows, edges={"x_max": {"type": "fold", "fold": fold_id}},
-        params=params, **face,
+        "side-a",
+        cols_a,
+        rows,
+        edges={"x_max": {"type": "fold", "fold": fold_id}},
+        params=params,
+        **face,
     )
     side_b = face_fields(
-        "side-b", cols_b, rows, edges={"x_min": {"type": "fold", "fold": fold_id}},
-        params=params, **face,
+        "side-b",
+        cols_b,
+        rows,
+        edges={"x_min": {"type": "fold", "fold": fold_id}},
+        params=params,
+        **face,
     )
     loose = side_a["build_mode"] in LOOSE_MODES
     fold: dict[str, Any] = {
@@ -335,7 +347,9 @@ def box(
 
     faces = []
     if top:
-        faces.append(face_fields("top", cols, rows, edges=edges["top"], params=params, **face))
+        faces.append(
+            face_fields("top", cols, rows, edges=edges["top"], params=params, **face)
+        )
     for index, side in enumerate(_SIDE_NAMES):
         width = cols if index % 2 == 0 else rows
         faces.append(
@@ -343,7 +357,9 @@ def box(
         )
     if bottom:
         faces.append(
-            face_fields("bottom", cols, rows, edges=edges["bottom"], params=params, **face)
+            face_fields(
+                "bottom", cols, rows, edges=edges["bottom"], params=params, **face
+            )
         )
     data: dict[str, Any] = {
         "name": name or f"Box, {cols} x {rows} x {layers} cells",

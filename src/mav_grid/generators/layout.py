@@ -111,7 +111,9 @@ def fill(
     for plate in plates:
         (i0, j0), (span_c, span_r) = plate.at, plate.span
         if i0 + span_c > cols or j0 + span_r > rows:
-            raise ValueError(f"plate at {plate.at} with span {plate.span} leaves the face")
+            raise ValueError(
+                f"plate at {plate.at} with span {plate.span} leaves the face"
+            )
         cells = {(i, j) for i in range(i0, i0 + span_c) for j in range(j0, j0 + span_r)}
         if cells & taken:
             raise ValueError(f"plate at {plate.at} overlaps another plate")
@@ -146,8 +148,12 @@ def edge_axis(face: Face, name: str, pitch: float) -> EdgeAxis:
     width, height = face.cols * pitch, face.rows * pitch
     table = {
         "x_max": EdgeAxis((width, 0.0, 0.0), (1.0, 0.0, 0.0), (0.0, 1.0, 0.0), height),
-        "x_min": EdgeAxis((0.0, height, 0.0), (-1.0, 0.0, 0.0), (0.0, -1.0, 0.0), height),
-        "y_max": EdgeAxis((width, height, 0.0), (0.0, 1.0, 0.0), (-1.0, 0.0, 0.0), width),
+        "x_min": EdgeAxis(
+            (0.0, height, 0.0), (-1.0, 0.0, 0.0), (0.0, -1.0, 0.0), height
+        ),
+        "y_max": EdgeAxis(
+            (width, height, 0.0), (0.0, 1.0, 0.0), (-1.0, 0.0, 0.0), width
+        ),
         "y_min": EdgeAxis((0.0, 0.0, 0.0), (0.0, -1.0, 0.0), (1.0, 0.0, 0.0), width),
     }
     return table[name]
@@ -199,11 +205,15 @@ def face_frames(record: GridRecord, params: Params) -> dict[str, Frame]:
     links: dict[str, list[tuple[str, str, str, float]]] = {fid: [] for fid in faces}
     for fold in record.folds:
         if fold.a.face in faces and fold.b.face in faces:
-            links[fold.a.face].append((fold.a.edge, fold.b.face, fold.b.edge, fold.angle))
-            links[fold.b.face].append((fold.b.edge, fold.a.face, fold.a.edge, fold.angle))
+            links[fold.a.face].append(
+                (fold.a.edge, fold.b.face, fold.b.edge, fold.angle)
+            )
+            links[fold.b.face].append(
+                (fold.b.edge, fold.a.face, fold.a.edge, fold.angle)
+            )
     frames: dict[str, Frame] = {}
     shift = 0.0
-    for start in faces:
+    for start, first in faces.items():
         if start in frames:
             continue
         frames[start] = Frame.translate(dx=shift)
@@ -220,7 +230,7 @@ def face_frames(record: GridRecord, params: Params) -> dict[str, Frame]:
                     angle,
                 )
                 queue.append(far)
-        shift += (faces[start].cols + 2) * pitch
+        shift += (first.cols + 2) * pitch
     return frames
 
 

@@ -86,7 +86,7 @@ def _span_fits(span: Sequence[int], minimum: Sequence[int], rotation: int) -> bo
     return span[0] >= need[0] and span[1] >= need[1]
 
 
-def _check_kind(
+def _check_kind(  # noqa: PLR0917
     kinds: Doc, kind_id: str, size: str, span: Sequence[int], rotation: int, where: str
 ) -> list[Issue]:
     kind = find_kind(kinds, kind_id)
@@ -104,8 +104,7 @@ def _check_kind(
             _error(
                 "P-2",
                 where,
-                f"span {list(span)} is under the minimum {minimum} "
-                f"of kind '{kind_id}'",
+                f"span {list(span)} is under the minimum {minimum} of kind '{kind_id}'",
             )
         ]
     return []
@@ -178,7 +177,9 @@ def _check_core(face: Doc, params: Doc, where: str) -> list[Issue]:
         if fixing is None:
             issues.append(
                 _error(
-                    "P-5", where, f"fixing '{core['fixing']}' is not in the fixing table"
+                    "P-5",
+                    where,
+                    f"fixing '{core['fixing']}' is not in the fixing table",
                 )
             )
         elif fixing["core"] != core["material"]:
@@ -231,7 +232,9 @@ def _check_face_edges(
     return issues
 
 
-def _check_face(face: Doc, params: Doc, kinds: Doc, folds: dict[str, Doc]) -> list[Issue]:
+def _check_face(
+    face: Doc, params: Doc, kinds: Doc, folds: dict[str, Doc]
+) -> list[Issue]:
     where = f"faces/{face['id']}"
     size = face["size"]
     _, faults = plate_owners(face["cols"], face["rows"], face["plates"])
@@ -320,9 +323,7 @@ def _check_fold(fold: Doc, faces: dict[str, Doc], params: Doc) -> list[Issue]:
     for side in sides:
         face = faces.get(side["face"])
         if face is None:
-            issues.append(
-                _error("S-1", where, f"face '{side['face']}' does not exist")
-            )
+            issues.append(_error("S-1", where, f"face '{side['face']}' does not exist"))
             both_known = False
             continue
         edge = edge_of(face, side["edge"])

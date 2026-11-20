@@ -43,7 +43,21 @@ __all__ = [
     "KindInfo",
     "draw_feature",
     "kind_table",
+    "kind_target",
 ]
+
+UNCHECKED_LICENCE = "Not checked: read the target's terms before publishing (rule A-3)"
+"""Licence text for targets whose terms the toolkit has not looked up."""
+
+TARGET_TERMS: dict[str, tuple[str, str]] = {
+    "gridfinity": ("MIT", "Gridfinity by Zack Freedman"),
+    "multiboard": (
+        "Multiboard licence: remixes are restricted and from-scratch compatible "
+        "parts are not addressed (test T-15)",
+        "Multiboard (multiboard.io)",
+    ),
+}
+"""Licence and attribution of the targets that were looked up, by system id."""
 
 
 def draw_feature(kind: str, ctx: FeatureContext) -> Feature:
@@ -92,3 +106,38 @@ def kind_table() -> list[dict[str, Any]]:
             }
         )
     return rows
+
+
+def kind_target(kind: str, size: str = "small") -> dict[str, Any] | None:
+    """Return the target statement a plate of a kind needs (rules A-2 to A-4).
+
+    The system comes from the support register of the spec. The licence and
+    the attribution are only filled in where they were looked up; for every
+    other target the statement says that they were not checked.
+
+    :param kind: A kind id of the registry.
+    :param size: ``small`` or ``large``, for the minimum span.
+    :returns: The target fields, or ``None`` for a kind that carries no other
+        system.
+    """
+    entry = next((k for k in load_data("kinds")["kinds"] if k["id"] == kind), None)
+    if entry is None or not entry.get("carries"):
+        return None
+    system_id = entry["carries"][0]
+    systems = {s["id"]: s for s in load_data("support")["systems"]}
+    system = systems.get(system_id, {})
+    licence, attribution = TARGET_TERMS.get(
+        system_id, (UNCHECKED_LICENCE, "Names belong to their owners")
+    )
+    target: dict[str, Any] = {
+        "system": system.get("version", entry["name"]),
+        "version": entry["what"],
+        "support_id": system_id,
+        "level": system.get("level", "face-plate"),
+    }
+    if entry["min_span"].get(size):
+        target["min_span"] = entry["min_span"][size]
+    if entry.get("repeat_cells"):
+        target["repeat_cells"] = entry["repeat_cells"]
+    target.update(licence=licence, attribution=attribution, from_scratch=True)
+    return target

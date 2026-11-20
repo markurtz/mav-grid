@@ -180,9 +180,7 @@ def wall_force_ratio(params: dict[str, Any], friction: float = 0.0) -> float:
     )
 
 
-def routing_result(
-    params: dict[str, Any], recipe: dict[str, Any]
-) -> dict[str, float]:
+def routing_result(params: dict[str, Any], recipe: dict[str, Any]) -> dict[str, float]:
     """Opening, bottom width and centre offset that a router recipe cuts."""
     _ = params
     tan = math.tan(math.radians(recipe["bit_angle"]))

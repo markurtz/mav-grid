@@ -130,7 +130,9 @@ def stud_8(ctx: FeatureContext) -> Feature:
     nx, ny = per_cell * ctx.cols - 1, per_cell * ctx.rows - 1
     points = grid_points(centred(nx, lattice), centred(ny, lattice))
     kept = [p for p in points if ctx.clear_of_holes(*p, lattice / 2)]
-    ops = [add(Cylinder(x, y, -0.2, STUD_HEIGHT, STUD_DIAMETER), "stud") for x, y in kept]
+    ops = [
+        add(Cylinder(x, y, -0.2, STUD_HEIGHT, STUD_DIAMETER), "stud") for x, y in kept
+    ]
     return Feature(ops=ops, count=(nx, ny))
 
 
@@ -200,8 +202,10 @@ def multiboard(ctx: FeatureContext) -> Feature:
     )
     ops = _holes(ctx, large, 15.0) + _holes(ctx, small, 5.0) + ctx.relief(6.4, 5.0)
     notes = [
-        "Multiboard: generic holes only, modelled from scratch. Hole dimensions "
-        "are not sourced (T-14) and the licence reading is unconfirmed (T-15)."
+        (
+            "Multiboard: generic holes only, modelled from scratch. Hole dimensions "
+            "are not sourced (T-14) and the licence reading is unconfirmed (T-15)."
+        )
     ]
     return Feature(ops=ops, count=(nx, ny), notes=notes)
 
@@ -211,7 +215,9 @@ def pegboard_1in(ctx: FeatureContext) -> Feature:
     nx = fit_count(ctx.width, INCH, PEG_HOLE)
     ny = fit_count(ctx.height, INCH, PEG_HOLE)
     points = grid_points(centred(nx, INCH), centred(ny, INCH))
-    return Feature(ops=_holes(ctx, points, PEG_HOLE) + ctx.relief(4.8, 5.0), count=(nx, ny))
+    return Feature(
+        ops=_holes(ctx, points, PEG_HOLE) + ctx.relief(4.8, 5.0), count=(nx, ny)
+    )
 
 
 def skadis(ctx: FeatureContext) -> Feature:
@@ -220,7 +226,10 @@ def skadis(ctx: FeatureContext) -> Feature:
     ny = fit_count(ctx.height, SKADIS_PITCH, 15.0)
     points = grid_points(centred(nx, SKADIS_PITCH), centred(ny, SKADIS_PITCH))
     points += grid_points(centred(nx - 1, SKADIS_PITCH), centred(ny - 1, SKADIS_PITCH))
-    ops = [cut(Slot(x, y, 5.0, 15.0, ctx.through, ctx.over, 2.4), "slot") for x, y in points]
+    ops = [
+        cut(Slot(x, y, 5.0, 15.0, ctx.through, ctx.over, 2.4), "slot")
+        for x, y in points
+    ]
     return Feature(ops=ops + ctx.relief(5.0, 5.0), count=(nx, ny))
 
 
@@ -259,7 +268,9 @@ def french_cleat(ctx: FeatureContext) -> Feature:
     return Feature(ops=[add(Prism("x", profile, -half, half), "cleat")])
 
 
-def _bores(ctx: FeatureContext, points: list[tuple[float, float]], bore: float) -> Feature:
+def _bores(
+    ctx: FeatureContext, points: list[tuple[float, float]], bore: float
+) -> Feature:
     feature = Feature(ops=_holes(ctx, points, bore, tag="bore"))
     reach = -ctx.depth - ctx.floor - ctx.over
     deep = [cut(Cylinder(x, y, reach, ctx.over, bore), "bore") for x, y in points]
@@ -274,7 +285,9 @@ def dog_20(ctx: FeatureContext) -> Feature:
     """A 20 mm bore per 3 x 3 cells, which keeps the 96 mm pitch across plates."""
     nx = max(1, round(ctx.cols / 3))
     ny = max(1, round(ctx.rows / 3))
-    feature = _bores(ctx, grid_points(centred(nx, DOG_PITCH), centred(ny, DOG_PITCH)), DOG_BORE)
+    feature = _bores(
+        ctx, grid_points(centred(nx, DOG_PITCH), centred(ny, DOG_PITCH)), DOG_BORE
+    )
     feature.count = (nx, ny)
     return feature
 
@@ -331,12 +344,17 @@ def hinge_cup_45(ctx: FeatureContext) -> Feature:
     screw, half_centres, setback = HINGE_SCREW
     cup = Cylinder(0.0, 0.0, -cup_depth, ctx.over, bore)
     screws = [
-        cut(Cylinder(sx * half_centres, setback + 3.0, ctx.through, ctx.over, screw), "hole")
+        cut(
+            Cylinder(sx * half_centres, setback + 3.0, ctx.through, ctx.over, screw),
+            "hole",
+        )
         for sx in (-1, 1)
     ]
     notes = [
-        f"The {cup_depth:g} mm cup is deeper than the {ctx.depth:g} mm plate: "
-        "declare it as passing into the core (rule P-4)."
+        (
+            f"The {cup_depth:g} mm cup is deeper than the {ctx.depth:g} mm plate: "
+            "declare it as passing into the core (rule P-4)."
+        )
     ]
     feature = Feature(ops=[cut(cup, "cup"), *screws], notes=notes)
     if ctx.loose:
@@ -347,7 +365,9 @@ def hinge_cup_45(ctx: FeatureContext) -> Feature:
 def _track_slot(ctx: FeatureContext) -> Op:
     deep = min(TRACK_DEPTH, ctx.depth + 0.01)
     half = ctx.width / 2 + ctx.over
-    return cut(Box(-half, -TRACK_WIDTH / 2, -deep, half, TRACK_WIDTH / 2, ctx.over), "slot")
+    return cut(
+        Box(-half, -TRACK_WIDTH / 2, -deep, half, TRACK_WIDTH / 2, ctx.over), "slot"
+    )
 
 
 def miter_slot(ctx: FeatureContext) -> Feature:
@@ -395,7 +415,10 @@ def rack_rail(ctx: FeatureContext) -> Feature:
         ys += [start + offset for offset in RACK_OFFSETS]
         start += RACK_UNIT
     kept = [y for y in ys if abs(y) < half_h - 6.0]
-    ops = [cut(Box(-half, y - half, ctx.through, half, y + half, ctx.over), "hole") for y in kept]
+    ops = [
+        cut(Box(-half, y - half, ctx.through, half, y + half, ctx.over), "hole")
+        for y in kept
+    ]
     return Feature(ops=ops + ctx.relief(2.5, 4.0), count=(1, len(kept)))
 
 
@@ -406,7 +429,17 @@ def twin_slot_32(ctx: FeatureContext) -> Feature:
         for side in (-1, 1):
             centre = x + side * 6.0
             ops.append(
-                cut(Box(centre - 1.5, y - 6.5, ctx.through, centre + 1.5, y + 6.5, ctx.over), "slot")
+                cut(
+                    Box(
+                        centre - 1.5,
+                        y - 6.5,
+                        ctx.through,
+                        centre + 1.5,
+                        y + 6.5,
+                        ctx.over,
+                    ),
+                    "slot",
+                )
             )
     return Feature(ops=ops + ctx.relief(2.5, 3.0), notes=["Slot size is approximate."])
 
@@ -418,7 +451,8 @@ def handle_3in(ctx: FeatureContext) -> Feature:
     if ctx.loose:
         reach = -ctx.depth - ctx.floor - ctx.over
         feature.core_ops = [
-            cut(Cylinder(x, 0.0, reach, ctx.over, HANDLE_HOLE), "hole") for x in (-half, half)
+            cut(Cylinder(x, 0.0, reach, ctx.over, HANDLE_HOLE), "hole")
+            for x in (-half, half)
         ]
     return feature
 
@@ -426,7 +460,9 @@ def handle_3in(ctx: FeatureContext) -> Feature:
 def strut(ctx: FeatureContext) -> Feature:
     """A 41.3 mm strut channel along the rows, shown as bought hardware."""
     side, wall, lip, drop = STRUT
-    feature = Feature(notes=["The strut channel is bought hardware, bolted to the plate."])
+    feature = Feature(
+        notes=["The strut channel is bought hardware, bolted to the plate."]
+    )
     if ctx.options.reference_parts:
         half = side / 2
         profile = (
@@ -456,8 +492,15 @@ def breadboard(ctx: FeatureContext) -> Feature:
         ops=[cut(Box(-half_l, -half_w, -pocket, half_l, half_w, ctx.over), "pocket")]
     )
     if ctx.options.reference_parts:
-        board = add(Box(-half_l + 0.1, -half_w + 0.1, -pocket, half_l - 0.1, half_w - 0.1, tall), "board")
-        feature.extras.append(_reference("breadboard", "Solderless breadboard", [board]))
+        board = add(
+            Box(
+                -half_l + 0.1, -half_w + 0.1, -pocket, half_l - 0.1, half_w - 0.1, tall
+            ),
+            "board",
+        )
+        feature.extras.append(
+            _reference("breadboard", "Solderless breadboard", [board])
+        )
     return feature
 
 
@@ -476,11 +519,18 @@ KINDS: dict[str, KindInfo] = {
     for info in (
         KindInfo("plain", plain, "MAV Grid spec, rule C-6"),
         KindInfo("hole-5", hole_5, "MAV Grid spec, rule C-10"),
-        KindInfo("stud-8", stud_8, "MAV Grid spec, rule C-9. Stud size Unproven (T-10)"),
-        KindInfo("gridfinity", gridfinity, SURVEY),
-        KindInfo("opengrid", opengrid, "Generic cell, not sourced (T-14)", "placeholder"),
         KindInfo(
-            "multiboard", multiboard, "Generic holes, from scratch (T-14, T-15)", "placeholder"
+            "stud-8", stud_8, "MAV Grid spec, rule C-9. Stud size Unproven (T-10)"
+        ),
+        KindInfo("gridfinity", gridfinity, SURVEY),
+        KindInfo(
+            "opengrid", opengrid, "Generic cell, not sourced (T-14)", "placeholder"
+        ),
+        KindInfo(
+            "multiboard",
+            multiboard,
+            "Generic holes, from scratch (T-14, T-15)",
+            "placeholder",
         ),
         KindInfo("pegboard-1in", pegboard_1in, SURVEY),
         KindInfo("skadis", skadis, SURVEY),

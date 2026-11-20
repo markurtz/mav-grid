@@ -1,0 +1,31 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "plate",
+  "id": "plate-handle-3in-3x1-small",
+  "name": "handle-3in plate, 3 x 1, small",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small · 3 × 1 · Inch handle 3 in plate · Screw fix",
+  "size": "small",
+  "span": [
+    3,
+    1
+  ],
+  "kind": "handle-3in",
+  "process": "printed",
+  "fixing": "screw",
+  "fixing_cells": "standard",
+  "target": {
+    "system": "Inch",
+    "version": "Two 4.5 holes at 76.2 mm.",
+    "level": "face-plate",
+    "licence": "Not checked: read the target's terms before publishing (rule A-3)",
+    "attribution": "Names belong to their owners",
+    "support_id": "handle-centres-inch",
+    "min_span": [
+      3,
+      1
+    ],
+    "from_scratch": true
+  }
+}

@@ -84,7 +84,9 @@ def key_dims(record: KeyRecord, params: Params) -> KeyDims:
     """
     reference = params.reference_key(record.reference) if record.reference else None
     smallest = "small" if "small" in record.fits else "large"
-    neck = record.neck or (reference.neck if reference else params.limits["key_neck"].high)
+    neck = record.neck or (
+        reference.neck if reference else params.limits["key_neck"].high
+    )
     limit = params.limits[f"key_height_{smallest}"].high
     height = record.height or (reference.height if reference else limit)
     chamfer = reference.chamfer if reference else params.limits["key_chamfer"].low
@@ -103,7 +105,9 @@ def key_dims(record: KeyRecord, params: Params) -> KeyDims:
     )
 
 
-def key_profile(dims: KeyDims, width_top: float | None = None) -> tuple[tuple[float, float], ...]:
+def key_profile(
+    dims: KeyDims, width_top: float | None = None
+) -> tuple[tuple[float, float], ...]:
     """Cross-section of a key as (u, z) points: neck on top, chamfered foot.
 
     :param dims: The key.
@@ -125,12 +129,16 @@ def key_profile(dims: KeyDims, width_top: float | None = None) -> tuple[tuple[fl
     )
 
 
-def _thread_ops(dims: KeyDims, params: Params, options: Options) -> tuple[list[Op], list[str]]:
+def _thread_ops(
+    dims: KeyDims, params: Params, options: Options
+) -> tuple[list[Op], list[str]]:
     if dims.thread is None:
         return [], []
     thread = params.thread(dims.thread)
     over = options.overcut
-    notes = [f"The {thread.designation} thread is not modelled: the hole is the drill size."]
+    notes = [
+        f"The {thread.designation} thread is not modelled: the hole is the drill size."
+    ]
     if dims.captive_nut is not None:
         nut = dims.captive_nut
         bore = thread.major_diameter + options.screw_clearance
@@ -138,8 +146,10 @@ def _thread_ops(dims: KeyDims, params: Params, options: Options) -> tuple[list[O
         tall = nut.thickness + options.nut_clearance
         pocket = Box(-half, -half, -dims.height - over, half, half, -dims.height + tall)
         notes = [
-            f"A captive {nut.type} sits in a pocket in the foot. The pocket "
-            f"clearance of {options.nut_clearance:g} mm is informative."
+            (
+                f"A captive {nut.type} sits in a pocket in the foot. The pocket "
+                f"clearance of {options.nut_clearance:g} mm is informative."
+            )
         ]
         return [
             cut(Cylinder(0.0, 0.0, -dims.height - over, over, bore), "thread-hole"),
@@ -152,7 +162,9 @@ def _thread_ops(dims: KeyDims, params: Params, options: Options) -> tuple[list[O
             f"No tap drill is recorded for {thread.id}: {drill:g} mm is drawn. "
             "Check it against a tap chart."
         )
-    return [cut(Cylinder(0.0, 0.0, -dims.height - over, over, drill), "thread-hole")], notes
+    return [
+        cut(Cylinder(0.0, 0.0, -dims.height - over, over, drill), "thread-hole")
+    ], notes
 
 
 def _slide(dims: KeyDims) -> list[Op]:
@@ -184,7 +196,10 @@ def _turn(dims: KeyDims, options: Options) -> list[Op]:
     for sx, sy in ((1, 1), (-1, -1)):
         centre = (sx * (half_l - radius), sy * (half_w - radius))
         ops.append(
-            cut(CornerRelief(centre[0], centre[1], radius, sx, sy, -h - over, over), "turn-round")
+            cut(
+                CornerRelief(centre[0], centre[1], radius, sx, sy, -h - over, over),
+                "turn-round",
+            )
         )
     return ops
 
@@ -198,7 +213,14 @@ def _snap(dims: KeyDims, params: Params, options: Options) -> list[Op]:
     head_half = params.opening / 2 + lip
     ops.append(add(Box(-half, -head_half, 0.0, half, head_half, head), "head"))
     slot = (dims.foot - dims.neck) + SNAP_SLOT_MARGIN
-    ops.append(cut(Box(-half - over, -slot / 2, -dims.height - over, half + over, slot / 2, 0.0), "flex-slot"))
+    ops.append(
+        cut(
+            Box(
+                -half - over, -slot / 2, -dims.height - over, half + over, slot / 2, 0.0
+            ),
+            "flex-slot",
+        )
+    )
     return ops
 
 
@@ -251,7 +273,9 @@ def key_record(
             "height": key.height,
             "foot": key.foot,
             "length": key.length,
-            "use": "light" if key.entry == "turn" or key.material == "printed" else "clamp",
+            "use": "light"
+            if key.entry == "turn" or key.material == "printed"
+            else "clamp",
         }
     given = {
         "entry": entry,

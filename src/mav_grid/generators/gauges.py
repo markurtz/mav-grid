@@ -23,7 +23,15 @@ G-6 are not designed yet.
 from __future__ import annotations
 
 from mav_grid.geometry.options import Options
-from mav_grid.geometry.shapes import AssemblyPlan, Box, Op, PartPlan, Prism, Section, add
+from mav_grid.geometry.shapes import (
+    AssemblyPlan,
+    Box,
+    Op,
+    PartPlan,
+    Prism,
+    Section,
+    add,
+)
 from mav_grid.schema.params import GaugeSpec, Params
 from mav_grid.schema.records import GaugeRecord
 
@@ -47,9 +55,20 @@ def _opening_blade(spec: GaugeSpec) -> list[Op]:
     wide, long = HANDLE
     go, no_go = spec.dims["go"], spec.dims["no_go"]
     return [
-        add(Box(-wide / 2, -long / 2, 0.0, wide / 2, long / 2, BLADE_THICKNESS), "handle"),
-        add(Box(-go / 2, -long / 2 - TONGUE, 0.0, go / 2, -long / 2, BLADE_THICKNESS), "go"),
-        add(Box(-no_go / 2, long / 2, 0.0, no_go / 2, long / 2 + TONGUE, BLADE_THICKNESS), "no-go"),
+        add(
+            Box(-wide / 2, -long / 2, 0.0, wide / 2, long / 2, BLADE_THICKNESS),
+            "handle",
+        ),
+        add(
+            Box(-go / 2, -long / 2 - TONGUE, 0.0, go / 2, -long / 2, BLADE_THICKNESS),
+            "go",
+        ),
+        add(
+            Box(
+                -no_go / 2, long / 2, 0.0, no_go / 2, long / 2 + TONGUE, BLADE_THICKNESS
+            ),
+            "no-go",
+        ),
     ]
 
 
@@ -61,8 +80,14 @@ def _depth_step(spec: GaugeSpec, size: str, params: Params) -> list[Op]:
     go, no_go = spec.dims[f"{size}_go"], spec.dims[f"{size}_no_go"]
     return [
         add(Box(-wide, 0.0, 0.0, wide, thick, tall), "body"),
-        add(Box(-wide / 2 - half_blade, 0.0, -go, -wide / 2 + half_blade, thick, 0.0), "go"),
-        add(Box(wide / 2 - half_blade, 0.0, -no_go, wide / 2 + half_blade, thick, 0.0), "no-go"),
+        add(
+            Box(-wide / 2 - half_blade, 0.0, -go, -wide / 2 + half_blade, thick, 0.0),
+            "go",
+        ),
+        add(
+            Box(wide / 2 - half_blade, 0.0, -no_go, wide / 2 + half_blade, thick, 0.0),
+            "no-go",
+        ),
     ]
 
 
@@ -84,8 +109,14 @@ def _slide_gauge(spec: GaugeSpec, size: str, depth: float) -> list[Op]:
     face = depth - height
     return [
         add(Prism("x", key, -half, half), "key"),
-        add(Box(-half, -web_wide / 2, 0.0, half, web_wide / 2, face + lift + web_tall), "web"),
-        add(Box(-half, -neck, face + lift, half, neck, face + lift + web_tall / 2), "lift-flag"),
+        add(
+            Box(-half, -web_wide / 2, 0.0, half, web_wide / 2, face + lift + web_tall),
+            "web",
+        ),
+        add(
+            Box(-half, -neck, face + lift, half, neck, face + lift + web_tall / 2),
+            "lift-flag",
+        ),
     ]
 
 
@@ -170,8 +201,10 @@ def plan_gauge(
         for suffix, ops in parts
     ]
     notes = [
-        "Measure the gauge before use: it must be within 0.05 mm of its stated "
-        "dimensions (rule F-7). Handles and bodies are modelling choices.",
+        (
+            "Measure the gauge before use: it must be within 0.05 mm of its stated "
+            "dimensions (rule F-7). Handles and bodies are modelling choices."
+        ),
     ]
     if record.gauge == "G-3":
         notes.append(

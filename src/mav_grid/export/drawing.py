@@ -33,12 +33,16 @@ from mav_grid.geometry.shapes import (
     Frustum,
     Op,
     PartPlan,
+    Prism,
     Slot,
 )
 
 __all__ = ["CutMap", "cut_map", "write_dxf", "write_svg"]
 
 Point = tuple[float, float]
+
+TOP_TOLERANCE = 1e-9
+"""How close to z = 0 a profile point counts as on the plate-top plane."""
 
 
 @dataclass
@@ -84,8 +88,23 @@ def _top_polygon(op: Op) -> list[Point] | None:
         return _rect(*shape.top)
     if isinstance(shape, Slot):
         half_x, half_y = shape.sx / 2, shape.sy / 2
-        return _rect(shape.x - half_x, shape.y - half_y, shape.x + half_x, shape.y + half_y)
+        return _rect(
+            shape.x - half_x, shape.y - half_y, shape.x + half_x, shape.y + half_y
+        )
+    if isinstance(shape, Prism) and shape.axis != "z":
+        return _groove_opening(shape)
     return None
+
+
+def _groove_opening(shape: Prism) -> list[Point] | None:
+    """The strip a groove run opens in the plate-top plane (z = 0)."""
+    across = [u for u, z in shape.profile if abs(z) < TOP_TOLERANCE]
+    if len(across) < 2:  # noqa: PLR2004
+        return None
+    low, high = min(across), max(across)
+    if shape.axis == "x":
+        return _rect(shape.a0, low, shape.a1, high)
+    return _rect(low, shape.a0, high, shape.a1)
 
 
 def cut_map(part: PartPlan) -> CutMap:
@@ -145,14 +164,20 @@ def write_svg(drawing: CutMap, path: Path | str, margin: float = 5.0) -> Path:
 
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.3f}mm" '
-        f'height="{height:.3f}mm" viewBox="0 0 {width:.3f} {height:.3f}">',
+        (
+            f'<svg xmlns="http://www.w3.org/2000/svg" width="{width:.3f}mm" '
+            f'height="{height:.3f}mm" viewBox="0 0 {width:.3f} {height:.3f}">'
+        ),
         '<g fill="none" stroke="#000" stroke-width="0.2">',
     ]
     for polygon in drawing.outlines:
-        lines.append(f'<polygon class="outline" points="{" ".join(at(p) for p in polygon)}"/>')
+        lines.append(
+            f'<polygon class="outline" points="{" ".join(at(p) for p in polygon)}"/>'
+        )
     for polygon in drawing.holes:
-        lines.append(f'<polygon class="cut" points="{" ".join(at(p) for p in polygon)}"/>')
+        lines.append(
+            f'<polygon class="cut" points="{" ".join(at(p) for p in polygon)}"/>'
+        )
     for x, y, d in drawing.circles:
         cx, cy = at((x, y)).split(",")
         lines.append(f'<circle class="cut" cx="{cx}" cy="{cy}" r="{d / 2:.4f}"/>')
@@ -185,7 +210,18 @@ def write_dxf(drawing: CutMap, path: Path | str) -> Path:
     for polygon in drawing.holes:
         out += _dxf_polyline(polygon, "CUT")
     for x, y, d in drawing.circles:
-        out += ["0", "CIRCLE", "8", "CUT", "10", f"{x:.4f}", "20", f"{y:.4f}", "40", f"{d / 2:.4f}"]
+        out += [
+            "0",
+            "CIRCLE",
+            "8",
+            "CUT",
+            "10",
+            f"{x:.4f}",
+            "20",
+            f"{y:.4f}",
+            "40",
+            f"{d / 2:.4f}",
+        ]
     out += ["0", "ENDSEC", "0", "EOF", ""]
     target = Path(path)
     target.write_text("\n".join(out), encoding="utf-8")

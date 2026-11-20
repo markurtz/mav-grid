@@ -27,7 +27,7 @@ import math
 from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, ClassVar, Literal
+from typing import Any, ClassVar, Literal, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Field, PrivateAttr
 
@@ -271,7 +271,7 @@ class Params(BaseModel):
         :returns: The typed parameters.
         """
         params = cls.model_validate(raw)
-        params._raw = copy.deepcopy(raw)
+        params._raw = copy.deepcopy(raw)  # noqa: SLF001
         return params
 
     @classmethod
@@ -387,9 +387,10 @@ class Params(BaseModel):
         return names
 
 
-def _by_id[T: (Thread, Fixing, ReferenceKey, GaugeSpec)](
-    items: list[T], item_id: str, what: str
-) -> T:
+_T = TypeVar("_T", Thread, Fixing, ReferenceKey, GaugeSpec)
+
+
+def _by_id(items: list[_T], item_id: str, what: str) -> _T:
     for item in items:
         if item.id == item_id:
             return item

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "plate",
+  "id": "plate-gridfinity-2x2-small",
+  "name": "gridfinity plate, 2 x 2, small",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small · 2 × 2 · Gridfinity plate · Screw fix",
+  "size": "small",
+  "span": [
+    2,
+    2
+  ],
+  "kind": "gridfinity",
+  "process": "printed",
+  "fixing": "screw",
+  "fixing_cells": "standard",
+  "target": {
+    "system": "Gridfinity",
+    "version": "42 mm baseplate pockets.",
+    "level": "face-plate",
+    "licence": "MIT",
+    "attribution": "Gridfinity by Zack Freedman",
+    "support_id": "gridfinity",
+    "min_span": [
+      2,
+      2
+    ],
+    "repeat_cells": 21,
+    "from_scratch": true
+  }
+}

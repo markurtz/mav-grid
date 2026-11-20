@@ -113,7 +113,14 @@ def _slots(profile: RailProfile, length: float, top: float, over: float) -> list
         x = first + index * profile.slot_pitch
         ops.append(
             cut(
-                Box(x - profile.slot / 2, -half, top - profile.slot_depth, x + profile.slot / 2, half, top + over),
+                Box(
+                    x - profile.slot / 2,
+                    -half,
+                    top - profile.slot_depth,
+                    x + profile.slot / 2,
+                    half,
+                    top + over,
+                ),
                 "cross-slot",
             )
         )
@@ -161,8 +168,12 @@ def rail_parts(
     head, head_depth = COUNTERBORE
     screws = [(index - (cells - 1) / 2) * pitch for index in range(cells)]
     for x in screws:
-        ops.append(cut(Cylinder(x, 0.0, -TONGUE_DEPTH - over, top + over, bore), "screw-hole"))
-        ops.append(cut(Cylinder(x, 0.0, top - head_depth, top + over, head), "counterbore"))
+        ops.append(
+            cut(Cylinder(x, 0.0, -TONGUE_DEPTH - over, top + over, bore), "screw-hole")
+        )
+        ops.append(
+            cut(Cylinder(x, 0.0, top - head_depth, top + over, head), "counterbore")
+        )
     rail = PartPlan(
         name="rail",
         role="adapter",
@@ -173,23 +184,33 @@ def rail_parts(
     parts = [rail]
     if options.reference_parts:
         gap = params.depth(key.size) - key.height
-        nut_plan = plan_key(key_record(nut, params=params), params=params, options=options)
+        nut_plan = plan_key(
+            key_record(nut, params=params), params=params, options=options
+        )
         for index, x in enumerate(screws):
             source = nut_plan.parts[0]
             parts.append(
                 PartPlan(
                     name=f"nut-{index}",
                     role="reference",
-                    sections=[Section(list(source.sections[0].ops), Frame.translate(x, 0.0, -gap))],
+                    sections=[
+                        Section(
+                            list(source.sections[0].ops), Frame.translate(x, 0.0, -gap)
+                        )
+                    ],
                     label=key.name,
                     meta={"reference_key": nut},
                 )
             )
     notes = [
-        f"The {system} profile is drawn from commonly published figures and is "
-        "unverified: check it against its standard before making a part.",
-        f"The rail holds with {len(screws)} {thread.id} screws into '{nut}' nuts "
-        "in the groove. It does not rely on the corner zone or on a plate.",
+        (
+            f"The {system} profile is drawn from commonly published figures and is "
+            "unverified: check it against its standard before making a part."
+        ),
+        (
+            f"The rail holds with {len(screws)} {thread.id} screws into '{nut}' nuts "
+            "in the groove. It does not rely on the corner zone or on a plate."
+        ),
         "The foot, tongue and counterbore are modelling choices.",
     ]
     return parts, notes
