@@ -1,0 +1,63 @@
+---
+# Copyright 2026 markurtz
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+name: Specification Change
+description: Propose a change to a MAV Grid rule, dimension or fit
+labels:
+  - "spec"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to propose a change to the MAV Grid specification (a rule, a decided value, a fit or a test).
+        Changes to decided values affect every part already made, so please include the evidence behind the proposal.
+  - type: input
+    id: rules
+    attributes:
+      label: Affected rule IDs
+      description: For example C-3, P-6, F-2. Write "new" for a new rule.
+      placeholder: "C-3, F-2"
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind of change
+      options:
+        - Dimension or decided value
+        - New rule
+        - Clarification or wording
+        - Test or gauge
+        - Compatibility (adapter or support level)
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: The current text or value, and what it should become.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Measurements, prints, cuts, calculations or references that support the
+        change. Say whether anything was physically made.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Compatibility impact
+      description: Which existing parts, plates or adapters would stop conforming?
