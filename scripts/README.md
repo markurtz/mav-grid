@@ -59,6 +59,7 @@ If you are adding or modifying a script in this directory, please ensure it adhe
 | :---------------------- | :------------------------------------------------------------------------------------- |
 | `check_links.py`        | Check the links in Markdown files with `urlchecker` (`hatch run project:link-checks`). |
 | `generate_doc_tests.py` | Turn Python snippets in Markdown into pytest files (`hatch run project:tests-int`).    |
+| `make_models.py`        | Build every sample part and example scene into `build/mav-grid/models` (needs `cad`).  |
 | `make_samples.py`       | Rewrite the sample claim records in `samples/` from the generators (`--check` in CI).  |
 | `run_oci.py`            | Run container linters, scanners and structure tests (`hatch run oci:*`).               |
 | `set_spec_identity.py`  | Change the schema address or the licence expression in every spec file at once.        |
