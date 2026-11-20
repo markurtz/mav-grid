@@ -8,7 +8,7 @@ MAV Grid defines a 32 mm grid of swappable face plates separated by 14 degree do
 - [Documentation Home](https://markurtz.github.io/mav-grid/): Main site home page
 - [Specification](https://markurtz.github.io/mav-grid/specification/): Status, decided values and conventions
 - [Getting Started](https://markurtz.github.io/mav-grid/getting-started/): Installation and first commands
-- [Guides](https://markurtz.github.io/mav-grid/guides/): Repository layout and CI/CD
+- [Guides](https://markurtz.github.io/mav-grid/guides/): Generating parts, changing parameters, plates and adapters, repository layout and CI/CD
 - [API Reference](https://markurtz.github.io/mav-grid/reference/): CLI and Python API reference
 
 ## Architectural Topography
@@ -21,23 +21,28 @@ MAV Grid defines a 32 mm grid of swappable face plates separated by 14 degree do
 
 ### Specification
 - [spec/README.md](spec/README.md): Specification status, layout and conventions.
-- [spec/mav-grid-params.json](spec/mav-grid-params.json): Decided values of the current draft.
+- [spec/mav-grid-spec.md](spec/mav-grid-spec.md): Text of the 0.11 draft, with rule IDs.
+- [spec/data/params.json](spec/data/params.json): Every constant, limit, thread, fixing, reference key and gauge.
+- [spec/data/](spec/data/): Plate kinds, support register, rules, decisions, tests and test vectors.
+- [spec/examples/](spec/examples/): Valid and invalid claim records.
 - [spec/CHANGELOG.md](spec/CHANGELOG.md): Specification changes by version.
-- [spec/schema/](spec/schema/): Generated JSON Schema (planned).
+- [spec/schema/](spec/schema/): Normative JSON Schema 2020-12 files, written by hand.
+- [samples/](samples/): Sample claim records, written by `scripts/make_samples.py`.
 
 ### Core Python Modules
 - [src/mav_grid/__init__.py](src/mav_grid/__init__.py): Package initialization and public API.
-- [src/mav_grid/spec.py](src/mav_grid/spec.py): Targeted specification version.
+- [src/mav_grid/spec.py](src/mav_grid/spec.py): Targeted specification version, schema address and licence expressions.
 - [src/mav_grid/settings.py](src/mav_grid/settings.py): Pydantic settings.
 - [src/mav_grid/logging.py](src/mav_grid/logging.py): Loguru logging setup.
-- [src/mav_grid/schema/](src/mav_grid/schema/): Parameter schema models (planned).
-- [src/mav_grid/generators/](src/mav_grid/generators/): Parameterized geometry generators (planned).
-- [src/mav_grid/plates/](src/mav_grid/plates/): Face plate catalogue (planned).
-- [src/mav_grid/adapters/](src/mav_grid/adapters/): Cross-compatibility adapters (planned).
-- [src/mav_grid/export/](src/mav_grid/export/): STEP/STL/3MF/GLB exporters (planned).
+- [src/mav_grid/schema/](src/mav_grid/schema/): Spec file loading, validation, typed parameters and records, formulas, rule checker.
+- [src/mav_grid/geometry/](src/mav_grid/geometry/): Kernel-free shapes and plans, and the optional build123d kernel.
+- [src/mav_grid/generators/](src/mav_grid/generators/): Grid faces, folds, plates, keys, gauges; panel, corner, column and box records.
+- [src/mav_grid/plates/](src/mav_grid/plates/): One drawing function per plate kind.
+- [src/mav_grid/adapters/](src/mav_grid/adapters/): Adapters to other systems, modelled from scratch.
+- [src/mav_grid/export/](src/mav_grid/export/): STEP, STL, 3MF, GLB, SVG and DXF writers and the release folder.
 
 ### Testing Suite Tiers
 - [tests/python/unit/](tests/python/unit/): Python unit tests.
-- [tests/python/integration/](tests/python/integration/): Python integration tests, including spec value consistency.
+- [tests/python/integration/](tests/python/integration/): Python integration tests, including spec file consistency, samples and CAD builds.
 - [tests/e2e/](tests/e2e/): End-to-end tests against the installed package.
 - [examples/](examples/): Runnable examples, each with its own test.

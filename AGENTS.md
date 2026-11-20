@@ -24,19 +24,23 @@ MAV Grid is an open, parametric dovetail-groove grid and face-plate standard. Th
 
 - **Primary Languages:** Python 3.11+
 - **Configuration & Build Backend:** Hatch (with `gitversioned` for versions), uv as installer
-- **Key Dependencies:** Pydantic / Pydantic-Settings v2, Typer, Rich, Loguru
+- **Key Dependencies:** Pydantic / Pydantic-Settings v2, jsonschema, Typer, Rich, Loguru; build123d as the optional `cad` extra (installed in the dev environment)
 - **Docs:** Zensical
 
 ## Core Directories & Architecture
 
-- `spec/`: normative specification, decided values (`mav-grid-params.json`), changelog, generated JSON Schema (`spec/schema/`). Solderpad Hardware Licence 2.0.
-- `samples/`: sample parameter files, validated against the schema. Solderpad Hardware Licence 2.0.
+- `spec/`: specification text, changelog, hand-written normative JSON Schema (`spec/schema/`), data files (`spec/data/`: constants, kinds, support, rules, decisions, tests, vectors) and example records (`spec/examples/`). Solderpad Hardware Licence 2.0.
+- `samples/`: sample claim records, written by `scripts/make_samples.py`. Never edit them by hand. Solderpad Hardware Licence 2.0.
 - `src/mav_grid/`: the toolkit.
-  - `__main__.py`: `mav-grid` CLI (`--version`, `info`).
-  - `spec.py`: the spec version the toolkit targets.
+  - `__main__.py`: `mav-grid` CLI (`info`, `spec ...`, `new ...`, `validate`, `claim`, `build`).
+  - `spec.py`: the spec version, schema address and licence expressions the toolkit targets.
   - `settings.py`: Pydantic settings (`MAV_GRID__*` env vars, `[tool.mav_grid]` in pyproject).
   - `logging.py`: Loguru setup, silent unless enabled.
-  - `schema/`, `generators/`, `plates/`, `adapters/`, `export/`: planned subpackages; each `__init__.py` docstring states its responsibility.
+  - `schema/`: spec file loading, validation, `Params`, claim record models, formulas, rule checker.
+  - `geometry/`: kernel-free shapes, frames and plans (`shapes.py`), modelling options (`options.py`), the build123d kernel (`solid.py`, imported lazily).
+  - `generators/`: plans for grid faces, plates, keys, gauges; record helpers for panels, corners, columns, boxes.
+  - `plates/`: one drawing function per plate kind. `adapters/`: adapters to other systems.
+  - `export/`: STEP, STL, 3MF, GLB, SVG, DXF and the release folder.
 - `tests/`: `python/unit/`, `python/integration/`, and `e2e/` (installed package).
 - `examples/`: runnable examples, each with a `test_example.py`.
 - `docs/`: Zensical documentation source.
@@ -46,8 +50,11 @@ See `docs/guides/repository-layout.md` for how the pieces depend on each other.
 
 ## Domain Rules
 
-- **The spec is the source of truth.** A change to a decided value updates the rule text, `spec/CHANGELOG.md`, `spec/mav-grid-params.json` and (once it exists) the schema, in the same change. `tests/python/integration/test_spec_params.py` checks the values stay consistent.
-- **No hard-coded dimensions in generators.** Generators take schema objects as input; values come only from the schema.
+- **The spec is the source of truth.** A change to a constant updates `spec/data/params.json`, the rule text and `spec/CHANGELOG.md` in the same change, then `mav-grid spec vectors --write` and `python scripts/make_samples.py`. `tests/python/integration/test_spec_files.py` and `test_samples.py` fail when the files disagree.
+- **The 0.11 spec is a draft.** Choices D-1 to D-23 are proposed, not accepted. Keep every MAV Grid value in `spec/data/` so a changed choice is a data change. The schema address and licence expression are assumptions too; `scripts/set_spec_identity.py` changes them everywhere.
+- **Nothing has been made or measured.** Do not describe a fit, load or clearance as proven.
+- **No hard-coded MAV Grid dimensions in generators.** Generators read `mav_grid.schema.Params`. Modelling choices the spec leaves open go in `mav_grid.geometry.Options`. Dimensions of other systems are named module constants with their source.
+- **Plans before solids.** Generators return kernel-free plans; only `mav_grid.geometry.solid` and `mav_grid.export.solids` import build123d, and they do so lazily. Tests that need the kernel use `pytest.importorskip("build123d")`.
 - **No third-party geometry.** Adapters are modelled from scratch from published or measured dimensions. Never copy geometry from another system's files (Multiboard in particular has a restrictive licence).
 - **Units** are millimetres and degrees.
 - **Generated geometry** (STEP, STL, 3MF, GLB) is not committed; it goes to `build/mav-grid/`.

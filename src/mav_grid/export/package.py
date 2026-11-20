@@ -224,7 +224,8 @@ def write_release(
 ) -> Release:
     """Write the release files of a planned record into a folder.
 
-    Geometry file names carry the spec version (rule F-3). Reference parts
+    Geometry file names carry the spec version (rule F-3 asks it of gauge
+    files; the toolkit does it for every part). Reference parts
     (bought hardware, an existing surface) appear in the STEP, GLB and
     preview for context and get no mesh of their own.
 

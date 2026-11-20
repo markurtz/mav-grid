@@ -30,8 +30,8 @@ Install the package in a virtual environment from the repository root (see [DEVE
 | Example                              | Complexity | Description                                                        |
 | :----------------------------------- | :--------- | :----------------------------------------------------------------- |
 | **[`project_info/`](project_info/)** | Beginner   | Print the toolkit version, the targeted spec version and settings. |
-
-Planned examples, added with the schema and generators: validate a sample parameter file, generate a grooved panel in both sizes, generate a face plate of any span, and build an adapter plate.
+| **[`build_panel/`](build_panel/)**   | Beginner   | Write a swap-base panel record, check it and write its release.    |
+| **[`custom_plate/`](custom_plate/)** | Medium     | Try a plate with a changed constant and see what it derives.       |
 
 ## Running the Examples
 

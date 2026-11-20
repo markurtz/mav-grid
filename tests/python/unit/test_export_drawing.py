@@ -34,7 +34,7 @@ def test_cut_map_of_a_plate(tmp_path: Path, params: Params) -> None:
     x0, y0, x1, y1 = drawing.bounds()
     assert (x1 - x0, y1 - y0) == pytest.approx(params.plate_top((2, 1)))
     svg = write_svg(drawing, tmp_path / "plate.svg").read_text(encoding="utf-8")
-    assert svg.startswith("<svg") or svg.startswith("<?xml")
+    assert svg.startswith(("<svg", "<?xml"))
     dxf = write_dxf(drawing, tmp_path / "plate.dxf").read_text(encoding="utf-8")
     assert "ENTITIES" in dxf
     assert dxf.rstrip().endswith("EOF")

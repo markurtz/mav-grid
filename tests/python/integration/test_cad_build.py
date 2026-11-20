@@ -129,4 +129,4 @@ def test_release_writes_every_format(tmp_path: Path) -> None:
     for entry in release.files:
         assert (tmp_path / entry["path"]).stat().st_size > 0
     step = next(tmp_path.glob("*.step"))
-    assert "0.11.0-draft.1" in step.name, "file names carry the spec version (F-3)"
+    assert "0.11.0-draft.1" in step.name, "file names carry the spec version"

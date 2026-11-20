@@ -52,8 +52,10 @@ UNCHECKED_LICENCE = "Not checked: read the target's terms before publishing (rul
 TARGET_TERMS: dict[str, tuple[str, str]] = {
     "gridfinity": ("MIT", "Gridfinity by Zack Freedman"),
     "multiboard": (
-        "Multiboard licence: remixes are restricted and from-scratch compatible "
-        "parts are not addressed (test T-15)",
+        (
+            "Multiboard licence: remixes are restricted and from-scratch compatible "
+            "parts are not addressed (test T-15)"
+        ),
         "Multiboard (multiboard.io)",
     ),
 }

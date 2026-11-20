@@ -39,15 +39,15 @@ from mav_grid.generators import (
     plate_record,
     tile,
 )
-from mav_grid.generators.layout import edge_axis
-from mav_grid.geometry import Frame, Options
+from mav_grid.generators.layout import EdgeAxis, edge_axis
+from mav_grid.geometry import AssemblyPlan, Frame, Frustum, Options
 from mav_grid.plates import KINDS, kind_table, kind_target
-from mav_grid.schema import Params, Placement
+from mav_grid.schema import Params, Placement, Record
 
 
-def errors(record: object) -> list[str]:
+def errors(record: Record) -> list[str]:
     """Return the MUST failures of a typed record."""
-    doc = record.to_dict()  # type: ignore[attr-defined]
+    doc = record.to_dict()
     return [str(i) for i in check_record(doc) if i.severity == "error"]
 
 
@@ -87,7 +87,7 @@ def test_frame_composition() -> None:
     ],
     ids=lambda record: record.name,
 )
-def test_structure_records_follow_the_rules(record: object) -> None:
+def test_structure_records_follow_the_rules(record: Record) -> None:
     """Every structure helper writes a record with no MUST failure."""
     assert errors(record) == []
 
@@ -100,6 +100,14 @@ def test_closed_faces_state_their_key_entries() -> None:
     assert panel(2, 2).faces[0].key_entries is None
 
 
+def ends(frame: Frame, axis: EdgeAxis) -> list[tuple[float, float, float]]:
+    """Return both ends of a face edge in the frame of the whole body."""
+    (x, y, z), (tx, ty, tz) = axis.start, axis.along
+    return [
+        frame.point((x + k * tx, y + k * ty, z + k * tz)) for k in (0.0, axis.length)
+    ]
+
+
 @pytest.mark.sanity
 def test_fold_edges_of_a_box_coincide(params: Params) -> None:
     """The two edges joined by a fold land on the same line in space."""
@@ -110,18 +118,8 @@ def test_fold_edges_of_a_box_coincide(params: Params) -> None:
     for fold in record.folds:
         a = edge_axis(faces[fold.a.face], fold.a.edge, params.pitch)
         b = edge_axis(faces[fold.b.face], fold.b.edge, params.pitch)
-        ends_a = sorted(
-            frames[fold.a.face].point(
-                tuple(s + k * t for s, t in zip(a.start, a.along, strict=True))
-            )
-            for k in (0.0, a.length)
-        )
-        ends_b = sorted(
-            frames[fold.b.face].point(
-                tuple(s + k * t for s, t in zip(b.start, b.along, strict=True))
-            )
-            for k in (0.0, b.length)
-        )
+        ends_a = sorted(ends(frames[fold.a.face], a))
+        ends_b = sorted(ends(frames[fold.b.face], b))
         for p, q in zip(ends_a, ends_b, strict=True):
             assert math.dist(p, q) == pytest.approx(0.0, abs=1e-6)
 
@@ -164,11 +162,15 @@ def test_kind_registry_is_fully_drawn() -> None:
 def test_plate_follows_changed_parameters(params: Params) -> None:
     """Nothing is hard-coded: a wider opening gives a narrower plate."""
     wide = params.with_values(opening=10.0)
-    base = plan_plate(size="small", span=(1, 1)).parts[0].sections[0].ops[0].shape
+
+    def top_width(plan: AssemblyPlan) -> float:
+        body = plan.parts[0].sections[0].ops[0].shape
+        assert isinstance(body, Frustum)
+        return body.top[2] - body.top[0]
+
+    assert top_width(plan_plate(size="small", span=(1, 1))) == pytest.approx(24.0)
     changed = plan_plate(size="small", span=(1, 1), params=wide)
-    shape = changed.parts[0].sections[0].ops[0].shape
-    assert shape.top[2] - shape.top[0] == pytest.approx(22.0)
-    assert base.top[2] - base.top[0] == pytest.approx(24.0)
+    assert top_width(changed) == pytest.approx(22.0)
 
 
 @pytest.mark.sanity
@@ -197,4 +199,4 @@ def test_options_change_the_model_not_the_spec() -> None:
     options = Options(overcut=0.5)
     assert plan_record(panel(2, 2).to_dict(), options=options).parts
     with pytest.raises(ValueError, match="pitch"):
-        Options(pitch=30)  # type: ignore[call-arg]
+        Options(pitch=30)  # ty: ignore[unknown-argument]

@@ -67,7 +67,7 @@ def test_groove_profile_is_closed_and_overcut(params: Params) -> None:
     ],
 )
 def test_fixing_cells(params: Params, cells: int, expected: list[int]) -> None:
-    """Screws sit in the first, every fourth and the last cell (rule P-5)."""
+    """Screws sit in the first, every fourth and the last cell (rule P-13)."""
     cells_along = [[i, 0] for i in expected]
     assert fixing_cells(params.raw, (cells, 1)) == cells_along
     assert params.fixing_cells((cells, 1)) == cells_along

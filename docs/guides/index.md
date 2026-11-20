@@ -40,6 +40,33 @@ Where the specification, schema, toolkit packages and samples live, and how they
 
 </div>
 
+<div class="card" markdown>
+:material-cube-outline: **Generate Parts**
+
+From a claim record to STEP, STL, 3MF, GLB and cut maps, on the command line and in Python.
+
+[:octicons-arrow-right-24: View Guide](generate-parts.md)
+
+</div>
+
+<div class="card" markdown>
+:material-tune: **Change the Parameters**
+
+Where every number lives, how to try a value, and how to change a draft choice of the spec.
+
+[:octicons-arrow-right-24: View Guide](change-parameters.md)
+
+</div>
+
+<div class="card" markdown>
+:material-puzzle-outline: **Plates and Adapters**
+
+The 25 plate kinds, the adapters to other systems, and the rules on sources and licences.
+
+[:octicons-arrow-right-24: View Guide](plates-and-adapters.md)
+
+</div>
+
 </div>
 
 !!! tip "Contributing a Guide"
