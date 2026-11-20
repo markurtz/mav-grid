@@ -49,6 +49,8 @@ COPY .git_archival.txt .gitattributes ./
 
 # Copy source tree
 COPY src/ ./src/
+# The wheel carries the normative spec files (see pyproject force-include).
+COPY spec/ ./spec/
 
 # Build Python wheel distributions
 # hadolint ignore=DL3059

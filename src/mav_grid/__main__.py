@@ -382,7 +382,10 @@ def build(
     """Build claim records into release folders of geometry and records."""
     from mav_grid.export import FORMATS, SOLID_FORMATS, write_release  # noqa: PLC0415
     from mav_grid.generators import RecordError, load_record, plan_record  # noqa: PLC0415
-    from mav_grid.geometry.solid import kernel_available  # noqa: PLC0415
+    from mav_grid.geometry.solid import (  # noqa: PLC0415
+        KernelMissingError,
+        kernel_available,
+    )
 
     params = _params(params_file, values)
     settings = get_settings()
@@ -402,7 +405,13 @@ def build(
         except NotImplementedError as error:
             typer.echo(f"{path}: {error}", err=True)
             raise typer.Exit(1) from None
-        release = write_release(plan, root / path.stem, formats=wanted, params=params)
+        try:
+            release = write_release(
+                plan, root / path.stem, formats=wanted, params=params
+            )
+        except KernelMissingError as error:
+            typer.echo(str(error), err=True)
+            raise typer.Exit(1) from None
         typer.echo(f"{path.name}: {len(release.files)} files in {release.folder}")
         for note in release.report.get("notes", []):
             typer.echo(f"  note: {note}")
