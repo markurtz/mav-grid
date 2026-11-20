@@ -1,0 +1,2293 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/support.schema.json",
+  "spec_version": "0.11.0-draft.1",
+  "date": "2026-11-20",
+  "note": "Levels come from a paper study of the surveyed dimensions against the B2 groove. None has been tried with a made part. 'intended' is the route the owner set for each system.",
+  "counts": {
+    "native": 8,
+    "native-with-nut": 12,
+    "face-plate": 59,
+    "face-plate-adapter": 22,
+    "adapter": 5,
+    "add-on": 2,
+    "not-determined": 6
+  },
+  "systems": [
+    {
+      "id": "pegboard-us-quarter-inch",
+      "family": "Perforated pegboard",
+      "version": "US 1/4 in hardboard",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "pegboard-1in",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); hooks need about 12 mm clear behind, so the plate is a sheet on a relieved back."
+    },
+    {
+      "id": "pegboard-us-eighth-inch",
+      "family": "Perforated pegboard",
+      "version": "US 1/8 in hardboard",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "pegboard-1in",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); hooks need about 8 mm clear behind, so the plate is a sheet on a relieved back."
+    },
+    {
+      "id": "pegboard-eu-25",
+      "family": "Perforated pegboard",
+      "version": "EU 25 mm hardboard",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); pattern and grid line up every 25 cells (800 mm); hooks need about 10 mm clear behind, so the plate is a sheet on a relieved back."
+    },
+    {
+      "id": "pegboard-eu-38-steel",
+      "family": "Perforated pegboard",
+      "version": "EU 38 mm steel panel (Bott Perfo, Kappes RasterPlan)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); pattern and grid line up every 19 cells (608 mm); hooks need about 12 mm clear behind, so the plate is a sheet on a relieved back."
+    },
+    {
+      "id": "pegboard-us-steel-slotted",
+      "family": "Perforated pegboard",
+      "version": "US steel pegboard with slots (Wall Control style)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); hooks need about 12 mm clear behind, so the plate is a sheet on a relieved back."
+    },
+    {
+      "id": "wire-gridwall",
+      "family": "Perforated pegboard",
+      "version": "Wire gridwall",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); wire mesh held in a frame plate."
+    },
+    {
+      "id": "ikea-skadis",
+      "family": "Slotted pegboard",
+      "version": "IKEA Skådis (fibreboard, metal)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "kind": "skadis",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); pattern and grid line up every 5 cells (160 mm); hooks need about 15 mm clear behind, so the plate is a sheet on a relieved back; second slot grid offset 20, 20."
+    },
+    {
+      "id": "slatwall-3in",
+      "family": "Hang-lip walls",
+      "version": "Slatwall, 3 in rows (retail standard)",
+      "level": "face-plate",
+      "intended": "groove-or-plate",
+      "sizes": [
+        "large"
+      ],
+      "min_span": [
+        1,
+        4
+      ],
+      "kind": "slatwall-3in",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "A 14 degree groove cannot give the 15.5 mm lip pocket, so slatwall is a face plate: 1 slot per 2 rows, 2 slots at true 76.2 pitch in 4 rows. Large only (groove 7.4 deep plus lip)."
+    },
+    {
+      "id": "slatwall-4-6-12in",
+      "family": "Hang-lip walls",
+      "version": "Slatwall, 4, 6 or 12 in rows",
+      "level": "face-plate",
+      "intended": "groove-or-plate",
+      "sizes": [
+        "large"
+      ],
+      "min_span": [
+        1,
+        5
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "A 14 degree groove cannot give the 15.5 mm lip pocket, so slatwall is a face plate: 1 slot per 2 rows, 2 slots at true 101.6 pitch in 5 rows. Large only (groove 7.4 deep plus lip)."
+    },
+    {
+      "id": "pvc-garage-slatwall",
+      "family": "Hang-lip walls",
+      "version": "PVC garage slatwall (Proslat, Gladiator GearWall, StoreWALL)",
+      "level": "face-plate",
+      "intended": "groove-or-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        3
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Brand groove not determined."
+    },
+    {
+      "id": "single-track-rail",
+      "family": "Hang-lip walls",
+      "version": "Single track rail (Gladiator GearTrack, Rubbermaid FastTrack)",
+      "level": "face-plate",
+      "intended": "groove-or-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        5
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint any x 152; 0.0 mm spare; one rail, 152 high; lip not published."
+    },
+    {
+      "id": "louvred-bin-panel",
+      "family": "Hang-lip walls",
+      "version": "Louvred bin panel (Akro-Mils, Treston)",
+      "level": "not-determined",
+      "intended": "groove-or-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Louvre pitch not published; a louvre plate is a 1 x N row plate."
+    },
+    {
+      "id": "multiboard",
+      "family": "Printed wall tiles",
+      "version": "Multiboard",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "multiboard",
+      "licence": "MultiBuild Licence (Multiboard's own terms, not an open licence)",
+      "attribution": "Names Multiboard only to say what it fits. No logo. States that it is not affiliated with or endorsed by Multiboard.",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 cells of 25 need 2 x 2. Lines up every 25 cells (800 mm). Model it from scratch from measured or published dimensions, never from Multiboard files (section 15). Hole dimensions are not yet sourced (T-14).",
+      "source": "MultiBuild Licence, read 2026-11-20: https://multibuild.io/license"
+    },
+    {
+      "id": "opengrid-full",
+      "family": "Printed wall tiles",
+      "version": "openGrid Full",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "opengrid",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 cells of 28 need 2 x 2; also 1 in 2, 3 in 3, 4 in 4, 6 in 6; lines up every 7 cells (224 mm = 8 x 28)."
+    },
+    {
+      "id": "opengrid-lite",
+      "family": "Printed wall tiles",
+      "version": "openGrid Lite",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "opengrid",
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 cells of 28 need 2 x 2; also 1 in 2, 3 in 3, 4 in 4, 6 in 6; lines up every 7 cells (224 mm = 8 x 28)."
+    },
+    {
+      "id": "honeycomb-storage-wall",
+      "family": "Printed wall tiles",
+      "version": "Honeycomb Storage Wall",
+      "level": "not-determined",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Hex pitch not determined."
+    },
+    {
+      "id": "underware",
+      "family": "Cable channels",
+      "version": "Underware",
+      "level": "add-on",
+      "intended": "add-on",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Replaced by a MAV Grid add-on."
+    },
+    {
+      "id": "gridfinity",
+      "family": "Footprint bin grids",
+      "version": "Gridfinity",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "gridfinity",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "1 x 1 cells of 42 need 2 x 2; also 2 in 3, 3 in 5, 4 in 6, 6 in 9; lines up every 21 cells (672 mm = 16 x 42)."
+    },
+    {
+      "id": "euro-container",
+      "family": "Footprint bin grids",
+      "version": "Euro container (VDA KLT, Euronorm)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        10,
+        7
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 300 x 200; 12.0 mm spare; 16.0 mm spare; 400 x 300 and 600 x 400 modules listed in the note."
+    },
+    {
+      "id": "drawer-partitions",
+      "family": "Footprint bin grids",
+      "version": "Modular drawer partitions (Lista, Vidmar, Bott)",
+      "level": "add-on",
+      "intended": "add-on",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Replaced by a MAV Grid add-on."
+    },
+    {
+      "id": "systainer3",
+      "family": "Stacking tool cases",
+      "version": "Systainer³ M and L (Festool, Tanos, Makita Makpac)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        13,
+        10
+      ],
+      "kind": "case-footprint",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 396 x 296; 12.0 mm spare; 16.0 mm spare."
+    },
+    {
+      "id": "l-boxx",
+      "family": "Stacking tool cases",
+      "version": "L-BOXX (Bosch, Sortimo, Metabo MetaLoc)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        15,
+        12
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 442 x 357; 30.0 mm spare; 19.0 mm spare."
+    },
+    {
+      "id": "packout",
+      "family": "Stacking tool cases",
+      "version": "Milwaukee Packout",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        18,
+        14
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 561 x 409; 7.0 mm spare; 31.0 mm spare."
+    },
+    {
+      "id": "tool-cases-other",
+      "family": "Stacking tool cases",
+      "version": "Other single-brand lines (DeWalt ToughSystem 2.0 and TSTAK, Ryobi Link, Ridgid Pro, Klein ModBox, Stanley Pro-Stack)",
+      "level": "not-determined",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Per-product footprints."
+    },
+    {
+      "id": "twin-slot-us",
+      "family": "Slotted uprights",
+      "version": "Twin-slot standard, US (Knape & Vogt 82/85, Rubbermaid, Everbilt)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Upright bolts to the cell-centre holes as a 1-column strip; pitch 25.4 never lines up with 32; a MAV bracket that keys into the groove is the adapter."
+    },
+    {
+      "id": "twin-slot-metric",
+      "family": "Slotted uprights",
+      "version": "Twin-slot standard, metric (Elfa hang standard)",
+      "level": "face-plate",
+      "intended": "work-in",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "kind": "twin-slot-32",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Slot pitch equals the cell pitch: a 1 x 1 slot plate per row, or a 1 x N strip plate, keeps every slot on the grid; standard uprights also bolt to the cell-centre holes."
+    },
+    {
+      "id": "pilaster-strip",
+      "family": "Slotted uprights",
+      "version": "Pilaster strip (KV 255)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Upright bolts to the cell-centre holes as a 1-column strip; pitch 12.7 never lines up with 32; a MAV bracket that keys into the groove is the adapter."
+    },
+    {
+      "id": "closet-hang-standard",
+      "family": "Slotted uprights",
+      "version": "Closet hang standard (Elfa, IKEA Boaxel, ClosetMaid ShelfTrack)",
+      "level": "face-plate",
+      "intended": "work-in",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "kind": "twin-slot-32",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Slot pitch equals the cell pitch: a 1 x 1 slot plate per row, or a 1 x N strip plate, keeps every slot on the grid; standard uprights also bolt to the cell-centre holes."
+    },
+    {
+      "id": "gondola-upright",
+      "family": "Slotted uprights",
+      "version": "Retail gondola upright (Lozier, Madix)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Upright bolts to the cell-centre holes as a 1-column strip; pitch 25.4 never lines up with 32; a MAV bracket that keys into the groove is the adapter."
+    },
+    {
+      "id": "rivet-shelving",
+      "family": "Slotted uprights",
+      "version": "Boltless rivet shelving (Edsal, Husky, Gorilla Rack)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Upright bolts to the cell-centre holes as a 1-column strip; pitch 38.1 never lines up with 32; a MAV bracket that keys into the groove is the adapter."
+    },
+    {
+      "id": "pallet-rack-teardrop",
+      "family": "Slotted uprights",
+      "version": "Pallet rack teardrop (Interlake Mecalux style)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Upright bolts to the cell-centre holes as a 1-column strip; pitch 50.8 never lines up with 32; a MAV bracket that keys into the groove is the adapter; structural; adapter only for light duty."
+    },
+    {
+      "id": "system-32-shelf-holes",
+      "family": "Line-bored cabinet holes",
+      "version": "System 32 shelf and hardware holes",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An open 5.0 hole at the cell centre: a routed face or a hole plate. Not under a screwed loose plate, where the hole holds the plate screw.",
+      "kind": "hole-5",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Hole at every cell centre, 9.5 mm of plate each side."
+    },
+    {
+      "id": "system-32-construction-holes",
+      "family": "Line-bored cabinet holes",
+      "version": "System 32 construction holes",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A routed face or a hole plate with the 5.0 hole drilled out to 8.",
+      "kind": "hole-5",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Hole at every cell centre, 8.0 mm of plate each side; drill the 5 mm cell hole out to 8."
+    },
+    {
+      "id": "us-shelf-pin-holes",
+      "family": "Line-bored cabinet holes",
+      "version": "US shelf pin holes",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A routed face or a hole plate with the 5.0 hole drilled out to 6.35.",
+      "kind": "hole-5",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Hole at every cell centre, 8.8 mm of plate each side; drill the 5 mm cell hole out to 6.35."
+    },
+    {
+      "id": "hinge-cup-45-9-5",
+      "family": "Concealed hinge cups",
+      "version": "45/9.5 screw or dowel pattern (Blum, Häfele and most makers)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        2
+      ],
+      "kind": "hinge-cup-45",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "53 x 45 pattern. Plate thicker than the groove; stands proud or goes through the base."
+    },
+    {
+      "id": "hinge-cup-48-6",
+      "family": "Concealed hinge cups",
+      "version": "48/6 screw pattern (Hettich, some Häfele)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "56 x 45 pattern. Plate thicker than the groove; stands proud or goes through the base."
+    },
+    {
+      "id": "handle-centres-metric",
+      "family": "Handle and pull centres",
+      "version": "Metric",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "Open holes at cell centres 3, 4 or 5 cells apart (96, 128, 160 mm).",
+      "kind": "hole-5",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Hole at every cell centre, 9.8 mm of plate each side."
+    },
+    {
+      "id": "handle-centres-inch",
+      "family": "Handle and pull centres",
+      "version": "Inch",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        1
+      ],
+      "kind": "handle-3in",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "76.2 x 0 pattern; 101.6 mm centres need one more column."
+    },
+    {
+      "id": "minifix-15",
+      "family": "Knock-down connectors",
+      "version": "Cam and bolt (Häfele Minifix 15)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Free placement; fitting bores go in a face plate or the panel edge; cam 24 or 34 mm from the edge; fits a 2 x 1 plate."
+    },
+    {
+      "id": "clamex-p",
+      "family": "Knock-down connectors",
+      "version": "Lamello Clamex P",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Free placement; fitting bores go in a face plate or the panel edge."
+    },
+    {
+      "id": "knapp",
+      "family": "Knock-down connectors",
+      "version": "Knapp",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Free placement; fitting bores go in a face plate or the panel edge."
+    },
+    {
+      "id": "mft-96",
+      "family": "Round bore grids",
+      "version": "MFT / Parf 96",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "kind": "dog-20",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Pitch 96 is exactly 3 cells: one bore at the centre of each 3 x 3 plate keeps the pattern on pitch across plates."
+    },
+    {
+      "id": "bench-dog-metric",
+      "family": "Round bore grids",
+      "version": "Bench dog, metric",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "One feature needs 2 x 2 cells."
+    },
+    {
+      "id": "bench-dog-us",
+      "family": "Round bore grids",
+      "version": "Bench dog, US",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "One feature needs 2 x 2 cells."
+    },
+    {
+      "id": "fixturing-base-plate",
+      "family": "Round bore grids",
+      "version": "Modular fixturing base plate, hole-and-dowel (Halder L12 and L16)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); pattern and grid line up every 25 cells (800 mm)."
+    },
+    {
+      "id": "welding-table-d16",
+      "family": "Round bore grids",
+      "version": "D16 welding table (Siegmund System 16 and similar)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "kind": "fixture-16",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); pattern and grid line up every 25 cells (800 mm)."
+    },
+    {
+      "id": "welding-table-d22",
+      "family": "Round bore grids",
+      "version": "D22 welding table (Siegmund System 22)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        5,
+        5
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 5 x 5 cells (one feature in 2 x 2); pattern and grid line up every 25 cells (800 mm)."
+    },
+    {
+      "id": "welding-table-d28",
+      "family": "Round bore grids",
+      "version": "D28 welding table (Siegmund System 28)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        5,
+        5
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 5 x 5 cells (one feature in 2 x 2); pattern and grid line up every 25 cells (800 mm)."
+    },
+    {
+      "id": "fixture-table-5-8in",
+      "family": "Round bore grids",
+      "version": "Imperial fixture table, 5/8 in (Strong Hand BuildPro; CertiFlat and Langmuir similar)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1)."
+    },
+    {
+      "id": "fixture-plate-metric",
+      "family": "Tapped hole grids",
+      "version": "Metric fixture plate (Halder L12 type)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); pattern and grid line up every 25 cells (800 mm)."
+    },
+    {
+      "id": "fixture-plate-us",
+      "family": "Tapped hole grids",
+      "version": "US fixture plate (Te-Co 25020 to 25023 type)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1)."
+    },
+    {
+      "id": "optical-breadboard-metric",
+      "family": "Tapped hole grids",
+      "version": "Optical breadboard, metric (Newport M-SA2)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "kind": "optical-m6-25",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); pattern and grid line up every 25 cells (800 mm)."
+    },
+    {
+      "id": "optical-breadboard-imperial",
+      "family": "Tapped hole grids",
+      "version": "Optical breadboard, imperial (Newport SA2)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1)."
+    },
+    {
+      "id": "cheese-plate",
+      "family": "Tapped hole grids",
+      "version": "Camera cheese plate",
+      "level": "face-plate-adapter",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Free placement; fitting bores go in a face plate or the panel edge; no standard array."
+    },
+    {
+      "id": "vesa-75",
+      "family": "Fixed bolt and stud patterns",
+      "version": "VESA 75 (FDMI MIS-D 75)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "kind": "vesa",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "75 x 75 pattern."
+    },
+    {
+      "id": "vesa-100",
+      "family": "Fixed bolt and stud patterns",
+      "version": "VESA 100 (MIS-D 100; MIS-E 200 × 100)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        4,
+        4
+      ],
+      "kind": "vesa",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "100 x 100 pattern."
+    },
+    {
+      "id": "vesa-200",
+      "family": "Fixed bolt and stud patterns",
+      "version": "VESA 200 and larger (MIS-F)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        7,
+        7
+      ],
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "200 x 200 pattern."
+    },
+    {
+      "id": "quick-point-52",
+      "family": "Fixed bolt and stud patterns",
+      "version": "Zero-point, Lang Quick-Point 52",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); pattern and grid line up every 13 cells (416 mm)."
+    },
+    {
+      "id": "quick-point-96",
+      "family": "Fixed bolt and stud patterns",
+      "version": "Zero-point, Lang Quick-Point 96",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Pitch 96 is exactly 3 cells: one bore at the centre of each 3 x 3 plate keeps the pattern on pitch across plates."
+    },
+    {
+      "id": "zero-point-other",
+      "family": "Fixed bolt and stud patterns",
+      "version": "Zero-point, other vendors (Schunk VERO-S, RockLock, Erowa, System 3R)",
+      "level": "not-determined",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Vendor-specific."
+    },
+    {
+      "id": "iso-299-t-slots",
+      "family": "T-slot tables and tracks",
+      "version": "DIN 650 / ISO 299 machine table slots",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut. Tenons made to 8.00 enter only openings of 8.00 or more: the one-pass routed Large cut is 7.96.",
+      "thread": "M6",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "The opening matches ISO 299 slot 8 (bolt M6): slot 8 tenons, studs and clamps locate in the groove, and 32 mm is inside the standard's pitch range. A DIN 508 T-nut 8 / M6 is 13 wide at its foot, so it does not pass the opening: use a MAV nut.",
+      "source": "DIN 508 T-nut 8 / M6: 7.7 neck, 13 foot, 10 high: https://www.hoffmann-group.com/US/en/hus/p/375315-8"
+    },
+    {
+      "id": "us-mill-table-slots",
+      "family": "T-slot tables and tracks",
+      "version": "US mill table slots (ASME B5.1M)",
+      "level": "face-plate",
+      "intended": "native",
+      "sizes": [
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Slot 16 with 1/2-13 studs is wider than any groove option; a machined T-slot plate, Large only."
+    },
+    {
+      "id": "t-track",
+      "family": "T-slot tables and tracks",
+      "version": "Universal T-track (Rockler, Kreg, Veritas)",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A 1/4-20 MAV dovetail nut. The 19.05 x 9.5 track itself is a plate kind (t-track), Large only.",
+      "kind": "t-track",
+      "thread": "1/4-20",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "1/4-20 knobs and clamps thread into a MAV nut; hex heads do not seat; standard 19.05 x 9.5 track is deeper than Small; flush in Large only."
+    },
+    {
+      "id": "miter-slot",
+      "family": "T-slot tables and tracks",
+      "version": "Miter slot",
+      "level": "face-plate",
+      "intended": "native",
+      "sizes": [
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "kind": "miter-slot",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "19.05 x 9.5 slot plate, 1 row x N."
+    },
+    {
+      "id": "track-saw-rail",
+      "family": "T-slot tables and tracks",
+      "version": "Track-saw guide rail (Festool, Makita, Mafell, Bosch)",
+      "level": "not-determined",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Rail profile unpublished; a groove key that locates the rail is an add-on."
+    },
+    {
+      "id": "slotted-fab-table",
+      "family": "T-slot tables and tracks",
+      "version": "Slotted fabrication table (Fireball Tool, BuildPro MAX slotted)",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "M6 MAV dovetail nuts and clamps on slide keys.",
+      "thread": "M6",
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Grooves take MAV clamps anywhere, in place of through-slot clamps."
+    },
+    {
+      "id": "t-slot-20-series",
+      "family": "T-slot extrusion",
+      "version": "20 series, B-type (Bosch Rexroth slot 6, Misumi, generic 2020)",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M5 MAV dovetail nut.",
+      "thread": "M5",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Profile bolts along any groove with M5 into a MAV dovetail nut; rails sit on any 32 mm line."
+    },
+    {
+      "id": "t-slot-30-series",
+      "family": "T-slot extrusion",
+      "version": "30 series, B-type",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut.",
+      "thread": "M6",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Profile bolts along any groove with M6 into a MAV dovetail nut; rails sit on any 32 mm line."
+    },
+    {
+      "id": "t-slot-40-series",
+      "family": "T-slot extrusion",
+      "version": "40 series, B-type",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut. Only the slot 8 / M6 version of the profile bolts on.",
+      "thread": "M6",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Only the slot 8 / M6 version of this profile bolts on; M8 does not pass the 8.00 opening."
+    },
+    {
+      "id": "t-slot-45-series",
+      "family": "T-slot extrusion",
+      "version": "45 series, B-type",
+      "level": "face-plate",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "M8 does not pass the 8.00 opening; needs a tapped or T-slot face plate."
+    },
+    {
+      "id": "t-slot-i-type",
+      "family": "T-slot extrusion",
+      "version": "I-type (item Line 5, 6, 8, 10)",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut (Line 6). Line 8 and 10 use M8, which does not pass the 8.0 opening.",
+      "thread": "M6",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "The profile bolts along any groove with M6 into a MAV dovetail nut (Line 6). Line 8 and 10 use M8, which does not pass the opening, so they need a plate."
+    },
+    {
+      "id": "t-slot-8020-10-series",
+      "family": "T-slot extrusion",
+      "version": "80/20 10 series",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A 1/4-20 MAV dovetail nut.",
+      "thread": "1/4-20",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Profile bolts along any groove with 1/4-20 into a MAV dovetail nut; rails sit on any 32 mm line."
+    },
+    {
+      "id": "t-slot-8020-15-series",
+      "family": "T-slot extrusion",
+      "version": "80/20 15 series",
+      "level": "face-plate",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "5/16-18 does not pass the 8.00 opening; needs a tapped or T-slot face plate."
+    },
+    {
+      "id": "v-slot",
+      "family": "T-slot extrusion",
+      "version": "V-slot (OpenBuilds)",
+      "level": "native-with-nut",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M5 MAV dovetail nut.",
+      "thread": "M5",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Profile bolts along any groove with M5 into a MAV dovetail nut; rails sit on any 32 mm line."
+    },
+    {
+      "id": "t-slot-miniature",
+      "family": "T-slot extrusion",
+      "version": "Miniature (MakerBeam, OpenBeam, REV 15 mm)",
+      "level": "face-plate",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 2,
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "note": "The profile bolts with M3. M3 is not a named nut thread, so the profile bolts to a tapped plate. Moved from native with a MAV nut in 0.11, for the same reason as TS15."
+    },
+    {
+      "id": "strut-standard",
+      "family": "Strut channel",
+      "version": "Standard (Unistrut P1000, B-Line B22)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "open_ended": true,
+      "kind": "strut",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "41.3 channel sits on a 2-column plate, or bolts along a groove through its back slots with 1/4-20; 1/2-13 never passes."
+    },
+    {
+      "id": "strut-shallow",
+      "family": "Strut channel",
+      "version": "Shallow (P4000, P4100; P3300 and P3000 mid-depth)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "41.3 channel sits on a 2-column plate, or bolts along a groove through its back slots with 1/4-20; 1/2-13 never passes."
+    },
+    {
+      "id": "strut-deep",
+      "family": "Strut channel",
+      "version": "Deep (P5500, P5000)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "41.3 channel sits on a 2-column plate, or bolts along a groove through its back slots with 1/4-20; 1/2-13 never passes."
+    },
+    {
+      "id": "strut-metric",
+      "family": "Strut channel",
+      "version": "Metric strut (EU)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "41.3 channel sits on a 2-column plate, or bolts along a groove through its back slots with 1/4-20; 1/2-13 never passes."
+    },
+    {
+      "id": "french-cleat",
+      "family": "Dovetail and bevel profiles",
+      "version": "French cleat",
+      "level": "face-plate",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "kind": "french-cleat",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "45 degree cleat is a 1-row face plate, or a wood strip screwed to the cell-centre holes; rows on any multiple of 32 (96 to 192 typical)."
+    },
+    {
+      "id": "matchfit",
+      "family": "Dovetail and bevel profiles",
+      "version": "MatchFit dovetail groove (Microjig)",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "large"
+      ],
+      "needs": "A Large groove. Unproven until test T-1.",
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "The Large groove is designed to be the MatchFit groove. Unproven until test T-1. Small is too shallow for the clamps."
+    },
+    {
+      "id": "arca-swiss",
+      "family": "Dovetail and bevel profiles",
+      "version": "Arca-Swiss camera dovetail",
+      "level": "adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Arca plate clamp on a slide key."
+    },
+    {
+      "id": "optical-dovetail-rail",
+      "family": "Dovetail and bevel profiles",
+      "version": "Optical dovetail rail (Thorlabs, Newport, Owis)",
+      "level": "adapter",
+      "intended": "not-specified",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Rail carrier on a slide key."
+    },
+    {
+      "id": "picatinny",
+      "family": "Dovetail and bevel profiles",
+      "version": "Picatinny (MIL-STD-1913, STANAG 4694)",
+      "level": "adapter",
+      "intended": "adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Picatinny section on a slide key."
+    },
+    {
+      "id": "weaver",
+      "family": "Dovetail and bevel profiles",
+      "version": "Weaver",
+      "level": "adapter",
+      "intended": "not-specified",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "As Picatinny."
+    },
+    {
+      "id": "nato-rail",
+      "family": "Dovetail and bevel profiles",
+      "version": "NATO rail (camera handles)",
+      "level": "adapter",
+      "intended": "not-specified",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "NATO rail section on a slide key."
+    },
+    {
+      "id": "m-lok",
+      "family": "Slotted accessory and cargo strips",
+      "version": "M-LOK (Magpul)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "kind": "m-lok",
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 2 x 2); pattern and grid line up every 5 cells (160 mm)."
+    },
+    {
+      "id": "keymod",
+      "family": "Slotted accessory and cargo strips",
+      "version": "KeyMod",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); pattern and grid line up every 5 cells (160 mm)."
+    },
+    {
+      "id": "l-track",
+      "family": "Slotted accessory and cargo strips",
+      "version": "L-track (airline track)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 31.8 x any; 24.2 mm spare; track bolts through at 25.4 or 50.8 mm."
+    },
+    {
+      "id": "e-track",
+      "family": "Slotted accessory and cargo strips",
+      "version": "E-track",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        5,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 127 x any; 25.0 mm spare."
+    },
+    {
+      "id": "molle-pals",
+      "family": "Slotted accessory and cargo strips",
+      "version": "MOLLE / PALS webbing",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        2
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "63.5 x 31.4 pattern."
+    },
+    {
+      "id": "din-rail-ts35-7-5",
+      "family": "Top-hat rails",
+      "version": "TS35 × 7.5 (EN 60715)",
+      "level": "native-with-nut",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut for rails with 6.3 slots. Rails with 5.2 or 4.7 slots take the M5 nut.",
+      "min_span": [
+        1,
+        2
+      ],
+      "open_ended": true,
+      "kind": "din-rail-35",
+      "thread": "M6",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "The rail bolts along a groove into MAV nuts, or sits on a 2-row plate. A groove clip is the adapter the owner intended.",
+      "source": "TS35 steel rail slots 6.3 x 18: Weidmuller 1805980000 data sheet and AutomationDirect rail pages, read 2026-11-20. Other TS35 rails are slotted 5.2 x 25 and 4.7 x 25."
+    },
+    {
+      "id": "din-rail-ts35-15",
+      "family": "Top-hat rails",
+      "version": "TS35 × 15",
+      "level": "native-with-nut",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut for rails with 6.3 slots. Rails with 5.2 or 4.7 slots take the M5 nut.",
+      "min_span": [
+        1,
+        2
+      ],
+      "open_ended": true,
+      "kind": "din-rail-35",
+      "thread": "M6",
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "The rail bolts along a groove into MAV nuts, or sits on a 2-row plate. A groove clip is the adapter the owner intended.",
+      "source": "TS35 steel rail slots 6.3 x 18: Weidmuller 1805980000 data sheet and AutomationDirect rail pages, read 2026-11-20. Other TS35 rails are slotted 5.2 x 25 and 4.7 x 25."
+    },
+    {
+      "id": "din-rail-ts15",
+      "family": "Top-hat rails",
+      "version": "TS15 miniature",
+      "level": "face-plate",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 2,
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "note": "Slots are 4.2 wide, so the rail takes M4 screws. M4 is not a named nut thread, so the rail sits on a 1-row plate. Moved from native with a MAV nut in 0.11 (finding R-19).",
+      "source": "Phoenix Contact NS 15 PERF: slots 4.2 x 12.2 at 20 mm spacing: https://www.phoenixcontact.com/us/products/1207646/pdf"
+    },
+    {
+      "id": "din-rail-g32",
+      "family": "Top-hat rails",
+      "version": "G-section (G32) and C-sections",
+      "level": "native-with-nut",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "An M6 MAV dovetail nut. The slot size of this rail was not confirmed.",
+      "min_span": [
+        1,
+        2
+      ],
+      "open_ended": true,
+      "thread": "M6",
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Assumed to bolt along a groove with M6 into MAV nuts, like TS35. The slot size was not found, so this placement is a guess."
+    },
+    {
+      "id": "rack-19in",
+      "family": "Rack-unit panels",
+      "version": "19 in rack (EIA-310-E, IEC 60297)",
+      "level": "face-plate-adapter",
+      "intended": "to-determine",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        16,
+        1
+      ],
+      "open_ended": true,
+      "kind": "rack-rail",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Rails are adapter strips inside a MAV box 16 cells wide (512 mm outside, 17.9 mm per side for the rail); 18U is 800.1 mm, so 18U = 25 rows to 0.1 mm; flat on a wall the two rails are 2-column plates."
+    },
+    {
+      "id": "rack-10in",
+      "family": "Rack-unit panels",
+      "version": "10 in rack",
+      "level": "face-plate-adapter",
+      "intended": "to-determine",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        8,
+        1
+      ],
+      "open_ended": true,
+      "kind": "rack-rail",
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Rails are adapter strips inside a MAV box 8 cells wide (256 mm outside, 4.2 mm per side for the rail); 18U is 800.1 mm, so 18U = 25 rows to 0.1 mm; flat on a wall the two rails are 2-column plates."
+    },
+    {
+      "id": "eurorack",
+      "family": "Rack-unit panels",
+      "version": "Eurorack (Doepfer A-100)",
+      "level": "face-plate",
+      "intended": "to-determine",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        5
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint any x 133.35; 18.7 mm spare; 84 HP is 426.7 wide."
+    },
+    {
+      "id": "eurocard-subrack",
+      "family": "Rack-unit panels",
+      "version": "Eurocard subrack (IEC 60297-3)",
+      "level": "face-plate-adapter",
+      "intended": "to-determine",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        16,
+        1
+      ],
+      "open_ended": true,
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Rails are adapter strips inside a MAV box 16 cells wide (512 mm outside, 17.9 mm per side for the rail); 18U is 800.1 mm, so 18U = 25 rows to 0.1 mm; flat on a wall the two rails are 2-column plates."
+    },
+    {
+      "id": "lego-system",
+      "family": "8 mm stud and pin lattice",
+      "version": "LEGO System",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A stud plate (kind stud-8). A screwed one-cell stud plate carries 8 studs: the centre position is the plate hole.",
+      "min_span": [
+        1,
+        1
+      ],
+      "kind": "stud-8",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "3 x 3 positions per cell on the 8 mm lattice; the groove is exactly one lattice row, so parts bridge grooves on pitch."
+    },
+    {
+      "id": "lego-technic",
+      "family": "8 mm stud and pin lattice",
+      "version": "LEGO Technic",
+      "level": "native",
+      "intended": "native",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A plate with 4.8 holes on the 8 mm lattice. No kind is modelled yet.",
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "3 x 3 positions per cell on the 8 mm lattice; the groove is exactly one lattice row, so parts bridge grooves on pitch."
+    },
+    {
+      "id": "meccano",
+      "family": "Punched strips and angles",
+      "version": "Meccano / Erector",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 1 x 1 cells."
+    },
+    {
+      "id": "vex-v5",
+      "family": "Punched strips and angles",
+      "version": "VEX V5",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 1 x 1 cells."
+    },
+    {
+      "id": "gobilda",
+      "family": "Punched strips and angles",
+      "version": "goBILDA",
+      "level": "native",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "needs": "A plate with holes on the 8 mm lattice. No kind is modelled yet.",
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "3 x 3 positions per cell on the 8 mm lattice; the groove is exactly one lattice row, so parts bridge grooves on pitch."
+    },
+    {
+      "id": "actobotics",
+      "family": "Punched strips and angles",
+      "version": "Actobotics (ServoCity, discontinued)",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 1,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1)."
+    },
+    {
+      "id": "slotted-angle",
+      "family": "Punched strips and angles",
+      "version": "Slotted angle (Dexion, Speed-Frame)",
+      "level": "not-determined",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Punch patterns not published."
+    },
+    {
+      "id": "solderless-breadboard",
+      "family": "Breadboard and perfboard",
+      "version": "Solderless breadboard",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        6,
+        2
+      ],
+      "kind": "breadboard",
+      "popularity": 5,
+      "tags": [
+        "unproven"
+      ],
+      "note": "Footprint 165.1 x 54.6; 18.9 mm spare; 1.4 mm spare."
+    },
+    {
+      "id": "perfboard",
+      "family": "Breadboard and perfboard",
+      "version": "Perfboard and stripboard",
+      "level": "face-plate",
+      "intended": "face-plate",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "4 x 4 features need 1 x 1 cells."
+    },
+    {
+      "id": "wire-shelving-posts",
+      "family": "Rod and tube clamps",
+      "version": "Wire shelving posts (Metro style)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "25.4 mm tube: clamp block on a 2 x 2 plate or on a slide key."
+    },
+    {
+      "id": "tube-fittings",
+      "family": "Rod and tube clamps",
+      "version": "Tube fittings for steel pipe (Kee Klamp, Interclamp)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "33.4 mm tube: clamp block on a 2 x 2 plate or on a slide key."
+    },
+    {
+      "id": "lean-pipe",
+      "family": "Rod and tube clamps",
+      "version": "Lean pipe and joint (Creform, Trilogiq)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 2,
+      "tags": [
+        "unproven"
+      ],
+      "note": "28 mm tube: clamp block on a 2 x 2 plate or on a slide key."
+    },
+    {
+      "id": "lab-frame-rods",
+      "family": "Rod and tube clamps",
+      "version": "Lab frame rods (boss heads)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        1,
+        1
+      ],
+      "popularity": 4,
+      "tags": [
+        "unproven"
+      ],
+      "note": "12.7 mm tube: clamp block on a 1 x 1 plate or on a slide key."
+    },
+    {
+      "id": "optical-cage",
+      "family": "Rod and tube clamps",
+      "version": "Optical cage (Thorlabs)",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        2,
+        2
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 2 x 2 cells (one feature in 1 x 1); pattern and grid line up every 15 cells (480 mm)."
+    },
+    {
+      "id": "camera-rods",
+      "family": "Rod and tube clamps",
+      "version": "Camera rods",
+      "level": "face-plate-adapter",
+      "intended": "face-plate-adapter",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "min_span": [
+        3,
+        3
+      ],
+      "popularity": 3,
+      "tags": [
+        "unproven"
+      ],
+      "note": "2 x 2 features need 3 x 3 cells (one feature in 1 x 1); pattern and grid line up every 15 cells (480 mm)."
+    }
+  ]
+}

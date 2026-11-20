@@ -1,0 +1,1561 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/rules.schema.json",
+  "spec_version": "0.11.0-draft.1",
+  "date": "2026-11-20",
+  "classes": [
+    "grid",
+    "plate",
+    "key",
+    "adapter",
+    "gauge"
+  ],
+  "rules": [
+    {
+      "id": "C-1",
+      "title": "Grid",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-1"
+      ]
+    },
+    {
+      "id": "C-2",
+      "title": "Plates",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-2",
+        "MR-3"
+      ]
+    },
+    {
+      "id": "C-3",
+      "title": "Grooves",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-1",
+        "MR-3"
+      ]
+    },
+    {
+      "id": "C-4",
+      "title": "Groove profile",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-5"
+      ],
+      "decisions": [
+        "B2",
+        "D-5"
+      ]
+    },
+    {
+      "id": "C-5",
+      "title": "Groove size",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-5",
+        "R-25"
+      ],
+      "decisions": [
+        "B2",
+        "MR-4"
+      ]
+    },
+    {
+      "id": "C-6",
+      "title": "Plate shape",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "B2",
+        "Q-15"
+      ]
+    },
+    {
+      "id": "C-7",
+      "title": "Edges",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-2"
+      ]
+    },
+    {
+      "id": "C-8",
+      "title": "Margins",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-2"
+      ],
+      "decisions": [
+        "Q-2",
+        "D-2"
+      ]
+    },
+    {
+      "id": "C-9",
+      "title": "Lattice",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "B2"
+      ]
+    },
+    {
+      "id": "C-10",
+      "title": "Core hole",
+      "section": 5,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-7"
+      ],
+      "decisions": [
+        "Q-1",
+        "D-7"
+      ]
+    },
+    {
+      "id": "C-11",
+      "title": "Thread",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "key"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-29"
+      ],
+      "decisions": [
+        "Q-1"
+      ]
+    },
+    {
+      "id": "C-12",
+      "title": "Heights",
+      "section": 5,
+      "state": "active",
+      "level": "should",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-8"
+      ],
+      "decisions": [
+        "Q-7",
+        "D-8"
+      ]
+    },
+    {
+      "id": "C-13",
+      "title": "Sizes",
+      "section": 5,
+      "state": "active",
+      "level": "may",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-10"
+      ]
+    },
+    {
+      "id": "C-14",
+      "title": "Coordinates",
+      "section": 5,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "proposed"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-8"
+      ],
+      "decisions": [
+        "D-8"
+      ]
+    },
+    {
+      "id": "C-15",
+      "title": "Limits",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate",
+        "key",
+        "gauge"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-5",
+        "R-20"
+      ],
+      "decisions": [
+        "D-5"
+      ]
+    },
+    {
+      "id": "C-16",
+      "title": "Edge breaks and fillets",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate",
+        "key"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-26"
+      ],
+      "decisions": [
+        "D-18"
+      ]
+    },
+    {
+      "id": "C-17",
+      "title": "Floor",
+      "section": 5,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-16"
+      ],
+      "decisions": [
+        "D-14"
+      ]
+    },
+    {
+      "id": "P-1",
+      "title": "Declaration",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-28"
+      ],
+      "decisions": [
+        "MR-2",
+        "D-21"
+      ]
+    },
+    {
+      "id": "P-2",
+      "title": "Minimum span",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-2"
+      ]
+    },
+    {
+      "id": "P-3",
+      "title": "Groove kept clear",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-24"
+      ]
+    },
+    {
+      "id": "P-4",
+      "title": "Deep features",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "P-5",
+      "title": "Screw fix",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-7"
+      ],
+      "decisions": [
+        "Q-4",
+        "D-7"
+      ]
+    },
+    {
+      "id": "P-6",
+      "title": "No locating pins",
+      "section": 6,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-3"
+      ],
+      "decisions": [
+        "Q-5"
+      ]
+    },
+    {
+      "id": "P-7",
+      "title": "Press-in",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-4"
+      ]
+    },
+    {
+      "id": "P-8",
+      "title": "Bonded",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-4"
+      ]
+    },
+    {
+      "id": "P-9",
+      "title": "Core holes",
+      "section": 6,
+      "state": "active",
+      "level": "should",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-9"
+      ]
+    },
+    {
+      "id": "P-10",
+      "title": "Metal core",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-7"
+      ],
+      "decisions": [
+        "D-7"
+      ]
+    },
+    {
+      "id": "P-11",
+      "title": "Square-edged plates",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-15"
+      ]
+    },
+    {
+      "id": "P-12",
+      "title": "Plate hole",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-7"
+      ],
+      "decisions": [
+        "D-7"
+      ]
+    },
+    {
+      "id": "P-13",
+      "title": "Fixing cells",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "proposed"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-14"
+      ],
+      "decisions": [
+        "D-13"
+      ]
+    },
+    {
+      "id": "P-14",
+      "title": "Setting a loose plate",
+      "section": 6,
+      "state": "active",
+      "level": "should",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-4"
+      ],
+      "decisions": [
+        "D-4"
+      ]
+    },
+    {
+      "id": "P-15",
+      "title": "Clamp loads on loose plates",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-10",
+        "R-12"
+      ],
+      "decisions": [
+        "D-10"
+      ]
+    },
+    {
+      "id": "P-16",
+      "title": "Movement",
+      "section": 6,
+      "state": "active",
+      "level": "should",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-13"
+      ],
+      "decisions": [
+        "D-12"
+      ]
+    },
+    {
+      "id": "M-1",
+      "title": "Routed integral",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-9"
+      ]
+    },
+    {
+      "id": "M-2",
+      "title": "Swap base",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-9"
+      ]
+    },
+    {
+      "id": "M-3",
+      "title": "Cut-down sites",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-3"
+      ],
+      "decisions": [
+        "MR-9",
+        "D-3"
+      ]
+    },
+    {
+      "id": "M-4",
+      "title": "Plates on a surface",
+      "section": 6,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "MR-9"
+      ]
+    },
+    {
+      "id": "S-1",
+      "title": "Fold",
+      "section": 7,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-1"
+      ],
+      "decisions": [
+        "MR-6",
+        "Q-3",
+        "D-1"
+      ]
+    },
+    {
+      "id": "S-2",
+      "title": "Corner zone",
+      "section": 7,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-1"
+      ],
+      "decisions": [
+        "Q-3",
+        "D-1"
+      ]
+    },
+    {
+      "id": "S-3",
+      "title": "Nothing targets the corner",
+      "section": 7,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "key",
+        "adapter"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-30"
+      ],
+      "decisions": [
+        "Q-3"
+      ]
+    },
+    {
+      "id": "S-4",
+      "title": "Plates beside a fold",
+      "section": 7,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-1"
+      ],
+      "decisions": [
+        "Q-3",
+        "D-1"
+      ]
+    },
+    {
+      "id": "S-5",
+      "title": "Columns",
+      "section": 7,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-17"
+      ],
+      "decisions": [
+        "MR-7",
+        "D-15"
+      ]
+    },
+    {
+      "id": "S-6",
+      "title": "Boxes",
+      "section": 7,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-1",
+        "R-17"
+      ],
+      "decisions": [
+        "MR-7",
+        "D-15"
+      ]
+    },
+    {
+      "id": "S-7",
+      "title": "Structures",
+      "section": 7,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-17"
+      ],
+      "decisions": [
+        "MR-7",
+        "D-15"
+      ]
+    },
+    {
+      "id": "S-8",
+      "title": "Outside folds",
+      "section": 7,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-1"
+      ],
+      "decisions": [
+        "D-1"
+      ]
+    },
+    {
+      "id": "H-1",
+      "title": "Slide key",
+      "section": 8,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "key"
+      ],
+      "tags": [
+        "decided",
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-9"
+      ],
+      "decisions": [
+        "D-9"
+      ]
+    },
+    {
+      "id": "H-2",
+      "title": "Turn key",
+      "section": 8,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "key"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-11"
+      ],
+      "decisions": [
+        "D-11"
+      ]
+    },
+    {
+      "id": "H-3",
+      "title": "Snap key",
+      "section": 8,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "key"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-30"
+      ]
+    },
+    {
+      "id": "H-4",
+      "title": "MAV dovetail nut",
+      "section": 8,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "key"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-9"
+      ],
+      "decisions": [
+        "Q-1",
+        "D-9"
+      ]
+    },
+    {
+      "id": "H-5",
+      "title": "Key profile",
+      "section": 8,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "key"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-5",
+        "R-9",
+        "R-26"
+      ],
+      "decisions": [
+        "D-9"
+      ]
+    },
+    {
+      "id": "H-6",
+      "title": "Reference keys",
+      "section": 8,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "key"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-9"
+      ],
+      "decisions": [
+        "D-9"
+      ]
+    },
+    {
+      "id": "F-1",
+      "title": "Go and no-go",
+      "section": 9,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate",
+        "key",
+        "adapter"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "F-2",
+      "title": "Gauges are normative",
+      "section": 9,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "gauge"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "F-3",
+      "title": "Gauge files",
+      "section": 9,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "gauge"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "F-4",
+      "title": "Printed and routed gauges agree",
+      "section": 9,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "gauge"
+      ],
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "F-5",
+      "title": "Loose plates are nominal",
+      "section": 9,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "grid",
+        "plate"
+      ],
+      "tags": [
+        "decided",
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-3"
+      ],
+      "decisions": [
+        "Q-6",
+        "D-3"
+      ]
+    },
+    {
+      "id": "F-6",
+      "title": "Gauge limits",
+      "section": 9,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "gauge"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-5",
+        "R-22"
+      ],
+      "decisions": [
+        "D-22"
+      ]
+    },
+    {
+      "id": "F-7",
+      "title": "Gauge check",
+      "section": 9,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "gauge"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-22"
+      ],
+      "decisions": [
+        "D-22"
+      ]
+    },
+    {
+      "id": "A-1",
+      "title": "Support level",
+      "section": 10,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-18",
+        "R-19"
+      ],
+      "decisions": [
+        "MR-8",
+        "Q-11",
+        "D-16"
+      ]
+    },
+    {
+      "id": "A-2",
+      "title": "Target statement",
+      "section": 10,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-28"
+      ]
+    },
+    {
+      "id": "A-3",
+      "title": "Target licence",
+      "section": 10,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-13"
+      ]
+    },
+    {
+      "id": "A-4",
+      "title": "No endorsement",
+      "section": 10,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "plate",
+        "adapter"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "decisions": [
+        "Q-13"
+      ]
+    },
+    {
+      "id": "K-1",
+      "title": "Conformance by class",
+      "section": 11,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-6"
+      ],
+      "decisions": [
+        "D-6"
+      ]
+    },
+    {
+      "id": "K-2",
+      "title": "Claim line",
+      "section": 11,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-27"
+      ],
+      "decisions": [
+        "Q-14",
+        "D-20"
+      ]
+    },
+    {
+      "id": "K-3",
+      "title": "Changed core values",
+      "section": 11,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "K-4",
+      "title": "Third-party statement",
+      "section": 11,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "K-5",
+      "title": "Claim record",
+      "section": 11,
+      "state": "active",
+      "level": "should",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "proposed"
+      ],
+      "since": "0.11.0-draft.1",
+      "findings": [
+        "R-27"
+      ],
+      "decisions": [
+        "D-20"
+      ]
+    },
+    {
+      "id": "K-6",
+      "title": "Release files",
+      "section": 11,
+      "state": "active",
+      "level": "should",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.11.0-draft.1"
+    },
+    {
+      "id": "L-1",
+      "title": "What a rating states",
+      "section": 12,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-10"
+      ],
+      "decisions": [
+        "D-10"
+      ]
+    },
+    {
+      "id": "L-2",
+      "title": "Method",
+      "section": 12,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "L-3",
+      "title": "No method, no rating",
+      "section": 12,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "L-4",
+      "title": "Makers' own ratings",
+      "section": 12,
+      "state": "active",
+      "level": "may",
+      "binds": [
+        "all"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "V-1",
+      "title": "Version string",
+      "section": 14,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "spec"
+      ],
+      "tags": [
+        "decided",
+        "proposed"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-27"
+      ],
+      "decisions": [
+        "D-20",
+        "D-23"
+      ]
+    },
+    {
+      "id": "V-2",
+      "title": "Gate for 1.0",
+      "section": 14,
+      "state": "active",
+      "level": "definition",
+      "binds": [
+        "spec"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0",
+      "changed": "0.11.0-draft.1",
+      "findings": [
+        "R-21",
+        "R-31"
+      ],
+      "decisions": [
+        "Q-12",
+        "D-17",
+        "D-19"
+      ]
+    },
+    {
+      "id": "V-3",
+      "title": "After 1.0",
+      "section": 14,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "spec"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "V-4",
+      "title": "Changelog",
+      "section": 14,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "spec"
+      ],
+      "tags": [
+        "decided"
+      ],
+      "since": "0.10.0"
+    },
+    {
+      "id": "V-5",
+      "title": "Permanent IDs",
+      "section": 14,
+      "state": "active",
+      "level": "must",
+      "binds": [
+        "spec"
+      ],
+      "tags": [
+        "proposed"
+      ],
+      "since": "0.11.0-draft.1",
+      "decisions": [
+        "D-20"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "grid",
+  "id": "routed-large-6x4-margin",
+  "name": "Routed panel, Large, 6 x 4, System 32 front margin",
+  "maker": "MAV Grid project",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "faces": [
+    {
+      "id": "front",
+      "size": "large",
+      "build_mode": "routed-integral",
+      "cols": 6,
+      "rows": 4,
+      "edges": {
+        "y_min": {
+          "type": "margin",
+          "width": 21.0,
+          "inner": "groove",
+          "cross_grooves": "run-out"
+        }
+      },
+      "plates": [
+        {
+          "at": [
+            0,
+            0
+          ],
+          "span": [
+            2,
+            2
+          ],
+          "kind": "hole-5",
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            0
+          ],
+          "span": [
+            2,
+            2
+          ],
+          "kind": "hole-5",
+          "state": "integral"
+        },
+        {
+          "at": [
+            4,
+            0
+          ],
+          "span": [
+            2,
+            2
+          ],
+          "kind": "hole-5",
+          "state": "integral"
+        },
+        {
+          "at": [
+            0,
+            2
+          ],
+          "span": [
+            2,
+            2
+          ],
+          "kind": "hole-5",
+          "state": "integral"
+        },
+        {
+          "at": [
+            2,
+            2
+          ],
+          "span": [
+            2,
+            2
+          ],
+          "kind": "hole-5",
+          "state": "integral"
+        },
+        {
+          "at": [
+            4,
+            2
+          ],
+          "span": [
+            2,
+            2
+          ],
+          "kind": "hole-5",
+          "state": "integral"
+        }
+      ],
+      "stock": {
+        "material": "birch plywood",
+        "thickness": 12.0
+      },
+      "offers_clamp_loads": true
+    }
+  ],
+  "notes": "Invalid on purpose. A Large groove in 12 mm stock leaves a 2.5 mm floor, under the 5.5 mm minimum."
+}

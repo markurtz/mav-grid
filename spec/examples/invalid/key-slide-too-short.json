@@ -1,0 +1,23 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "key",
+  "id": "slide-nut-large-m6",
+  "name": "Slide nut, Large, M6",
+  "maker": "MAV Grid project",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "entry": "slide",
+  "fits": [
+    "large"
+  ],
+  "reference": "slide-nut-large-m6",
+  "thread": "M6",
+  "material": "metal",
+  "process": "machined",
+  "neck": 7.8,
+  "height": 9.2,
+  "foot": 12.39,
+  "length": 12.0,
+  "use": "clamp",
+  "notes": "Invalid on purpose. A slide key under 16 mm loses both walls at a groove crossing."
+}

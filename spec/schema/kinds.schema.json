@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/kinds.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0",
+  "title": "MAV Grid plate kind registry",
+  "description": "Every plate kind a plate may state (rule P-1), with a stable id, its minimum span and its repeat distance (rule P-2).",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "spec_version": {
+      "$ref": "common.schema.json#/$defs/specVersion"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "kinds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/kind"
+      }
+    },
+    "note": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "spec_version",
+    "date",
+    "kinds"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "kind": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "what": {
+          "type": "string",
+          "minLength": 1
+        },
+        "min_span": {
+          "description": "Smallest span that holds one useful feature, per groove size. Null where the kind is not offered in that size.",
+          "type": "object",
+          "properties": {
+            "small": {
+              "oneOf": [
+                {
+                  "$ref": "common.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "large": {
+              "oneOf": [
+                {
+                  "$ref": "common.schema.json#/$defs/span"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "small",
+            "large"
+          ],
+          "additionalProperties": false
+        },
+        "repeat_cells": {
+          "description": "Cells after which the pattern and the 32 mm grid line up again. Null when the pattern does not drift, or never lines up.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "drifts": {
+          "description": "True when the pattern has its own pitch that is not a divisor or multiple of 32 mm.",
+          "type": "boolean"
+        },
+        "carries": {
+          "description": "Ids in data/support.json of the systems this kind carries.",
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/slug"
+          },
+          "uniqueItems": true
+        },
+        "deep": {
+          "description": "True when a feature is deeper than the plate (rule P-4).",
+          "type": "boolean"
+        },
+        "model": {
+          "description": "State of the CAD model.",
+          "enum": [
+            "modelled",
+            "placeholder",
+            "none"
+          ]
+        },
+        "workbench_key": {
+          "description": "The key of this kind in the Workbench geometry code.",
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "what",
+        "min_span",
+        "repeat_cells",
+        "drifts",
+        "model"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

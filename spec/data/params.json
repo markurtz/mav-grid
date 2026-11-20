@@ -1,0 +1,1155 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/params.schema.json",
+  "spec_version": "0.11.0-draft.1",
+  "date": "2026-11-20",
+  "units": {
+    "length": "mm",
+    "angle": "deg",
+    "force": "N"
+  },
+  "licence": {
+    "hardware": "Apache-2.0 WITH SHL-2.0",
+    "software": "Apache-2.0",
+    "note": "SPDX lists the Solderpad Hardware License v2.0 as SHL-2.0, used with Apache-2.0. Check the expression against the SPDX exceptions list before a release."
+  },
+  "constants": {
+    "pitch": {
+      "value": 32.0,
+      "unit": "mm",
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-1",
+        "C-3"
+      ],
+      "decision": "MR-1"
+    },
+    "wall_angle": {
+      "value": 14.0,
+      "unit": "deg",
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-4"
+      ],
+      "decision": "MR-1",
+      "note": "Measured from the face normal. Normative."
+    },
+    "opening": {
+      "value": 8.0,
+      "unit": "mm",
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "rules": [
+        "C-4"
+      ],
+      "decision": "B2",
+      "note": "Normative. Measured at the theoretical sharp edge (C-16)."
+    },
+    "depth_small": {
+      "value": 6.0,
+      "unit": "mm",
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "rules": [
+        "C-5"
+      ],
+      "decision": "B2",
+      "note": "Normative. Equals the Small plate thickness."
+    },
+    "depth_large": {
+      "value": 9.5,
+      "unit": "mm",
+      "tags": [
+        "decided",
+        "unproven"
+      ],
+      "rules": [
+        "C-5"
+      ],
+      "decision": "B2",
+      "note": "Normative. Equals the Large plate thickness."
+    },
+    "lattice": {
+      "value": 8.0,
+      "unit": "mm",
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-9"
+      ],
+      "decision": "B2"
+    },
+    "core_hole": {
+      "value": 5.0,
+      "unit": "mm",
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-10"
+      ],
+      "decision": "Q-1",
+      "note": "The System 32 hole and the M6 tap drill. Called the cell hole in 0.10.",
+      "source": "Tap drill 5.00 for M6 x 1: https://accu-components.com/p/117-iso-metric-thread-dimensions"
+    },
+    "height_step": {
+      "value": 8.0,
+      "unit": "mm",
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-12"
+      ],
+      "decision": "Q-7",
+      "note": "Counted from the plate-top plane."
+    },
+    "plate_hole": {
+      "value": 6.6,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-12"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "source": "ISO 273 medium (normal) series, as charted at https://www.albanycountyfasteners.com/media/6b/b8/g0/1764944339/clearance-hole-chart.pdf"
+    },
+    "countersink_diameter": {
+      "value": 13.5,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-12"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "source": "ISO 10642 head sizes as tabled at https://engineersedge.com/hardware/bs_en_iso_10642_14583.htm",
+      "note": "Just over the 13.44 theoretical maximum head of an M6 countersunk screw, so any such head seats flush or below."
+    },
+    "countersink_angle": {
+      "value": 90.0,
+      "unit": "deg",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-12"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "Included angle. The 90 degree head angle for sizes up to M20 is from general knowledge, not from a page read for this draft."
+    },
+    "fixing_cell_step": {
+      "value": 4,
+      "unit": "cells",
+      "tags": [
+        "proposed"
+      ],
+      "rules": [
+        "P-13"
+      ],
+      "decision": "D-13",
+      "finding": "R-14",
+      "note": "Fixing cells along each side of a span: 0, 4, 8 and so on, plus the last cell."
+    },
+    "setting_bar_width": {
+      "value": 8.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-14"
+      ],
+      "decision": "D-4",
+      "finding": "R-4"
+    },
+    "slide_key_min_length": {
+      "value": 16.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-1"
+      ],
+      "decision": "D-9",
+      "finding": "R-9",
+      "note": "Longer than the widest groove bottom (12.74), so a slide key keeps both walls at every crossing."
+    },
+    "floor_min": {
+      "value": 5.5,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-17"
+      ],
+      "decision": "D-14",
+      "finding": "R-16",
+      "note": "Least material left under a routed groove."
+    },
+    "margin_groove_min_width": {
+      "value": 12.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-8"
+      ],
+      "decision": "D-2",
+      "finding": "R-2",
+      "note": "Narrower margins are made solid with the outer plate row."
+    },
+    "wood_core_min_thickness": {
+      "value": 12.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7"
+    },
+    "wood_engagement_min": {
+      "value": 10.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7"
+    },
+    "steel_engagement_min": {
+      "value": 6.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5",
+        "P-10"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "One thread diameter. A rule of thumb from general knowledge."
+    },
+    "aluminium_engagement_min": {
+      "value": 9.0,
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5",
+        "P-10"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "One and a half thread diameters. A rule of thumb from general knowledge."
+    },
+    "printed_plate_max_cells": {
+      "value": 8,
+      "unit": "cells",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-16"
+      ],
+      "decision": "D-12",
+      "finding": "R-13",
+      "note": "248 mm. Longer printed plates use one fixed screw and slotted plate holes."
+    },
+    "clamp_groove_min_plate_cells": {
+      "value": 2,
+      "unit": "cells",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-15"
+      ],
+      "decision": "D-10",
+      "finding": "R-12",
+      "note": "Guidance for routed faces: grooves meant for clamps run between plates at least this long."
+    },
+    "turn_key_load_small": {
+      "value": 50.0,
+      "unit": "N",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-2"
+      ],
+      "decision": "D-11",
+      "finding": "R-11",
+      "note": "Proposed working pull for test T-3. Not a rating."
+    },
+    "turn_key_load_large": {
+      "value": 100.0,
+      "unit": "N",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-2"
+      ],
+      "decision": "D-11",
+      "finding": "R-11",
+      "note": "Proposed working pull for test T-3. Not a rating."
+    }
+  },
+  "preferred_spans": {
+    "doubling": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "family_96": [
+      3,
+      6,
+      12
+    ],
+    "tags": [
+      "decided"
+    ],
+    "rules": [
+      "C-13"
+    ],
+    "decision": "Q-10"
+  },
+  "threads": [
+    {
+      "id": "M6",
+      "role": "house",
+      "designation": "M6 x 1",
+      "standard": "ISO 262",
+      "tolerance_standard": "ISO 965-1",
+      "tolerance_internal": "6H",
+      "tolerance_external": "6g",
+      "major_diameter": 6.0,
+      "tap_drill": 5.0,
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-11"
+      ],
+      "decision": "Q-1"
+    },
+    {
+      "id": "M5",
+      "role": "variant",
+      "designation": "M5 x 0.8",
+      "standard": "ISO 262",
+      "tolerance_standard": "ISO 965-1",
+      "tolerance_internal": "6H",
+      "tolerance_external": "6g",
+      "major_diameter": 5.0,
+      "tap_drill": 4.2,
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-11"
+      ],
+      "decision": "Q-1"
+    },
+    {
+      "id": "1/4-20",
+      "role": "variant",
+      "designation": "1/4-20 UNC",
+      "standard": "ASME B1.1",
+      "tolerance_standard": "ASME B1.1",
+      "tolerance_internal": "2B",
+      "tolerance_external": "2A",
+      "major_diameter": 6.35,
+      "tags": [
+        "decided"
+      ],
+      "rules": [
+        "C-11"
+      ],
+      "decision": "Q-1"
+    }
+  ],
+  "limits": {
+    "opening": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-4"
+      ],
+      "min": 7.9,
+      "max": 8.15,
+      "nominal": 8.0,
+      "decision": "D-5",
+      "finding": "R-5",
+      "note": "The one-pass 1/2 in router cut gives 7.96. The lower limit leaves room for a bit 0.05 under size."
+    },
+    "depth_small": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-5"
+      ],
+      "min": 6.0,
+      "max": 6.3,
+      "nominal": 6.0,
+      "decision": "D-5",
+      "finding": "R-5"
+    },
+    "depth_large": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-5"
+      ],
+      "min": 9.5,
+      "max": 9.8,
+      "nominal": 9.5,
+      "decision": "D-5",
+      "finding": "R-5"
+    },
+    "wall_angle": {
+      "unit": "deg",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-4"
+      ],
+      "min": 13.5,
+      "max": 14.5,
+      "nominal": 14.0,
+      "decision": "D-5",
+      "finding": "R-5"
+    },
+    "pitch_step": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-3"
+      ],
+      "min": 31.9,
+      "max": 32.1,
+      "nominal": 32.0,
+      "decision": "D-5",
+      "finding": "R-5",
+      "note": "Between neighbouring groove centrelines."
+    },
+    "groove_position": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-3"
+      ],
+      "min": -0.2,
+      "max": 0.2,
+      "nominal": 0.0,
+      "decision": "D-5",
+      "finding": "R-5",
+      "note": "Deviation of any groove centreline from its place in the face frame, over any length."
+    },
+    "plate_top_deviation": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-15",
+        "C-6",
+        "F-5"
+      ],
+      "min": -0.1,
+      "max": 0.0,
+      "nominal": 0.0,
+      "decision": "D-3",
+      "finding": "R-3",
+      "note": "Deviation of a loose plate top from 32c - 8. No clearance is taken off a plate."
+    },
+    "edge_break": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-16"
+      ],
+      "max": 0.3,
+      "decision": "D-18",
+      "finding": "R-26"
+    },
+    "floor_fillet": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "C-16"
+      ],
+      "max": 0.5,
+      "decision": "D-18",
+      "finding": "R-26"
+    },
+    "key_neck": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-5"
+      ],
+      "min": 7.6,
+      "max": 7.8,
+      "decision": "D-9",
+      "finding": "R-5"
+    },
+    "key_height_small": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-5"
+      ],
+      "max": 5.7,
+      "decision": "D-9",
+      "finding": "R-9"
+    },
+    "key_height_large": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-5"
+      ],
+      "max": 9.2,
+      "decision": "D-9",
+      "finding": "R-9"
+    },
+    "key_chamfer": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-5",
+        "C-16"
+      ],
+      "min": 0.5,
+      "decision": "D-18",
+      "finding": "R-26"
+    },
+    "key_lift": {
+      "unit": "mm",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "F-1",
+        "C-15"
+      ],
+      "max": 0.8,
+      "decision": "D-5",
+      "finding": "R-5",
+      "note": "How far the go slide key may rise above the face when lifted by hand. It checks opening and wall angle together."
+    }
+  },
+  "build_modes": [
+    {
+      "id": "routed-integral",
+      "rule": "M-1",
+      "name": "Routed integral",
+      "plates": "integral",
+      "swap": "none"
+    },
+    {
+      "id": "swap-base",
+      "rule": "M-2",
+      "name": "Swap base",
+      "plates": "loose",
+      "swap": "all"
+    },
+    {
+      "id": "cut-down-sites",
+      "rule": "M-3",
+      "name": "Cut-down sites",
+      "plates": "mixed",
+      "swap": "cut-down sites"
+    },
+    {
+      "id": "surface-plates",
+      "rule": "M-4",
+      "name": "Plates on a surface",
+      "plates": "loose",
+      "swap": "all"
+    }
+  ],
+  "support_levels": [
+    {
+      "id": "native",
+      "name": "Native"
+    },
+    {
+      "id": "native-with-nut",
+      "name": "Native with a MAV nut"
+    },
+    {
+      "id": "face-plate",
+      "name": "Face plate"
+    },
+    {
+      "id": "face-plate-adapter",
+      "name": "Face plate + adapter"
+    },
+    {
+      "id": "adapter",
+      "name": "Adapter"
+    },
+    {
+      "id": "add-on",
+      "name": "MAV add-on"
+    }
+  ],
+  "fixings": [
+    {
+      "id": "metal-tapped",
+      "core": "metal",
+      "core_hole": {
+        "min": 5.0,
+        "max": 5.0
+      },
+      "thread_in_core": "tapped",
+      "screw": "M6 countersunk, ISO 10642",
+      "engagement_min": 6.0,
+      "duty": "general",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5",
+        "P-10"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "6 mm of thread in steel, 9 mm in aluminium. Thinner sheet needs a rivet nut, which is declared."
+    },
+    {
+      "id": "wood-tapped",
+      "core": "wood-sheet",
+      "core_hole": {
+        "min": 5.0,
+        "max": 5.0
+      },
+      "thread_in_core": "cut-in-wood",
+      "screw": "M6 countersunk, ISO 10642",
+      "engagement_min": 10.0,
+      "duty": "light",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "An M6 thread cut straight into the 5.0 hole. For plates that are seldom changed and carry no clamp load."
+    },
+    {
+      "id": "wood-insert",
+      "core": "wood-sheet",
+      "core_hole": {
+        "min": 10.0,
+        "max": 10.5
+      },
+      "thread_in_core": "insert",
+      "screw": "M6 countersunk, ISO 10642",
+      "engagement_min": 10.0,
+      "duty": "general",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "source": "Rampa SK M6: 12 mm outside diameter, 10 to 20 long, pre-drill 10 to 10.5: https://www.leevalley.com/en-us/shop/hardware/fasteners/nuts-and-bolts/116547-rampa-sk-m6-inserts?p=1",
+      "note": "The hole is the insert maker's, declared by the part. It is no longer a 5 mm System 32 hole."
+    },
+    {
+      "id": "printed-formed",
+      "core": "printed",
+      "core_hole": {
+        "min": 5.0,
+        "max": 5.0
+      },
+      "thread_in_core": "formed",
+      "screw": "M6 countersunk, ISO 10642",
+      "engagement_min": 10.0,
+      "duty": "light",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "The screw forms its own thread in the printed 5.0 hole."
+    },
+    {
+      "id": "printed-insert",
+      "core": "printed",
+      "core_hole": {
+        "min": 8.0,
+        "max": 8.1
+      },
+      "thread_in_core": "insert",
+      "screw": "M6 countersunk, ISO 10642",
+      "engagement_min": 10.0,
+      "duty": "general",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "source": "M6 heat-set insert: 8.7 diameter, 12.7 long, 8.1 hole, hole 1 mm deeper than the insert, 3.3 wall: https://www.cnckitchen.com/s/CNCKitchen_Heat-Set-Insert-Dimensions-and-Design-Guidelines.pdf . Pilot 8.0 for an 8.5 insert: https://accu-components.com/us/p/488-threaded-insert-hole-size-charts-for-3d-printing-pla-petg-resin"
+    },
+    {
+      "id": "surface-wood-screw",
+      "core": "surface",
+      "thread_in_core": "none",
+      "screw": "6 mm countersunk wood screw",
+      "engagement_min": 10.0,
+      "duty": "general",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-5"
+      ],
+      "decision": "D-7",
+      "finding": "R-7",
+      "note": "For plates fixed straight onto an existing wooden surface (M-4) where no core hole exists."
+    }
+  ],
+  "reference_keys": [
+    {
+      "id": "slide-nut-small-m6",
+      "name": "Slide nut, Small, M6",
+      "entry": "slide",
+      "size": "small",
+      "fits": [
+        "small",
+        "large"
+      ],
+      "thread": "M6",
+      "material": "metal",
+      "neck": 7.8,
+      "height": 5.7,
+      "foot": 10.64,
+      "length": 24.0,
+      "min_length": 16.0,
+      "chamfer": 0.5,
+      "thread_form": "tapped through",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-4",
+        "H-5",
+        "H-6"
+      ],
+      "decision": "D-9",
+      "finding": "R-9"
+    },
+    {
+      "id": "slide-nut-small-m5",
+      "name": "Slide nut, Small, M5, printed",
+      "entry": "slide",
+      "size": "small",
+      "fits": [
+        "small",
+        "large"
+      ],
+      "thread": "M5",
+      "material": "printed",
+      "neck": 7.8,
+      "height": 5.7,
+      "foot": 10.64,
+      "length": 24.0,
+      "min_length": 16.0,
+      "chamfer": 0.5,
+      "thread_form": "captive nut",
+      "captive_nut": {
+        "type": "M5 thin square nut, DIN 562",
+        "across_flats": 8.0,
+        "thickness": 2.7
+      },
+      "source": "DIN 562 M5: 8 across flats, 2.7 thick: https://fasten.it/en/norms/norm/din_562",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-4",
+        "H-5",
+        "H-6"
+      ],
+      "decision": "D-9",
+      "finding": "R-9",
+      "note": "The key is 9.30 wide at the top of the nut pocket, so the nut has 0.65 of wall each side."
+    },
+    {
+      "id": "slide-nut-large-m6",
+      "name": "Slide nut, Large, M6",
+      "entry": "slide",
+      "size": "large",
+      "fits": [
+        "large"
+      ],
+      "thread": "M6",
+      "material": "metal",
+      "neck": 7.8,
+      "height": 9.2,
+      "foot": 12.39,
+      "length": 24.0,
+      "min_length": 16.0,
+      "chamfer": 0.5,
+      "thread_form": "tapped through",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-4",
+        "H-5",
+        "H-6"
+      ],
+      "decision": "D-9",
+      "finding": "R-9",
+      "source": "DIN 562 M6: 10 across flats, 3.2 thick: https://fasten.it/en/norms/norm/din_562",
+      "note": "A printed version holds an M6 thin square nut (10 across flats, 3.2 thick) with 0.4 of wall each side at the top of the pocket."
+    },
+    {
+      "id": "turn-key-small",
+      "name": "Turn key, Small",
+      "entry": "turn",
+      "size": "small",
+      "fits": [
+        "small",
+        "large"
+      ],
+      "thread": "M6",
+      "material": "metal",
+      "neck": 7.8,
+      "height": 5.7,
+      "foot": 10.64,
+      "length": 10.64,
+      "chamfer": 0.5,
+      "thread_form": "tapped through",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-2",
+        "H-5",
+        "H-6"
+      ],
+      "decision": "D-9",
+      "finding": "R-9",
+      "note": "7.80 wide to drop through the opening. An M6 thread leaves 0.9 of wall each side, which is why the reference is metal."
+    },
+    {
+      "id": "turn-key-large",
+      "name": "Turn key, Large",
+      "entry": "turn",
+      "size": "large",
+      "fits": [
+        "large"
+      ],
+      "thread": "M6",
+      "material": "metal",
+      "neck": 7.8,
+      "height": 9.2,
+      "foot": 12.39,
+      "length": 12.39,
+      "chamfer": 0.5,
+      "thread_form": "tapped through",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "H-2",
+        "H-5",
+        "H-6"
+      ],
+      "decision": "D-9",
+      "finding": "R-9"
+    }
+  ],
+  "gauges": [
+    {
+      "id": "G-1",
+      "name": "Opening blade",
+      "designed": false,
+      "checks": [
+        "opening"
+      ],
+      "go": "The 7.90 blade enters the opening along the whole groove.",
+      "no_go": "The 8.15 blade enters nowhere.",
+      "dims": {
+        "go": 7.9,
+        "no_go": 8.15
+      },
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "F-1",
+        "F-6"
+      ]
+    },
+    {
+      "id": "G-2",
+      "name": "Depth step",
+      "designed": false,
+      "checks": [
+        "depth_small",
+        "depth_large"
+      ],
+      "go": "The nominal step (6.0 or 9.5) sits flush or below the face.",
+      "no_go": "The nominal + 0.3 step (6.3 or 9.8) stands above the face.",
+      "dims": {
+        "small_go": 6.0,
+        "small_no_go": 6.3,
+        "large_go": 9.5,
+        "large_no_go": 9.8
+      },
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "F-1",
+        "F-6"
+      ]
+    },
+    {
+      "id": "G-3",
+      "name": "Slide key",
+      "designed": false,
+      "fit_class": "slide",
+      "checks": [
+        "opening",
+        "wall_angle",
+        "key_lift"
+      ],
+      "go": "The key slides the full groove by hand, through every crossing.",
+      "no_go": "Lifted by hand, the key rises no more than 0.8 above the face.",
+      "dims": {
+        "neck": 7.8,
+        "small_height": 5.7,
+        "small_foot": 10.64,
+        "large_height": 9.2,
+        "large_foot": 12.39,
+        "length": 32.0,
+        "lift_max": 0.8
+      },
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "F-1",
+        "F-6"
+      ]
+    },
+    {
+      "id": "G-4",
+      "name": "Setting bar",
+      "designed": false,
+      "checks": [
+        "opening",
+        "plate_top_deviation"
+      ],
+      "go": "Laid in the grooves beside a loose plate while its screws are tightened, then lifted out.",
+      "dims": {
+        "width": 8.0,
+        "length": 64.0
+      },
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "P-14",
+        "F-6"
+      ]
+    },
+    {
+      "id": "G-5",
+      "name": "Locate pair",
+      "designed": false,
+      "fit_class": "locate",
+      "go": "Not designed. Test T-2 sets it.",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "F-1"
+      ]
+    },
+    {
+      "id": "G-6",
+      "name": "Press pair",
+      "designed": false,
+      "fit_class": "press",
+      "go": "Not designed. Test T-2 sets it.",
+      "tags": [
+        "proposed",
+        "unproven"
+      ],
+      "rules": [
+        "F-1"
+      ]
+    }
+  ],
+  "process": {
+    "routing": [
+      {
+        "size": "large",
+        "bit_diameter": 12.7,
+        "bit_angle": 14.0,
+        "depth": 9.5,
+        "pass_offsets": [
+          0.0
+        ],
+        "result_opening": 7.963,
+        "result_bottom": 12.7,
+        "tags": [
+          "decided",
+          "unproven"
+        ],
+        "rules": [
+          "C-4"
+        ],
+        "decision": "B2",
+        "note": "One pass of a 1/2 in bit at full depth, after a straight bit clears the slot."
+      },
+      {
+        "size": "small",
+        "bit_diameter": 9.525,
+        "bit_angle": 14.0,
+        "depth": 6.0,
+        "pass_offsets": [
+          -0.733,
+          0.733
+        ],
+        "result_opening": 7.999,
+        "result_bottom": 10.991,
+        "tags": [
+          "decided",
+          "unproven"
+        ],
+        "rules": [
+          "C-4"
+        ],
+        "decision": "Q-8",
+        "source": "Whiteside D14-375, 14 degree, 3/8 in diameter, 3/8 in cut length, 1/4 in shank: https://www.woodcraft.com/products/whiteside-d14-375-dovetail-router-bit-14-degree-1-4-sh-3-8-d-x-3-8-c-x-2-ol",
+        "note": "Two passes of a 3/8 in bit at full depth, one each side of the grid line."
+      }
+    ],
+    "jig_pin_diameter": 7.9,
+    "notes": [
+      "A dovetail bit cuts at full depth in one level. It cannot step down and cannot be lifted out part way along a groove.",
+      "Routed faces use sheet goods. Solid wood moves too much across the grain for any face wider than a few cells."
+    ]
+  }
+}

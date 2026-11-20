@@ -1,0 +1,28 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "adapter",
+  "id": "picatinny-on-slide-key",
+  "name": "Picatinny section on a slide key",
+  "maker": "MAV Grid project",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small and Large · Adapter on a slide key · for Picatinny MIL-STD-1913",
+  "interface": {
+    "type": "key",
+    "fits": [
+      "small",
+      "large"
+    ],
+    "entry": "slide"
+  },
+  "target": {
+    "system": "Picatinny",
+    "version": "MIL-STD-1913",
+    "support_id": "picatinny",
+    "level": "adapter",
+    "licence": "Not applicable: a published standard profile",
+    "attribution": "None required"
+  },
+  "material": "aluminium",
+  "process": "machined"
+}

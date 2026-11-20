@@ -1,0 +1,156 @@
+{
+  "grid-overlapping-plates.json": {
+    "schema_valid": true,
+    "rules": [
+      "C-2"
+    ],
+    "why": "Two plates cover cell [1, 0] and cell [3, 0] is left bare."
+  },
+  "grid-uncovered-cell.json": {
+    "schema_valid": true,
+    "rules": [
+      "C-2"
+    ],
+    "why": "Cell [3, 1] is covered by no plate."
+  },
+  "grid-floor-too-thin.json": {
+    "schema_valid": true,
+    "rules": [
+      "C-17"
+    ],
+    "why": "A Large groove in 12 mm stock leaves a 2.5 mm floor, under the 5.5 mm minimum."
+  },
+  "grid-loose-plates-offer-clamp.json": {
+    "schema_valid": true,
+    "rules": [
+      "P-15"
+    ],
+    "why": "Grooves between loose plates are offered for clamp loads before test T-20 has passed."
+  },
+  "grid-no-open-groove-end.json": {
+    "schema_valid": true,
+    "rules": [
+      "C-8"
+    ],
+    "why": "All four edges are margins with stopped cross grooves, so no slide key can enter, and the face does not declare that."
+  },
+  "grid-fold-over-limit.json": {
+    "schema_valid": true,
+    "rules": [
+      "S-8"
+    ],
+    "why": "Standard loose Small plates on both faces of a 270 degree fold meet below the surface: the limit is 265 degrees."
+  },
+  "grid-routed-with-loose-plate.json": {
+    "schema_valid": false,
+    "rules": [
+      "M-1"
+    ],
+    "why": "A routed integral face has no loose plates. A face with some is build mode cut-down-sites."
+  },
+  "grid-fold-not-declared.json": {
+    "schema_valid": true,
+    "rules": [
+      "S-1"
+    ],
+    "why": "An edge names a fold that the record does not define."
+  },
+  "plate-sheet-square-edges.json": {
+    "schema_valid": false,
+    "rules": [
+      "P-11"
+    ],
+    "why": "A sheet-cut plate with square edges forms a straight slot, not a dovetail."
+  },
+  "plate-span-under-minimum.json": {
+    "schema_valid": true,
+    "rules": [
+      "P-2"
+    ],
+    "why": "A Gridfinity plate needs 2 x 2 cells for one bin."
+  },
+  "plate-kind-unknown.json": {
+    "schema_valid": true,
+    "rules": [
+      "P-1"
+    ],
+    "why": "The kind is not in the kind registry."
+  },
+  "plate-carries-no-target.json": {
+    "schema_valid": true,
+    "rules": [
+      "A-2"
+    ],
+    "why": "A plate of a kind that carries another system does not state its target."
+  },
+  "plate-kind-not-in-small.json": {
+    "schema_valid": true,
+    "rules": [
+      "P-2"
+    ],
+    "why": "The T-track kind is Large only: the track is deeper than a Small plate."
+  },
+  "key-slide-too-short.json": {
+    "schema_valid": false,
+    "rules": [
+      "H-1"
+    ],
+    "why": "A slide key under 16 mm loses both walls at a groove crossing."
+  },
+  "key-small-m6-printed.json": {
+    "schema_valid": true,
+    "rules": [
+      "H-4"
+    ],
+    "why": "A printed Small nut cannot hold an M6 thread or nut: Small M6 nuts are metal."
+  },
+  "key-neck-too-wide.json": {
+    "schema_valid": false,
+    "rules": [
+      "H-5"
+    ],
+    "why": "A neck of 8.0 does not pass an opening at its lower limit of 7.90."
+  },
+  "key-snap-offered-for-clamp.json": {
+    "schema_valid": false,
+    "rules": [
+      "H-3"
+    ],
+    "why": "Snap keys are not offered for clamp loads."
+  },
+  "claim-line-not-derived.json": {
+    "schema_valid": true,
+    "rules": [
+      "K-2"
+    ],
+    "why": "The claim line differs from the line derived from the record."
+  },
+  "third-party-no-disclaimer.json": {
+    "schema_valid": false,
+    "rules": [
+      "K-4"
+    ],
+    "why": "A third-party part does not carry the required statement."
+  },
+  "gauge-out-of-limits.json": {
+    "schema_valid": true,
+    "rules": [
+      "F-7"
+    ],
+    "why": "The go blade measures 7.80 against a stated 7.90: more than 0.05 out."
+  },
+  "version-not-semver.json": {
+    "schema_valid": false,
+    "rules": [
+      "V-1"
+    ],
+    "why": "The version is not the one full version string."
+  },
+  "adapter-plate-without-span.json": {
+    "schema_valid": false,
+    "rules": [
+      "P-1"
+    ],
+    "why": "An adapter on a plate does not state the plate's span."
+  }
+}

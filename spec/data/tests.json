@@ -1,0 +1,489 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/tests.schema.json",
+  "spec_version": "0.11.0-draft.1",
+  "date": "2026-11-20",
+  "gate": [
+    "T-1",
+    "T-2",
+    "T-3",
+    "T-4",
+    "T-5"
+  ],
+  "items": [
+    {
+      "id": "T-1",
+      "title": "A MatchFit clamp fits the Large groove",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-4",
+        "C-5"
+      ],
+      "method": "Rout three Large samples with the one-pass recipe (7.96 opening) and print three at an 8.00 opening. Slide one bought clamp along each groove and tighten it at full lever force.",
+      "pass": "The clamp slides the full groove by hand and holds at full lever force with no visible lift, in all six samples.",
+      "samples": 6,
+      "findings": [
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-2",
+      "title": "Gauges for Slide, Locate and Press",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "F-1",
+        "F-2",
+        "F-4",
+        "F-6",
+        "F-7"
+      ],
+      "method": "Make gauges G-1 to G-4 from the limits table, one set printed and one routed or machined, and measure every gauge. Design G-5 and G-6. Judge the same five grooves with both sets.",
+      "pass": "Both sets give the same verdict on all five grooves, and every gauge measures within 0.05 mm of its stated limits.",
+      "samples": 5,
+      "findings": [
+        "R-21",
+        "R-22"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-3",
+      "title": "A turn key holds its working load",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "H-2"
+      ],
+      "method": "Pull turn keys straight out of Small and Large grooves, in plywood and in a print, five samples per case. Record the lowest force per case and how each sample failed.",
+      "pass": "The lowest of five in every case is at least three times the proposed working pull: 150 N in Small and 300 N in Large.",
+      "samples": 20,
+      "findings": [
+        "R-11",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-4",
+      "title": "The pin jig holds 32 mm without drift",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-3",
+        "C-15"
+      ],
+      "method": "Rout 16 grooves in each direction on one panel with the pin jig and a 7.9 mm pin. Measure the last groove against the first in each direction, and both diagonals of the grid.",
+      "pass": "The last groove is within 0.2 mm of its place in each direction, and the two diagonals are equal within 0.3 mm.",
+      "samples": 1,
+      "findings": [
+        "R-20",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-5",
+      "title": "The two-pass Small cut lands on 8.0 and 11.0",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-4",
+        "C-5",
+        "C-15"
+      ],
+      "method": "Rout Small grooves in two passes at 0.733 mm each side of the grid line, at full depth. Judge them with gauges G-1 to G-3 and measure the groove centre against the grid line.",
+      "pass": "Every sample passes G-1, G-2 and G-3 and is centred on the grid line within 0.1 mm.",
+      "samples": 5,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-15",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-6",
+      "title": "One screw sets and holds a one-cell plate",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "P-5",
+        "P-6",
+        "P-14"
+      ],
+      "method": "Fit five one-cell plates in a wood core and five in a printed core, one countersunk screw each, using the setting bar. Measure the groove width at both ends of every plate, then apply a rising torque about the screw.",
+      "pass": "The groove width at both ends of every plate is inside the opening limits, and no plate turns at 1.0 N.m.",
+      "samples": 10,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-4",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-7",
+      "title": "A part that crosses a fold holds on the grooves each side",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "S-3"
+      ],
+      "method": "Build a 90 degree outside fold and a 90 degree inside fold, two of each. Fix a bracket across each with slide keys in the first groove of each face, 32 mm from the fold line. Load the bracket with 100 N, cut the corner zone away and load it again.",
+      "pass": "Every bracket holds 100 N with no visible movement, with the corner zone in place and with it removed.",
+      "samples": 4,
+      "findings": [
+        "R-21",
+        "R-30"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-8",
+      "title": "The edge lip and the minimum floor are strong enough",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-7",
+        "C-17"
+      ],
+      "method": "Rout half-groove edges and full grooves in 12 mm and 18 mm plywood for Small and 15 mm and 18 mm for Large. Butt two edges to form a groove and pull a slide key out of it. Pull the same key out of a full groove in the same stock. Five samples per case.",
+      "pass": "The lowest edge sample reaches at least half the lowest full-groove value in the same stock, and no floor breaks before the walls do.",
+      "samples": 40,
+      "findings": [
+        "R-16",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-9",
+      "title": "Nominal loose plates form a groove inside the limits",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "F-5",
+        "C-15"
+      ],
+      "method": "Print nominal one-cell and 2 x 2 plates on three printers. Fit them on one base with the setting bar. Judge every groove between them with gauges G-1 to G-3.",
+      "pass": "Every groove between plates from all three printers passes G-1, G-2 and G-3.",
+      "samples": 3,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-3",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-10",
+      "title": "Stud and socket sizes on the 8 mm lattice",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-9"
+      ],
+      "method": "Print split studs at 4.8 and at 5.0 mm on one-cell plates, three plates per size. Press a bought brick on and pull it off 50 times.",
+      "pass": "For the chosen size, a bought brick presses on and pulls off by hand at cycle 50 on all three plates.",
+      "samples": 6,
+      "findings": [
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-11",
+      "title": "Snap keys and press-in plates hold after repeated use",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "H-3",
+        "P-7"
+      ],
+      "method": "Cycle each snap key and each press-in plate 50 times. Record the pull-out force at the first and the last cycle.",
+      "pass": "Pull-out force at cycle 50 is at least 80 % of the first cycle, for every sample.",
+      "samples": 5,
+      "findings": [
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-12",
+      "title": "Load ratings",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "L-1",
+        "L-2",
+        "L-3"
+      ],
+      "method": "Build a pull and shear rig. Test each groove size, key entry, build mode and plate fixing, five samples per case.",
+      "pass": "Every published figure is the lowest of its five samples and carries its method (L-2).",
+      "samples": 5,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-10",
+        "R-21"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-13",
+      "title": "Hardware figures still from general knowledge",
+      "type": "look-up",
+      "state": "open",
+      "rules": [
+        "C-11",
+        "P-12"
+      ],
+      "method": "Open the standards for the figures this draft could not source: the 90 degree head angle of ISO 10642, the ISO 4036 thin nut thickness, 1/4-20 nut sizes, the ISO 299 slot 8 figures, the G32 rail slot and the 10 in rack opening.",
+      "findings": [
+        "R-19"
+      ],
+      "tags": [
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-14",
+      "title": "Plate dimensions not yet sourced",
+      "type": "look-up",
+      "state": "open",
+      "rules": [
+        "A-2"
+      ],
+      "method": "Source or measure openGrid snaps, Multiboard holes and T-slot interiors when each plate comes up.",
+      "tags": [
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-15",
+      "title": "Whether a from-scratch Multiboard plate may be shared openly",
+      "type": "look-up",
+      "state": "open",
+      "rules": [
+        "A-3"
+      ],
+      "method": "Ask Multiboard to confirm, or take legal advice. Read the terms again before 1.0, since they can change by announcement.",
+      "tags": [
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-16",
+      "title": "MAV add-ons for cable channels and drawer partitions",
+      "type": "design",
+      "state": "open",
+      "rules": [
+        "A-1"
+      ],
+      "method": "Design work, not started.",
+      "tags": [
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-17",
+      "title": "Models and STEP files for this draft",
+      "type": "design",
+      "state": "open",
+      "rules": [
+        "K-6"
+      ],
+      "method": "Bring the Workbench in line with this draft (solid corners, margins, nominal loose plates, plate holes), then regenerate the STEP files. The 0.9 STEP set is out of date.",
+      "findings": [
+        "R-23"
+      ],
+      "tags": [
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-18",
+      "title": "Six systems with unpublished dimensions",
+      "type": "look-up",
+      "state": "open",
+      "rules": [
+        "A-1"
+      ],
+      "method": "Measure a sample of each, or leave it as not determined.",
+      "tags": [
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-19",
+      "title": "Interchange between processes",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-4",
+        "F-1",
+        "F-4"
+      ],
+      "method": "Fit a printed plate on a routed base, a routed key in a printed groove and a printed key in a routed groove, three of each. Judge each with gauges G-1 to G-3.",
+      "pass": "Every pairing passes its gauges, and every key slides the full groove by hand.",
+      "samples": 9,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-31"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-20",
+      "title": "Loose plates under clamp load",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "P-15",
+        "L-1"
+      ],
+      "method": "Clamp across a groove between two screwed loose plates with a slide key, on a wood core and on a printed core. Raise the pull in steps. Measure how far the groove opens at each step and record how it fails.",
+      "pass": "At the load the maker wants to offer, the opening stays at 8.15 mm or less and returns to its size when released, in all five samples per core.",
+      "samples": 10,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-10"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-21",
+      "title": "Island shear",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "C-2",
+        "P-15"
+      ],
+      "method": "Load a routed one-cell plate sideways through a key in the groove beside it, along and across the face grain, in Small and in Large. Five samples per case.",
+      "pass": "The lowest of five in each case holds the wall force at three times the proposed working pull: 300 N in Small and 600 N in Large. Wall force is about twice the pull without friction.",
+      "samples": 20,
+      "findings": [
+        "R-12"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-22",
+      "title": "Movement",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "P-16",
+        "C-15"
+      ],
+      "method": "Gauge one routed sample and one printed plate on a wood core. Keep them a week dry and a week damp, and gauge them after each week.",
+      "pass": "Both still pass G-1 to G-3 after each week, and no plate screw has come loose.",
+      "samples": 2,
+      "after": [
+        "T-2"
+      ],
+      "findings": [
+        "R-13"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-23",
+      "title": "Fixing pull-out",
+      "type": "test",
+      "state": "open",
+      "rules": [
+        "P-5",
+        "P-10"
+      ],
+      "method": "For each row of the fixing table, pull the plate screw out of a core at its minimum thickness. Five samples per row.",
+      "pass": "The lowest of five is at least 300 N for a light-duty row and 1000 N for a general-duty row.",
+      "samples": 30,
+      "findings": [
+        "R-7"
+      ],
+      "tags": [
+        "proposed",
+        "unproven"
+      ]
+    },
+    {
+      "id": "T-24",
+      "title": "Panel joint, wall thickness and double-sided panels",
+      "type": "design",
+      "state": "open",
+      "rules": [
+        "S-7"
+      ],
+      "method": "Design a connector that holds two butted panels against separation. Define wall thickness and double-sided panels. Nothing joins panels until this is done.",
+      "findings": [
+        "R-17"
+      ],
+      "tags": [
+        "unproven"
+      ]
+    }
+  ]
+}

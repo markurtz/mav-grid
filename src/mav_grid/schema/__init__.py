@@ -12,27 +12,109 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Parameter schema for MAV Grid (placeholder).
+"""The MAV Grid schema: spec files, validation, formulas, rules and typed records.
 
-This subpackage will hold the Pydantic models that describe every MAV Grid
-object in machine-readable form: the core grid (pitch, lattice, groove
-profiles for the Small and Large sizes), face plates and their spans, edges and
-margins, corners and folds, holes and fixings, fits, and claim lines. The
-models are the single source of truth for the JSON Schema published under
-``spec/schema/`` and for validating sample files under ``samples/``.
+The JSON Schemas (draft 2020-12) and data files under ``spec/`` are the
+normative, machine-readable form of the specification. This package is how
+the toolkit reads them:
 
-Planned layout:
+- ``files``: locate and load schemas, data files and example records.
+- ``validation``: check a document against a schema.
+- ``formulas``: the formulas of Annex A. Nothing derived is stored.
+- ``params``: :class:`Params`, typed access to every dimension.
+- ``records``: typed claim records, the input of every generator.
+- ``claims``: the claim line, derived from a record (rule K-2).
+- ``rules``: the cross-field rules a schema cannot express.
+- ``data``: cross-file checks and the test vectors.
 
-- ``core.py``: grid pitch, lattice, groove profile, size variants.
-- ``plates.py``: face plate geometry, spans, fixings, clearances.
-- ``structures.py``: edges, margins, folds and corners.
-- ``claims.py``: conformance claim lines and support levels.
-- ``export.py``: JSON Schema generation for ``spec/schema/``.
-
-Nothing is implemented yet; the spec 0.10 draft is the reference until the
-schema lands.
+Every value comes from ``spec/data/params.json``. Many are still tagged
+``proposed`` or ``unproven`` there: nothing has been made or measured yet.
 """
 
 from __future__ import annotations
 
-__all__: list[str] = []
+from mav_grid.schema.claims import claim_line
+from mav_grid.schema.data import build_vectors, check_data, compare_vectors
+from mav_grid.schema.files import (
+    DATA_FILES,
+    load_data,
+    load_examples,
+    load_json,
+    load_schema,
+    load_schemas,
+    spec_dir,
+)
+from mav_grid.schema.formulas import (
+    derive,
+    fixing_cells,
+    fold_limit,
+    groove_length,
+    groove_segments,
+    plate_land,
+    plate_top,
+)
+from mav_grid.schema.params import Groove, Params
+from mav_grid.schema.records import (
+    AdapterRecord,
+    Core,
+    Edge,
+    Face,
+    Fold,
+    FoldSide,
+    GaugeRecord,
+    GridRecord,
+    Interface,
+    KeyRecord,
+    Placement,
+    PlateRecord,
+    Record,
+    Stock,
+    Target,
+    parse_record,
+)
+from mav_grid.schema.rules import Issue, check_part
+from mav_grid.schema.validation import PART_SCHEMA, check_schemas, validate
+
+__all__ = [
+    "DATA_FILES",
+    "PART_SCHEMA",
+    "AdapterRecord",
+    "Core",
+    "Edge",
+    "Face",
+    "Fold",
+    "FoldSide",
+    "GaugeRecord",
+    "GridRecord",
+    "Groove",
+    "Interface",
+    "Issue",
+    "KeyRecord",
+    "Params",
+    "Placement",
+    "PlateRecord",
+    "Record",
+    "Stock",
+    "Target",
+    "build_vectors",
+    "check_data",
+    "check_part",
+    "check_schemas",
+    "claim_line",
+    "compare_vectors",
+    "derive",
+    "fixing_cells",
+    "fold_limit",
+    "groove_length",
+    "groove_segments",
+    "load_data",
+    "load_examples",
+    "load_json",
+    "load_schema",
+    "load_schemas",
+    "parse_record",
+    "plate_land",
+    "plate_top",
+    "spec_dir",
+    "validate",
+]

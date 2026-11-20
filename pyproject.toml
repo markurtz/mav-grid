@@ -47,9 +47,11 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
+  "jsonschema[format]>=4.20",
   "loguru~=0.7",
   "pydantic~=2.0",
   "pydantic-settings~=2.0",
+  "referencing>=0.31",
   "rich>=13.0.0",
   "typer>=0.12",
 ]
@@ -58,6 +60,10 @@ dependencies = [
 # `cad` extra for the geometry kernel used by `mav_grid.generators` (CadQuery or
 # build123d, not chosen yet) and a `yaml` extra for YAML sample files.
 [project.optional-dependencies]
+# The CAD kernel. Without it the toolkit still validates records, derives the
+# spec values and writes the 2D cut maps; with it, it builds solids and writes
+# STEP, STL, 3MF, GLB and preview files.
+cad = ["build123d>=0.13,<1"]
 
 [dependency-groups]
 test = [
@@ -67,6 +73,8 @@ test = [
   "pytest-mock>=3.15.1,<4",
   "respx>=0.23.1,<1",
   "pytest-xdist>=3.5,<4",
+  # The CAD kernel, so the solid builds are tested and not skipped.
+  "build123d>=0.13,<1",
 ]
 lint = [
   "ty",
@@ -124,6 +132,16 @@ Documentation = "https://markurtz.github.io/mav-grid/"
 # ==============================================================================
 
 [tool.hatch.build.hooks.gitversioned]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mav_grid"]
+
+# The normative spec files ship inside the wheel so an installed toolkit can
+# validate and generate without a checkout (see mav_grid.schema.files).
+[tool.hatch.build.targets.wheel.force-include]
+"spec/schema" = "mav_grid/spec_files/schema"
+"spec/data" = "mav_grid/spec_files/data"
+"spec/examples" = "mav_grid/spec_files/examples"
 
 [tool.hatch.version]
 source = "gitversioned"

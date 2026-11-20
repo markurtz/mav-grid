@@ -1,0 +1,22 @@
+{
+  "$schema": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "mav_grid": "0.11.0-draft.1",
+  "class": "plate",
+  "id": "plain-3x1-small-sheet",
+  "name": "Plain plate, 3 x 1, Small, cut from 6 mm sheet",
+  "maker": "MAV Grid project",
+  "licence": "Apache-2.0 WITH SHL-2.0",
+  "claim_line": "MAV Grid 0.11.0-draft.1 · Small · 3 × 1 · Plain plate · Screw fix",
+  "size": "small",
+  "span": [
+    3,
+    1
+  ],
+  "kind": "plain",
+  "process": "sheet-cut",
+  "material": "6 mm aluminium",
+  "edges_bevelled": true,
+  "fixing": "screw",
+  "fixing_cells": "standard",
+  "notes": "Cut square by laser, then bevelled to 14 degrees on all four sides (rule P-11)."
+}

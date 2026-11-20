@@ -1,0 +1,1215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://markurtz.github.io/mav-grid/schema/0.11.0-draft.1/part.schema.json",
+  "$comment": "SPDX-License-Identifier: Apache-2.0 WITH SHL-2.0",
+  "title": "MAV Grid part record",
+  "description": "The structured claim record of one part (rule K-5). One record describes one grid body, plate, key, adapter or gauge. The readable claim line (rule K-2) is derived from it. Rules that span several fields, such as plates tiling a face, are checked by tools/mavgrid_spec.py, not by this schema.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "mav_grid": {
+      "description": "The spec version the part claims.",
+      "$ref": "common.schema.json#/$defs/specVersion"
+    },
+    "class": {
+      "description": "The conformance class (section 5).",
+      "enum": [
+        "grid",
+        "plate",
+        "key",
+        "adapter",
+        "gauge"
+      ]
+    },
+    "id": {
+      "$ref": "common.schema.json#/$defs/slug"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "maker": {
+      "type": "string",
+      "minLength": 1
+    },
+    "licence": {
+      "$ref": "common.schema.json#/$defs/licence"
+    },
+    "third_party": {
+      "description": "True when the part is not made by the MAV Grid project (rule K-4).",
+      "type": "boolean"
+    },
+    "disclaimer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_line": {
+      "description": "The readable claim line (rule K-2). When present it must equal the line derived from this record.",
+      "type": "string",
+      "minLength": 1
+    },
+    "files": {
+      "description": "Release files (section 11).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "source",
+              "step",
+              "mesh",
+              "drawing",
+              "readme",
+              "licence",
+              "other"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "role"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "mav_grid",
+    "class",
+    "name"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "third_party": {
+            "const": true
+          }
+        },
+        "required": [
+          "third_party"
+        ]
+      },
+      "then": {
+        "required": [
+          "disclaimer"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "class": {
+            "const": "grid"
+          }
+        },
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/grid"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "class": {
+            "const": "plate"
+          }
+        },
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/plate"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "class": {
+            "const": "key"
+          }
+        },
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/key"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "class": {
+            "const": "adapter"
+          }
+        },
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/adapter"
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "class": {
+            "const": "gauge"
+          }
+        },
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/gauge"
+      }
+    }
+  ],
+  "unevaluatedProperties": false,
+  "$defs": {
+    "edgeName": {
+      "description": "A side of a face in the face frame (rule C-14).",
+      "enum": [
+        "x_min",
+        "x_max",
+        "y_min",
+        "y_max"
+      ]
+    },
+    "process": {
+      "enum": [
+        "printed",
+        "routed",
+        "machined",
+        "sheet-cut",
+        "cast",
+        "other"
+      ]
+    },
+    "coreMaterial": {
+      "enum": [
+        "metal",
+        "wood-sheet",
+        "printed",
+        "surface",
+        "other"
+      ]
+    },
+    "plateFixing": {
+      "description": "How a loose plate is fixed (rules P-5, P-7, P-8).",
+      "enum": [
+        "screw",
+        "press-in",
+        "bonded"
+      ]
+    },
+    "fixingCells": {
+      "description": "Where the plate holes are. 'standard' is the pattern of rule P-13. A list gives cells counted from the plate's own origin.",
+      "oneOf": [
+        {
+          "const": "standard"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/cell"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      ]
+    },
+    "grid": {
+      "description": "A body of one or more grid faces (class Grid face).",
+      "properties": {
+        "faces": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/face"
+          },
+          "minItems": 1
+        },
+        "folds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fold"
+          }
+        }
+      },
+      "required": [
+        "faces"
+      ]
+    },
+    "face": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "size": {
+          "description": "One groove size for the whole face (rule C-5).",
+          "$ref": "common.schema.json#/$defs/size"
+        },
+        "build_mode": {
+          "$ref": "common.schema.json#/$defs/buildMode"
+        },
+        "cols": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "edges": {
+          "description": "An edge that is left out is a half groove on a grid line (rule C-7).",
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/edgeName"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/edge"
+          }
+        },
+        "plates": {
+          "description": "Every cell is covered by exactly one plate (rule C-2).",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/placement"
+          },
+          "minItems": 1
+        },
+        "stock": {
+          "description": "The sheet a routed face is cut from.",
+          "type": "object",
+          "properties": {
+            "material": {
+              "type": "string",
+              "minLength": 1
+            },
+            "thickness": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "thickness"
+          ],
+          "additionalProperties": false
+        },
+        "core": {
+          "description": "The body under loose plates.",
+          "type": "object",
+          "properties": {
+            "material": {
+              "$ref": "#/$defs/coreMaterial"
+            },
+            "thickness": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "holes": {
+              "description": "all-cells = a core hole at every cell centre (rule P-9).",
+              "enum": [
+                "all-cells",
+                "as-needed",
+                "none"
+              ]
+            },
+            "fixing": {
+              "description": "The id of a row of the fixing table (rule P-5).",
+              "$ref": "common.schema.json#/$defs/slug"
+            }
+          },
+          "required": [
+            "material",
+            "holes"
+          ],
+          "additionalProperties": false
+        },
+        "offers_clamp_loads": {
+          "description": "True when the maker offers the grooves of this face for clamp loads.",
+          "type": "boolean"
+        },
+        "key_entries": {
+          "description": "The key entries the face takes (rule C-8). Left out, the face takes all three. A face with no open groove end MUST list its entries without 'slide'.",
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/keyEntry"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id",
+        "size",
+        "build_mode",
+        "cols",
+        "rows",
+        "plates"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "build_mode": {
+                "enum": [
+                  "routed-integral",
+                  "cut-down-sites"
+                ]
+              }
+            },
+            "required": [
+              "build_mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "stock"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "build_mode": {
+                "enum": [
+                  "swap-base",
+                  "surface-plates"
+                ]
+              }
+            },
+            "required": [
+              "build_mode"
+            ]
+          },
+          "then": {
+            "required": [
+              "core"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "build_mode": {
+                "const": "routed-integral"
+              }
+            },
+            "required": [
+              "build_mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "plates": {
+                "items": {
+                  "properties": {
+                    "state": {
+                      "const": "integral"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "build_mode": {
+                "enum": [
+                  "swap-base",
+                  "surface-plates"
+                ]
+              }
+            },
+            "required": [
+              "build_mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "plates": {
+                "items": {
+                  "properties": {
+                    "state": {
+                      "const": "loose"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "edge": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "half-groove",
+            "margin",
+            "fold"
+          ]
+        },
+        "width": {
+          "description": "Margin width outside the last grid line (rule C-8).",
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "inner": {
+          "description": "groove = a full groove on the last grid line. solid = the margin is one piece with the outer plate row.",
+          "enum": [
+            "groove",
+            "solid"
+          ],
+          "default": "groove"
+        },
+        "cross_grooves": {
+          "description": "Whether the grooves that meet this edge run out through the margin.",
+          "enum": [
+            "run-out",
+            "stopped"
+          ],
+          "default": "run-out"
+        },
+        "fold": {
+          "description": "The id of the fold this edge belongs to.",
+          "$ref": "common.schema.json#/$defs/slug"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "half-groove"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "width": false,
+              "inner": false,
+              "cross_grooves": false,
+              "fold": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "margin"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "width"
+            ],
+            "properties": {
+              "fold": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "fold"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "fold"
+            ],
+            "properties": {
+              "width": false,
+              "inner": false,
+              "cross_grooves": false
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "placement": {
+      "description": "One plate on a face: its origin cell and its span (rule C-14).",
+      "type": "object",
+      "properties": {
+        "at": {
+          "$ref": "common.schema.json#/$defs/cell"
+        },
+        "span": {
+          "$ref": "common.schema.json#/$defs/span"
+        },
+        "kind": {
+          "description": "A kind id from data/kinds.json (rule P-1).",
+          "$ref": "common.schema.json#/$defs/slug",
+          "default": "plain"
+        },
+        "rotation": {
+          "description": "Turn of the plate about the face normal, in degrees. The span is given as it lies on the face.",
+          "enum": [
+            0,
+            90,
+            180,
+            270
+          ],
+          "default": 0
+        },
+        "state": {
+          "description": "integral = stock left standing. loose = a separate plate.",
+          "enum": [
+            "integral",
+            "loose"
+          ]
+        },
+        "fixing": {
+          "$ref": "#/$defs/plateFixing"
+        },
+        "fixing_cells": {
+          "$ref": "#/$defs/fixingCells"
+        }
+      },
+      "required": [
+        "at",
+        "span",
+        "state"
+      ],
+      "if": {
+        "properties": {
+          "state": {
+            "const": "loose"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "fixing"
+        ]
+      },
+      "else": {
+        "properties": {
+          "fixing": false,
+          "fixing_cells": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "fold": {
+      "description": "Two faces meeting along a shared grid line (rules S-1 to S-4, S-8).",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "a": {
+          "$ref": "#/$defs/foldSide"
+        },
+        "b": {
+          "$ref": "#/$defs/foldSide"
+        },
+        "angle": {
+          "description": "Fold angle through the air, in degrees: under 180 is an inside corner, over 180 an outside corner.",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 360,
+          "not": {
+            "const": 180
+          }
+        },
+        "corner": {
+          "description": "What the maker does in the corner zone (rule S-2). Informative.",
+          "enum": [
+            "solid",
+            "groove",
+            "mitre",
+            "open",
+            "other"
+          ],
+          "default": "solid"
+        },
+        "fold_rows": {
+          "description": "standard = unchanged plates. relieved = cut back on the corner side below the plate top. integral = one piece with the corner.",
+          "enum": [
+            "standard",
+            "relieved",
+            "integral"
+          ],
+          "default": "standard"
+        }
+      },
+      "required": [
+        "id",
+        "a",
+        "b",
+        "angle"
+      ],
+      "additionalProperties": false
+    },
+    "foldSide": {
+      "type": "object",
+      "properties": {
+        "face": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "edge": {
+          "$ref": "#/$defs/edgeName"
+        }
+      },
+      "required": [
+        "face",
+        "edge"
+      ],
+      "additionalProperties": false
+    },
+    "target": {
+      "description": "What a plate or adapter states about the system it carries (rule A-2).",
+      "type": "object",
+      "properties": {
+        "system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "support_id": {
+          "description": "The id of the system in data/support.json.",
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "level": {
+          "enum": [
+            "native",
+            "native-with-nut",
+            "face-plate",
+            "face-plate-adapter",
+            "adapter",
+            "add-on"
+          ]
+        },
+        "min_span": {
+          "$ref": "common.schema.json#/$defs/span"
+        },
+        "repeat_cells": {
+          "description": "Cells after which the pattern and the grid line up again (rule P-2). Null when they never do.",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "licence": {
+          "$ref": "common.schema.json#/$defs/licence"
+        },
+        "attribution": {
+          "type": "string",
+          "minLength": 1
+        },
+        "from_scratch": {
+          "description": "True when no geometry was taken from the target's own files.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "system",
+        "version",
+        "level",
+        "licence",
+        "attribution"
+      ],
+      "additionalProperties": false
+    },
+    "loadRating": {
+      "description": "A published load figure and its method (rules L-1 to L-3).",
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "pull-out",
+            "shear"
+          ]
+        },
+        "force": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "groove_size": {
+          "$ref": "common.schema.json#/$defs/size"
+        },
+        "key_entry": {
+          "$ref": "common.schema.json#/$defs/keyEntry"
+        },
+        "build_mode": {
+          "$ref": "common.schema.json#/$defs/buildMode"
+        },
+        "plate_fixing": {
+          "enum": [
+            "integral",
+            "screw",
+            "press-in",
+            "bonded"
+          ]
+        },
+        "method": {
+          "type": "object",
+          "properties": {
+            "material": {
+              "type": "string",
+              "minLength": 1
+            },
+            "samples": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "application": {
+              "type": "string",
+              "minLength": 1
+            },
+            "failure": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "material",
+            "samples",
+            "application",
+            "failure"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "type",
+        "force",
+        "groove_size",
+        "key_entry",
+        "build_mode",
+        "plate_fixing",
+        "method"
+      ],
+      "additionalProperties": false
+    },
+    "plate": {
+      "description": "A loose face plate (class Plate).",
+      "properties": {
+        "size": {
+          "$ref": "common.schema.json#/$defs/size"
+        },
+        "span": {
+          "$ref": "common.schema.json#/$defs/span"
+        },
+        "kind": {
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "process": {
+          "$ref": "#/$defs/process"
+        },
+        "material": {
+          "type": "string",
+          "minLength": 1
+        },
+        "edges_bevelled": {
+          "description": "True when the plate sides slope at 14 degrees (rules C-6 and P-11).",
+          "type": "boolean"
+        },
+        "fixing": {
+          "$ref": "#/$defs/plateFixing"
+        },
+        "fixing_cells": {
+          "$ref": "#/$defs/fixingCells"
+        },
+        "slotted_holes": {
+          "description": "True when all plate holes but one are slots, for long plates (rule P-16).",
+          "type": "boolean"
+        },
+        "overhangs": {
+          "description": "Features above the plate-top plane that reach over a groove (rule P-3).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "side": {
+                "$ref": "#/$defs/edgeName"
+              },
+              "by": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "note": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "side",
+              "by"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "deep_features": {
+          "description": "Features deeper than the plate is thick (rule P-4).",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "depth": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "handling": {
+                "enum": [
+                  "stands-proud",
+                  "passes-into-core"
+                ]
+              }
+            },
+            "required": [
+              "name",
+              "depth",
+              "handling"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        }
+      },
+      "required": [
+        "size",
+        "span",
+        "kind",
+        "process",
+        "fixing"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "process": {
+                "const": "sheet-cut"
+              }
+            },
+            "required": [
+              "process"
+            ]
+          },
+          "then": {
+            "required": [
+              "edges_bevelled"
+            ],
+            "properties": {
+              "edges_bevelled": {
+                "const": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "target"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target": {
+                "required": [
+                  "min_span"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "key": {
+      "description": "A part that holds in a groove (class Key).",
+      "properties": {
+        "entry": {
+          "$ref": "common.schema.json#/$defs/keyEntry"
+        },
+        "fits": {
+          "description": "The groove sizes the key fits. A Small key also fits Large.",
+          "$ref": "common.schema.json#/$defs/sizes"
+        },
+        "reference": {
+          "description": "The id of the reference key it follows (rule H-6).",
+          "$ref": "common.schema.json#/$defs/slug"
+        },
+        "thread": {
+          "$ref": "common.schema.json#/$defs/thread"
+        },
+        "material": {
+          "enum": [
+            "metal",
+            "printed",
+            "wood",
+            "other"
+          ]
+        },
+        "process": {
+          "$ref": "#/$defs/process"
+        },
+        "neck": {
+          "description": "Width of the part that passes the opening (rule H-5).",
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 7.8
+        },
+        "height": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 9.2
+        },
+        "foot": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "length": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "use": {
+          "description": "What the maker offers the key for (rules H-2 and H-3).",
+          "enum": [
+            "positioning",
+            "light",
+            "clamp"
+          ]
+        },
+        "load_ratings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/loadRating"
+          }
+        }
+      },
+      "required": [
+        "entry",
+        "fits",
+        "material",
+        "length",
+        "use"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "entry": {
+                "const": "slide"
+              }
+            },
+            "required": [
+              "entry"
+            ]
+          },
+          "then": {
+            "properties": {
+              "length": {
+                "minimum": 16
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "entry": {
+                "const": "snap"
+              }
+            },
+            "required": [
+              "entry"
+            ]
+          },
+          "then": {
+            "properties": {
+              "material": {
+                "const": "printed"
+              },
+              "use": {
+                "enum": [
+                  "positioning",
+                  "light"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "fits": {
+                "contains": {
+                  "const": "small"
+                }
+              }
+            },
+            "required": [
+              "fits"
+            ]
+          },
+          "then": {
+            "properties": {
+              "height": {
+                "maximum": 5.7
+              }
+            }
+          }
+        }
+      ]
+    },
+    "adapter": {
+      "description": "A part that carries another system on a key or a plate (class Adapter).",
+      "properties": {
+        "interface": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "enum": [
+                "key",
+                "plate"
+              ]
+            },
+            "fits": {
+              "$ref": "common.schema.json#/$defs/sizes"
+            },
+            "entry": {
+              "$ref": "common.schema.json#/$defs/keyEntry"
+            },
+            "span": {
+              "$ref": "common.schema.json#/$defs/span"
+            }
+          },
+          "required": [
+            "type",
+            "fits"
+          ],
+          "allOf": [
+            {
+              "if": {
+                "properties": {
+                  "type": {
+                    "const": "key"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "entry"
+                ],
+                "properties": {
+                  "span": false
+                }
+              }
+            },
+            {
+              "if": {
+                "properties": {
+                  "type": {
+                    "const": "plate"
+                  }
+                }
+              },
+              "then": {
+                "required": [
+                  "span"
+                ],
+                "properties": {
+                  "entry": false
+                }
+              }
+            }
+          ],
+          "additionalProperties": false
+        },
+        "target": {
+          "$ref": "#/$defs/target"
+        },
+        "material": {
+          "type": "string",
+          "minLength": 1
+        },
+        "process": {
+          "$ref": "#/$defs/process"
+        }
+      },
+      "required": [
+        "interface",
+        "target"
+      ]
+    },
+    "gauge": {
+      "description": "A made gauge (class Gauge, rules F-2 to F-7).",
+      "properties": {
+        "gauge": {
+          "description": "The gauge id in data/params.json.",
+          "type": "string",
+          "pattern": "^G-[1-9][0-9]*$"
+        },
+        "process": {
+          "$ref": "#/$defs/process"
+        },
+        "material": {
+          "type": "string",
+          "minLength": 1
+        },
+        "measured": {
+          "description": "The gauge's own dimensions as measured before use (rule F-7).",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "additionalProperties": {
+            "type": "number"
+          },
+          "minProperties": 1
+        },
+        "measured_with": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "gauge",
+        "process"
+      ]
+    }
+  }
+}
