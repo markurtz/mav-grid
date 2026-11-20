@@ -77,8 +77,8 @@ runs:
       run: |-
         built_version=$(hatch project metadata 2>/dev/null | python3 -c "import json, sys; print(json.load(sys.stdin)['version'])")
         echo "[INFO] Hatch metadata version: $built_version"
-        WHL_COUNT=$(find dist -name "mav-grid-${built_version}*.whl" | wc -l)
-        TAR_COUNT=$(find dist -name "mav-grid-${built_version}*.tar.gz" | wc -l)
+        WHL_COUNT=$(find dist -name "mav_grid-${built_version}*.whl" | wc -l)
+        TAR_COUNT=$(find dist -name "mav_grid-${built_version}*.tar.gz" | wc -l)
         if [ "$WHL_COUNT" -eq 0 ] && [ "$TAR_COUNT" -eq 0 ]; then
           echo "[ERROR] Expected build artifacts for version $built_version were not found in dist/"
           exit 1
