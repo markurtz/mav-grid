@@ -40,6 +40,7 @@ MAV Grid is an open, parametric dovetail-groove grid and face-plate standard. Th
   - `geometry/`: kernel-free shapes, frames and plans (`shapes.py`), modelling options (`options.py`), the build123d kernel (`solid.py`, imported lazily).
   - `generators/`: plans for grid faces, plates, keys, gauges; record helpers for panels, corners, columns, boxes.
   - `plates/`: one drawing function per plate kind. `adapters/`: adapters to other systems.
+  - `scenes/`: example scenes that set generated parts next to reference parts of other systems (`scripts/make_models.py` builds them).
   - `export/`: STEP, STL, 3MF, GLB, SVG, DXF and the release folder.
 - `tests/`: `python/unit/`, `python/integration/`, and `e2e/` (installed package).
 - `examples/`: runnable examples, each with a `test_example.py`.

@@ -50,6 +50,15 @@ From a claim record to STEP, STL, 3MF, GLB and cut maps, on the command line and
 </div>
 
 <div class="card" markdown>
+:material-view-grid-plus-outline: **Example Scenes**
+
+Parts in use: build modes, corners, columns, a shelving bay, native fits, face plates and adapters next to other systems' parts.
+
+[:octicons-arrow-right-24: View Guide](example-scenes.md)
+
+</div>
+
+<div class="card" markdown>
 :material-tune: **Change the Parameters**
 
 Where every number lives, how to try a value, and how to change a draft choice of the spec.
